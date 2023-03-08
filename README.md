@@ -15,7 +15,7 @@ L'application web devra être optimisée pour une utilisation depuis un mobile (
 - **Validation** d'une demande de partie #mvp
 - **Réservation de terrain** pour une partie programmée #bonus-feature
 - **Gestion de profil**
-  (*non-exhaustif* : Éditer de ses informations #mvp / Gérer les propositions de partie (demandes et créations) #mvp / Gérer les réservations de terrains #bonus-feature / Enregistrer des favoris (partenaires, terrains, etc.) #bonus-feature / Gérer la visibilité de ses informations #bonus-feature / … )
+  (*non-exhaustif* : Éditer de ses informations #mvp / Gérer les propositions de partie (demandes et créations) #mvp / Gérer les réservations de terrains #bonus-feature / Enregistrer des favoris (partenaires, terrains, critères de recherche etc.) #bonus-feature / Gérer la visibilité de ses informations #bonus-feature / … )
 
 ### Exemples de parcours utilisateurs
 
@@ -69,15 +69,15 @@ Les fonctionnalités indiquées #mvp en section 2 sont les objectifs pour la 1re
 
 À la version minimale fonctionnelle, s'ajouteront les fonctionnalités indiquées #bonus-feature en section 2.
 
-# 6. L'équipe
+# 5. L'équipe
 
 ## Les devs
 
-- Lionel DIOT
-- Zitouni FADILI
-- Ghislain GENET
-- Sonia PAVAGEAU
-- Josephine PEAN
+- Lionel DIOT @LionelDiot
+- Zitouni FADILI @Cyber-Geooorge
+- Ghislain GENET @GGE95
+- Sonia PAVAGEAU @soniapvg
+- Josephine PEAN @Jo9085
 
 ## Notre mentor
 
