@@ -58,14 +58,19 @@ Selon son “*statut utilisateur*” (inscrit/non-inscrit), voici à titre indic
 
 ## Backend
 
--   **Ruby on Rails** 7
--   **PostgresSQL**
+- **Ruby on Rails** 7
+- **PostgresSQL**
 
 ## Frontend
 
--   Framework CSS pour la gestion des layouts (probablement **Boostrap**)
--   architecture **CUBE CSS**
--   custom UI en **SASS** + Vanilla **JavaScript**
+- Framework CSS pour la gestion des layouts (probablement **Boostrap**)
+- architecture **CUBE CSS**
+- custom UI en **SASS** + Vanilla **JavaScript**
+
+## API
+
+- **sendinblue** email API pour les emails transactionnels
+
 
 ## Hébergement
 
