@@ -1,9 +1,3 @@
->
->La dernière modification de cette description a été rédigée le **08/03** et les détails du projets sont à présent sûrement obsolètes...
->
->Merci de vous référer en priorité au [**README sur le repo GitHub**](https://github.com/soniapvg/tennis-partner-app) du projet .
->
-
 # 1. Présentation
 
 
