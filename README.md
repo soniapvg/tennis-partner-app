@@ -4,12 +4,8 @@
 >Merci de vous référer en priorité au [**README sur le repo GitHub**](https://github.com/soniapvg/tennis-partner-app) du projet .
 >
 
----
-
 # 1. Présentation
 
-
----
 
 # 2. Spécifications fonctionnelles
 
@@ -50,25 +46,24 @@ Selon son “*statut utilisateur*” (inscrit/non-inscrit), voici à titre indic
 	1. J'accède à la demande validée soit via le lien de l'email, soit via la section dédiée aux demandes validées
 	2. Je choisis un terrain depuis la section dédiée à la partie validée
 
-
----
-
 # 3. Stack technique
 
 ## Backend
+
 -   **Ruby on Rails** 7
 -   **PostgresSQL**
 
 ## Frontend
+
 -   Framework CSS pour la gestion des layouts (probablement **Boostrap**)
 -   architecture **CUBE CSS**
 -   custom UI en **SASS** + Vanilla **JavaScript**
 
 ## Hébergement
+
 - **Render** pour l'hébergement de l'app
 - **Cloudinary** pour les médias uploadés par les utilisateurs (photos de profil principalement)
 
----
 
 # 4. Livraisons
 
@@ -80,6 +75,16 @@ Les fonctionnalités indiquées #mvp en section 2 sont les objectifs pour la 1re
 
 À la version minimale fonctionnelle, s'ajouteront les fonctionnalités indiquées #bonus-feature en section 2.
 
----
+# 6. L'équipe
 
-# 5. Notre mentor
+## Les devs
+
+- Lionel DIOT
+- Zitouni FADILI
+- Ghislain GENET
+- Sonia PAVAGEAU
+- Josephine PEAN
+
+## Notre mentor
+
+
