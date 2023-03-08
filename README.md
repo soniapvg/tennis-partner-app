@@ -1,5 +1,19 @@
 # 1. Présentation
 
+## Un besoin
+
+Pour faire jouer ses membres ensemble, le club de tennis de Saint Julien en Genevois utilise actuellement un fichier excel envoyé par mail aux membres, de façon plus ou moins régulière, et dont les informations ne sont pas toujours à jour. Les retours des membres sur ce système ne sont pas très favorables. Le club souhaite développer un outil différent.
+
+## Une solution
+
+**Une application web comme un outil dédié à la recherche de partenaire parmi les membres du club**
+
+L'app mettra en relation des joueurs de tennis afin qu'ils trouvent un partenaire correspondant à des caractéristiques particulières, telles qu’un niveau de tennis ou des plages horaires communes.
+
+Dès l’accès au site, il serait possible de procéder à des recherches ciblées et de consulter les profils des joueurs déjà enregistrés. Si un joueur correspond à mes critères, je peux alors lui proposer une partie mais je dois pour cela me connecter ou créer mon profil.
+
+Pour faciliter l’organisation de parties de tennis, d’autres fonctionnalités complémentaires seront disponibles, comme la réservation d’un court (le club propose deux types de terrains, chacun couplé à un type d'abonnement : les terrains couverts et les terrains non couverts).
+
 
 # 2. Spécifications fonctionnelles
 
@@ -34,7 +48,7 @@ Selon son “*statut utilisateur*” (inscrit/non-inscrit), voici à titre indic
 
 - Parcours incrit·e·s : _“**J'ai reçu une notification pour une proposition de partie, je veux voir le détail pour éventuellement confirmer**”_
 	1. J'accède à la demande soit via le lien de l'email, soit via la section dédiée aux demandes
-	2. Je peux valider ou refuser la demande (éventuellement donner une raison avec un commentaire #bonus-feature)
+	2. Je peux valider ou refuser la demande (éventuellement donner une raison avec un commentaire, ou proposer un autre horaire #bonus-feature)
 
 - Parcours incrit·e·s : _“**J'ai envoyé une proposition de partie, je viens de recevoir une notification de validation de ma demande, je veux réserver un terrain pour cette partie**”_ #bonus-feature
 	1. J'accède à la demande validée soit via le lien de l'email, soit via la section dédiée aux demandes validées
@@ -81,4 +95,5 @@ Les fonctionnalités indiquées #mvp en section 2 sont les objectifs pour la 1re
 
 ## Notre mentor
 
-
+Guillaume Reygner
+https://twitter.com/guillaume_rygn
