@@ -14,7 +14,6 @@ Dès l’accès au site, il serait possible de procéder à des recherches cibl�
 
 Pour faciliter l’organisation de parties de tennis, d’autres fonctionnalités complémentaires seront disponibles, comme la réservation d’un court (le club propose deux types de terrains, chacun couplé à un type d'abonnement : les terrains couverts et les terrains non couverts).
 
-
 # 2. Spécifications fonctionnelles
 
 L'application web devra être optimisée pour une utilisation depuis un mobile (**mobile-first design**). La version desktop sera secondaire.
@@ -71,12 +70,10 @@ Selon son “*statut utilisateur*” (inscrit/non-inscrit), voici à titre indic
 
 - **sendinblue** email API pour les emails transactionnels
 
-
 ## Hébergement
 
 - **Render** pour l'hébergement de l'app
 - **Cloudinary** pour les médias uploadés par les utilisateurs (photos de profil principalement)
-
 
 # 4. Livraisons
 
@@ -100,5 +97,4 @@ Les fonctionnalités indiquées #mvp en section 2 sont les objectifs pour la 1re
 
 ## Notre mentor
 
-Guillaume Reygner
-https://twitter.com/guillaume_rygn
+
