@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+<!-- Récupéré de projetchaton pour tester devise à supprimer -->
+<div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+      <% if current_user.nil? %>
+        <li class="nav-item">
+          <%= link_to "Se connecter",
+          new_user_session_path,
+          class: "nav-link #{'active' if current_page? new_user_session_path }" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "S'inscrire",
+          new_user_registration_path,
+          class: "nav-link #{'active' if current_page? new_user_registration_path }" %>
+        </li>
+      <% else %>
+      <%=  button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"btn btn-secondary my-2 my-sm-0"  %>
+          
+      <% end %>
+      
+<!-- Récupéré de projetchaton pour tester devise à supprimer -->
+<h1>Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Show this user", user %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New user", new_user_path %>
