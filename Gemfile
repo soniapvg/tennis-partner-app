@@ -3,6 +3,20 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.0"
 
+#Liste de nos gems personnalisés !
+gem 'table_print'
+gem 'faker'
+gem 'rspec'
+gem 'dotenv'
+gem 'devise'
+gem 'stripe', "~> 5.53"
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+#fin de nos gems. 
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
