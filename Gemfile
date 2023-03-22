@@ -10,6 +10,7 @@ gem 'rspec'
 gem 'dotenv'
 gem 'devise'
 gem 'stripe', "~> 5.53"
+gem "dartsass-rails", "~> 0.4.1"
 
 group :development do
   gem 'better_errors'
