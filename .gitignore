@@ -29,3 +29,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Other files to ignore
+.DS_Store
+.ruby-version
