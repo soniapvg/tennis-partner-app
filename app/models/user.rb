@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
+
+  after_create :welcome_send
+
   enum experience: { 
     'Débutant': 1, 
     '40': 2, 
@@ -33,6 +36,13 @@ class User < ApplicationRecord
   enum gender: { femme: 1, homme: 2, autre: 3 }
 
   def age
+    if date_of_birth.present?
     (Date.today - date_of_birth).to_i / 365
+    end
   end
+
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
+
 end
