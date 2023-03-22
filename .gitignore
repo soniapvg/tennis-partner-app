@@ -37,3 +37,4 @@
 # Other files to ignore
 .DS_Store
 .ruby-version
+.env
