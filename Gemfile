@@ -7,13 +7,15 @@ ruby "3.0.0"
 gem 'table_print'
 gem 'faker'
 gem 'rspec'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe', "~> 5.53"
+gem "aws-sdk-s3"
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  
 end
 #fin de nos gems. 
 
