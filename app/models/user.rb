@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
-<<<<<<< HEAD
 
   after_create :welcome_send
 
@@ -16,7 +15,6 @@ class User < ApplicationRecord
   has_many :sent_invitations, class_name: 'Invitation', foreign_key: 'sender_id', dependent: :destroy
   has_many :received_invitations, class_name: 'Invitation', foreign_key: 'receiver_id', dependent: :destroy
   
->>>>>>> development
   enum experience: { 
     'Débutant': 1, 
     '40': 2, 
