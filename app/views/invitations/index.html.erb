@@ -1,16 +1,32 @@
-<% @invitations.each do |invitation| %>
-    <% if invitation.sender == current_user %>
-      <div style="border: 1px solid black; background-color: #00ffff; margin-left: 5%; margin-right: 5%; padding: 5px; width: 40%; ">
-      <small>Envoyé à <%= invitation.receiver.first_name+" "+invitation.receiver.last_name%> à <%= invitation.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
-    <% else %>
-    
-      <div style="border: 1px solid black; background-color: #ff00ff; margin-left: 5%; margin-right: 5%; padding: 5px; width: 40%;">
-      <small>Reçu de <%= invitation.sender.first_name+" "+invitation.sender.last_name %> à <%= invitation.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
-    <% end %>
-    <br>
-    <%= invitation.content %>
-    <%= link_to "Voir dans la discussion", chatroom_path(invitation.chatroom) %>    
-        
-    </div>
-    <br>  
+<% content_for :title do %>
+  <h1 class="title">Mes invitations</h1>
 <% end %>
+
+<ul class="table-view">
+  <% @invitations.each do |invit| %>
+    <% if invit.sender == current_user %>
+      <li class="table-view-cell media">
+        <%= link_to user_path(invit.receiver.id), class: "navigate-right" do %>
+          <div class="media-body">
+            Envoyée à <%= "#{invit.receiver.first_name} #{invit.receiver.last_name}" %>
+            <p><%= invit.content %></p>
+            <small><%= invit.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+          </div>
+        <% end %>
+      </li>
+    <% else %>
+      <li class="table-view-cell media">
+        <%= link_to user_path(invit.sender.id), class: "navigate-right" do %>
+          <div class="media-body">
+            Reçue de <%= "#{invit.sender.first_name} #{invit.sender.last_name}" %>
+            <p><%= invit.content %></p>
+            <small><%= invit.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+          </div>
+        <% end %>
+        <div class="media-body">
+          <a href="mailto:<%= invit.sender.email %>" class="badge badge-primary"><%= invit.sender.email %></a>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

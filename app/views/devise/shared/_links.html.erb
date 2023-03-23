@@ -23,3 +23,9 @@
     <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
   <% end %>
 <% end %>
+
+
+
+<div class="bar bar-standard bar-footer">
+  <%= submit_tag "Créer mon compte", class: "btn btn-primary btn-block", :form => "new_registration" %>
+</div>
