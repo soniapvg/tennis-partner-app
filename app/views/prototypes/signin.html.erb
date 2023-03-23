@@ -1,0 +1,14 @@
+<% content_for :title do %>
+  <h1 class="title">Connexion</h1>
+<% end %>
+
+<div class="content-padded">
+  <h1>Bienvenue !</h1>
+  <p>Veuillez vous connecter pour accéder aux fonctionnalités de l'app. L'inscription est accessible exclusivement aux membres du club.</p>
+</div>
+
+<form>
+  <input type="text" placeholder="Votre email">
+  <input type="password" placeholder="Votre mot de passe">
+  <%= link_to "Se connecter", prototypes_search_path, class: "btn btn-block" %>
+</form>

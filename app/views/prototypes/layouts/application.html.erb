@@ -17,7 +17,9 @@
 
   <body>
     <header class="bar bar-nav">
-      <%= render 'layouts/navbar' %>
+      <%= yield :back_button %>
+      <%= yield :title %>
+      <%= render 'prototypes/layouts/bartab' %>
     </header>
     
     <main class="content">
