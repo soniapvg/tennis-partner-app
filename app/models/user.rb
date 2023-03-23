@@ -57,4 +57,16 @@ class User < ApplicationRecord
   def chatrooms
     chatrooms_as_user1.or(chatrooms_as_user2)
   end
+
+  def has_chatroom_with?(other_user)
+    Chatroom.where(user1_id: [self.id, other_user.id], user2_id: [self.id, other_user.id]).exists?
+  end
+
+  def common_chatroom_id_with(other_user)
+    chatroom = Chatroom.where(user1: self, user2: other_user).or(Chatroom.where(user1: other_user, user2: self)).first
+  end
+
+  def invitations
+    sent_invitations.or(received_invitations)
+  end
 end

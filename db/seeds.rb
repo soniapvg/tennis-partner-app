@@ -74,7 +74,12 @@ pairs.each{ |pair|
     sender: chatroom.users.first,
     receiver: chatroom.users.second
   )
-
+  Invitation.create!(
+    chatroom: chatroom,
+    content: Faker::Lorem.paragraph,
+    sender: chatroom.users.second,
+    receiver: chatroom.users.first
+  )
   # Create 5 messages for each chatroom
   2.times do
     Message.create!(
