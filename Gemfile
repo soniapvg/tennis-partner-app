@@ -11,7 +11,6 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe', "~> 5.53"
 gem "aws-sdk-s3"
-gem "dartsass-rails", "~> 0.4.1"
 
 group :development do
   gem 'better_errors'
@@ -60,7 +59,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
