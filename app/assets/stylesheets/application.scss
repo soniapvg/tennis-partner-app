@@ -1,2 +1,30 @@
 // Import Ratchet
-@import "sass/ratchet.scss";
+// Variables
+@import "ratchet/variables.scss";
+
+// Mixins
+@import "ratchet/mixins.scss";
+
+// Normalize & Base CSS
+@import "ratchet/normalize.scss";
+@import "ratchet/base.scss";
+@import "ratchet/type.scss";
+
+// Components
+@import "ratchet/buttons.scss";
+@import "ratchet/bars.scss";
+@import "ratchet/badges.scss";
+@import "ratchet/cards.scss";
+@import "ratchet/table-views.scss";
+@import "ratchet/forms.scss";
+@import "ratchet/segmented-controls.scss";
+@import "ratchet/popovers.scss";
+
+// Javascript components
+@import "ratchet/modals.scss";
+@import "ratchet/sliders.scss";
+@import "ratchet/toggles.scss";
+@import "ratchet/push.scss";
+
+// Ratchicons
+@import "ratchet/ratchicons.scss";

@@ -1,0 +1,22 @@
+<% content_for :title do %>
+  <h1 class="title">Mes paramètres</h1>
+<% end %>
+
+<ul class="table-view">
+  <li class="table-view-cell media">
+    <%= link_to prototypes_edit_profile_path, class: "navigate-right" do %>
+      <span class="media-object pull-left icon icon-edit"></span>
+      <div class="media-body">
+        Éditer mon profil joueur
+      </div>
+    <% end %>
+  </li>
+  <li class="table-view-cell media">
+    <%= link_to prototypes_manage_account_path, class: "navigate-right" do %>
+      <span class="media-object pull-left icon icon-gear"></span>
+      <div class="media-body">
+        Gérer mon compte
+      </div>
+    <% end %>
+  </li>
+</ul>
