@@ -1,26 +1,14 @@
+<% content_for :title do %>
+  <h1 class="title">Connexion</h1>
+<% end %>
 
-      <p class="content-padded">Thanks for downloading Ratchet. This is an example HTML page that's linked up to compiled Ratchet CSS and JS, has the proper meta tags and the HTML structure. Need some more help before you start filling this with your own content? Check out some Ratchet resources:</p>
-      <div class="card">
-        <ul class="table-view">
-          <li class="table-view-cell">
-            <a class="push-right" href="http://goratchet.com">
-              <strong>Ratchet documentation</strong>
-            </a>
-          </li>
-          <li class="table-view-cell">
-            <a class="push-right" href="https://github.com/twbs/ratchet/">
-              <strong>Ratchet on Github</strong>
-            </a>
-          </li>
-          <li class="table-view-cell">
-            <a class="push-right" href="https://groups.google.com/forum/#!forum/goratchet">
-              <strong>Ratchet Google group</strong>
-            </a>
-          </li>
-          <li class="table-view-cell">
-            <a class="push-right" href="https://twitter.com/goratchet">
-              <strong>Ratchet on Twitter</strong>
-            </a>
-          </li>
-        </ul>
-      </div>
+<div class="content-padded">
+  <h1>Bienvenue !</h1>
+  <p>Veuillez vous connecter pour accéder aux fonctionnalités de l'app. L'inscription est accessible exclusivement aux membres du club.</p>
+</div>
+
+<form>
+  <input type="text" placeholder="Votre email">
+  <input type="password" placeholder="Votre mot de passe">
+  <%= link_to "Se connecter", prototypes_search_path, class: "btn btn-block" %>
+</form>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'prototypes/signin', to: 'prototypes#signin'
   get 'prototypes/signup', to: 'prototypes#signup'
   get 'prototypes/settings', to: 'prototypes#settings'
-  get 'prototypes/edit_profil', to: 'prototypes#edit_profil'
+  get 'prototypes/edit_profile', to: 'prototypes#edit_profile'
   get 'prototypes/manage_account', to: 'prototypes#manage_account'
   get 'prototypes/search', to: 'prototypes#search'
   get 'prototypes/results', to: 'prototypes#results'
