@@ -7,10 +7,19 @@
 <%else%>
   <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
 <%end%>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
-</div>
+<% if current_user == @user %>
+  <div>
+    <%= link_to "Edit my profile", edit_user_path(@user) %> |
+    <%= link_to "Back to users", users_path %>
+    <%= button_to "Destroy my account", @user, method: :delete %>
+  </div>
+<% else %>
+  <% if @have_chatroom %>
+    <%= link_to "Go to Chatroom", chatroom_path(@chatroom) %>
+  <% else %>
+    <%= form_with(url: chatrooms_path, method: :post) do |f| %>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.submit "Start Chatroom" %>
+    <% end %>
+  <% end %>
+<% end %>

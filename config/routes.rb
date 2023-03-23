@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :avatars, only: [:create]
   end
-
+  resources :chatrooms, only: [:index, :create, :show] do
+    resources :messages, only: [:create]
+    resources :invitations, only: [:create]
+  end
+  resources :invitations, only: [:index]
   # UI prototypes / to be deleted once applied in views
   get 'prototypes/signin', to: 'prototypes#signin'
   get 'prototypes/signup', to: 'prototypes#signup'

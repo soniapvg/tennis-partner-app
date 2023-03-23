@@ -1,0 +1,16 @@
+<% @invitations.each do |invitation| %>
+    <% if invitation.sender == current_user %>
+      <div style="border: 1px solid black; background-color: #00ffff; margin-left: 5%; margin-right: 5%; padding: 5px; width: 40%; ">
+      <small>Envoyé à <%= invitation.receiver.first_name+" "+invitation.receiver.last_name%> à <%= invitation.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+    <% else %>
+    
+      <div style="border: 1px solid black; background-color: #ff00ff; margin-left: 5%; margin-right: 5%; padding: 5px; width: 40%;">
+      <small>Reçu de <%= invitation.sender.first_name+" "+invitation.sender.last_name %> à <%= invitation.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+    <% end %>
+    <br>
+    <%= invitation.content %>
+    <%= link_to "Voir dans la discussion", chatroom_path(invitation.chatroom) %>    
+        
+    </div>
+    <br>  
+<% end %>
