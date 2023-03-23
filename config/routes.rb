@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
 
+  get 'users_search', to: 'users#search', as: 'users_search'
+  post 'users_selection', to:'users#selection', as:'users_selection'
+
   # UI prototypes / to be deleted once applied in views
   get 'prototypes/signin', to: 'prototypes#signin'
   get 'prototypes/signup', to: 'prototypes#signup'

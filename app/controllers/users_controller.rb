@@ -15,6 +15,13 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def search
+  end
+
+  def selection
+    @partners = User.search(partner_params)
+  end
+
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
@@ -47,5 +54,9 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:date_of_birth, :gender, :experience, :description, :week_day, :week_night, :weekend_day, :weekend_night)
+    end
+
+    def partner_params
+      params.permit(:gender, :week_day, :week_evening, :wend_day, :wend_evening, :outside, :authenticity_token, :commit, :method)
     end
 end

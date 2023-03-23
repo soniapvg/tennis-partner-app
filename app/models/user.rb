@@ -46,4 +46,8 @@ class User < ApplicationRecord
   def chatrooms
     chatrooms_as_user1.or(chatrooms_as_user2)
   end
+
+  def self.search(partner_params)
+    puts partner_params
+  end
 end
