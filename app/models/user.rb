@@ -50,16 +50,13 @@ class User < ApplicationRecord
     (Date.today - date_of_birth).to_i / 365
     end
   end
-<<<<<<< HEAD
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
 
-=======
   
   def chatrooms
     chatrooms_as_user1.or(chatrooms_as_user2)
   end
->>>>>>> development
 end
