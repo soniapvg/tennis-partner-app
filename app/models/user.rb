@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   after_create :welcome_send
 
-=======
+  
   has_many :chatrooms_as_user1, class_name: 'Chatroom', foreign_key: 'user1_id', dependent: :destroy
   has_many :chatrooms_as_user2, class_name: 'Chatroom', foreign_key: 'user2_id', dependent: :destroy
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
