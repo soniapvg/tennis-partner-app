@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get 'prototypes/player', to: 'prototypes#player'
   get 'prototypes/chatroom', to: 'prototypes#chatroom'
   get 'prototypes/invitations', to: 'prototypes#invitations'
+  post 'invitation', to: 'users#invitation', as: 'invitation'
 end
