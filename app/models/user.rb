@@ -4,6 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
+  has_many :chatrooms_as_user1, class_name: 'Chatroom', foreign_key: 'user1_id', dependent: :destroy
+  has_many :chatrooms_as_user2, class_name: 'Chatroom', foreign_key: 'user2_id', dependent: :destroy
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
+  has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id', dependent: :destroy
+  has_many :sent_invitations, class_name: 'Invitation', foreign_key: 'sender_id', dependent: :destroy
+  has_many :received_invitations, class_name: 'Invitation', foreign_key: 'receiver_id', dependent: :destroy
+  
   enum experience: { 
     'Débutant': 1, 
     '40': 2, 
@@ -34,5 +41,9 @@ class User < ApplicationRecord
 
   def age
     (Date.today - date_of_birth).to_i / 365
+  end
+  
+  def chatrooms
+    chatrooms_as_user1.or(chatrooms_as_user2)
   end
 end
