@@ -1,9 +1,21 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  
 
   # GET /users or /users.json
   def index
     @users = User.all
+  end
+
+  def invitation
+    @receiver = User.find(params[:id])
+    @sender = current_user
+    if UserMailer.invitation(@receiver,@sender).deliver_now!
+      flash[:notice] = "L'invitation a bien été envoyée."
+    else
+      flash[:alert] = "Une erreur est survenue lors de l'envoi de l'invitation."
+    end
+    redirect_to users_path
   end
 
   # GET /users/1 or /users/1.json

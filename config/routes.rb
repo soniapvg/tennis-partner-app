@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "users#index"
+  post 'invitation', to: 'users#invitation', as: 'invitation'
+
 end

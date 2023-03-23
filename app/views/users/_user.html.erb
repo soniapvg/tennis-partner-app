@@ -5,7 +5,7 @@
     <p><%= user.description %></p>
 
     <p><strong>Niveau:</strong> <%= user.experience %> </p>
-    <p><%= user.gender unless user.gender == 'autre' %>  <%= user.age %> ans.</p>
+    <p><%= user.gender+" de " unless user.gender == 'autre' %>  <%= user.age %> ans.</p>
     <p> </p>
     <p><strong>Disponibilité:</strong> 
       <table>
