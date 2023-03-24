@@ -1,0 +1,30 @@
+<h2> Formulaire de recherche </h2>
+<br>
+
+<%= form_tag (users_selection_path method: :get) do %>
+    <h3> Genre </h3>
+    <%= radio_button_tag(:gender, "Femme") %>
+    <%= label_tag(:gender_woman, "Femme") %>
+    <%= radio_button_tag(:gender, "Homme") %>
+    <%= label_tag(:gender_man, "Homme") %>
+    <%= radio_button_tag(:gender, "Peu importe") %>
+    <%= label_tag(:gender_whatever, "Peu importe") %>
+    <br>
+    <br>
+    <h3> Disponibilité </h3>
+    <%= check_box_tag(:week_day) %>
+    <%= label_tag(:week_day, "La semaine, en journée") %><br>
+    <%= check_box_tag(:week_evening) %>
+    <%= label_tag(:week_evening, "La semaine, en soirée") %><br>
+    <%= check_box_tag(:wend_day) %>
+    <%= label_tag(:wend_day, "Le week-end, en journée") %><br>
+    <%= check_box_tag(:wend_evening) %>
+    <%= label_tag(:wend_evening, "Le week-end, en soirée") %><br>
+    <br>
+    <h3> Préférence de terrain </h3>
+    <%= check_box_tag(:outside) %>
+    <%= label_tag(:outside, "Je ne joue qu'à l'extérieur") %><br>
+    <br>
+    <%= submit_tag("Rechercher")%>
+
+<% end %>

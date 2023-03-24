@@ -58,6 +58,39 @@ class User < ApplicationRecord
     chatrooms_as_user1.or(chatrooms_as_user2)
   end
 
+  def self.search(partner_params, user)
+    @partners = User.where.not(id: user.id)
+
+    if partner_params[:gender] == "Femme"
+      @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
+    elsif partner_params[:gender] == "Homme"
+      @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
+    else
+      @partners = @partners
+    end
+    
+    if partner_params[:week_day]== "1" || partner_params[:week_evening]== "1" || partner_params[:wend_day]== "1" || partner_params[:wend_evening]== "1"
+      disponibilities = []
+      disponibilities << :week_day if partner_params[:week_day]== "1"
+      disponibilities << :week_night if partner_params[:week_evening]== "1"
+      disponibilities << :weekend_day if partner_params[:wend_day]== "1" 
+      disponibilities << :weekend_night if partner_params[:wend_evening]== "1"
+      
+      @partners = @partners.select do |partner|
+        disponibilities.any? { |disponibility| partner[disponibility] }
+      end
+    
+      if partner_params[:outside]
+        players = players.where(outside: false)  
+      end
+      puts @partners
+
+      puts user.experience_before_type_cast
+    end
+
+    return @partners
+  end
+
   def has_chatroom_with?(other_user)
     Chatroom.where(user1_id: [self.id, other_user.id], user2_id: [self.id, other_user.id]).exists?
   end
@@ -70,3 +103,4 @@ class User < ApplicationRecord
     sent_invitations.or(received_invitations)
   end
 end
+
