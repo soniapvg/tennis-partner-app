@@ -1,3 +1,43 @@
+// HTML elements
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  border: none;
+}
+
+select {
+  height: 35px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 21px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+textarea {
+  resize: none;
+}
+
+small {
+  font-size: 70%;
+  color: $primary-color;
+}
+
+input[type="submit"] {
+  width: auto;
+}
+
+// Ratchet classes overriding
+
+.content {
+  padding-bottom: 54px;
+}
+
 .content-padded {
   margin: 20px;
 }
@@ -16,32 +56,39 @@
     margin-bottom: 20px;
 }
 
-select {
-  height: 35px;
-  width: 100%;
-  padding: 0 15px;
-  line-height: 21px;
-  margin-bottom: 15px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  box-shadow: none;
+.card {
+  padding: 10px;
 }
 
-.content {
-  padding-bottom: 54px;
+.bar .btn-block {
+  top: 6px;
+  padding: 10px;
 }
 
-.text-centered {
-  text-align: center;
+.btn-block {
+  line-height: 20px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+// New custom components
+
+.avatar {
+  border-radius: 50px;
+}
+
+.message {
+  padding-top: 10px;
+  margin-bottom: 0;
+  height: 170px;
+  border-top: 1px solid #ddd;
+
+  & textarea {
+    margin-bottom: initial;
+  }
 }
 
 fieldset {
-  padding: 0;
-  margin: 0;
-  margin-bottom: 20px;
-  border: none;
-
   & legend {
     padding-bottom: 5px;
   }
@@ -51,18 +98,38 @@ fieldset {
   }
 }
 
-.avatar {
-  border-radius: 50px;
+.card-right {
+  margin-left: 70px;
+  text-align: right;
 }
 
-.message {
-  padding-top: 10px;
-  height: 200px;
-  border-top: 1px solid #ddd;
+.card-left {
+  margin-right: 70px;
+  text-align: left;
 }
 
-textarea {
-  resize: none;
+.card {
+  & h2 {
+    font-size: 16px;
+  }
+
+  & p {
+    margin: 0;
+  }
+}
+
+// Utility classes
+
+.text-centered {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .margin-bottom-s {
@@ -74,5 +141,5 @@ textarea {
 }
 
 .margin-bottom-xl {
-  margin-bottom: 250px;
+  margin-bottom: 200px;
 }

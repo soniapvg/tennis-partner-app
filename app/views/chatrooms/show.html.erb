@@ -1,39 +1,31 @@
-<h3><%= link_to "Mes Chatrooms", chatrooms_path %></h3>
-<h3><%= link_to "Son profil", @other_user %></h3>
+<% content_for :back_button do %>
+  <%= link_to '', invitations_path, class: "icon icon-left-nav pull-left" %>
+<% end %>
 
-<h1>Chatting with <%= @other_user.first_name %> <%= @other_user.last_name %></h1>
-<% @posts.each do |post| %>
+<% content_for :title do %>
+  <h1 class="title"><%= @other_user.first_name %> <%= @other_user.last_name %></h1>
+<% end %>
+
+<div class="content-padded margin-bottom-xl">
+  <% @posts.each do |post| %>
     <% if post.sender == current_user %>
-      <div style="border: 1px solid black; background-color: #EEE; margin-left: 50%; margin-right: 5%; padding: 5px; width: 40%;">
+      <div class="card card-right">
+        <% if post.is_a?(Invitation) %>
+          <h2>Invitation</h2>
+        <% end %>
+        <p><%= post.content %></p>
+        <small><%= post.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+      </div>
     <% else %>
-      <div style="border: 1px solid black; background-color: #DDD; margin-left: 5%; padding: 5px; width: 40%;">
+      <div class="card card-left">
+        <% if post.is_a?(Invitation) %>
+          <h2>Invitation</h2>
+        <% end %>
+        <p><%= post.content %></p>
+        <small><%= post.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+      </div>
     <% end %>
-    <% if post.is_a?(Invitation)%>
-      Ceci est une invitation :
-      <br>
-    <% end %>
-    <%= post.content %>
-        <br>
-        <small>Rédigé à <%= post.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
-    </div>
-    <br>  
-<% end %>
-
-<% if @send_message %>
-  <%= form_with model: [@chatroom, @chatroom.messages.build], local: true do |form| %>
-    <%= form.text_field :content %>
-    <%= form.submit "Send a message" %>
   <% end %>
-<% else %>
-  <%= form_with model: [@chatroom, @chatroom.invitations.build], local: true do |form| %>
-    <%= form.text_field :content %>
-    <%= form.submit "Send an invitation" %>
-  <% end %>
-<% end %>
+</div>
 
-<% if @send_message %>
-  <%= link_to "Create an invitation", chatroom_path(@chatroom, send_message: false) %>
-<% else %>
-  <%= link_to "Write a message", chatroom_path(@chatroom, send_message: true) %>
-<% end %>
-<br>
+<%= render @send_message ? "chatrooms/forms/send_message" : "chatrooms/forms/send_invit" %>

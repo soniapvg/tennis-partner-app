@@ -18,7 +18,6 @@
   <% end %>
 </div>
 
-
 <%= form_tag user_avatars_path(@user), multipart: true do %>
   <%= file_field_tag :avatar %>
   <%= submit_tag "mettre à jour" %>

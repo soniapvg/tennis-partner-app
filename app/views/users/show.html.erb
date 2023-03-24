@@ -2,41 +2,6 @@
   <%= link_to '', users_path, class: "icon icon-left-nav pull-left" %>
 <% end %>
 
-<% content_for :title do %>
-  <h1 class="title"><%= @user.first_name %> <%= @user.last_name %></h1>
-<% end %>
+<%= render "user" %>
 
-<div class="content-padded text-centered">
-  <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar, alt: 'Photo de profil', class: "media-object avatar" %>
-  <% else %>
-    <img class="media-object avatar" src="http://placehold.it/100x100">
-  <% end %>
-  <p><%= @user.description %></p>
-</div>
-
-<ul class="table-view margin-bottom-xl">
-  <li class="table-view-cell"><%= @user.age %> ans</li>
-  <li class="table-view-cell"><%= @user.gender %></li>
-  <li class="table-view-cell"><%= @user.experience %></li>
-  <li class="table-view-cell">Joue en intérieur et extérieur</li>
-  <li class="table-view-cell">
-    Disponibilités :
-    <ul>
-      <% if @user.week_day %>
-        <li>la journée en semaine</li>
-      <% end %>
-      <% if @user.weekend_day %>
-        <li>la journée le week-end</li>
-      <% end %>
-      <% if @user.week_night %>
-         <li>les soirs de la semaine</li>
-      <% end %>
-      <% if @user.weekend_night %>
-        <li>les soirs du week-end</li>
-      <% end %>
-    </ul>
-  </li>
-</ul>
-
-<%= render "invitations/form" %>
+<%= render @have_chatroom ? "chatrooms/forms/open" : "chatrooms/forms/create" %>

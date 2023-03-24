@@ -17,6 +17,7 @@ class InvitationsController < ApplicationController
   def index
     @invitations = current_user.invitations
   end
+
   private
 
   def invitation_params

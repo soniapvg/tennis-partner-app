@@ -9,7 +9,7 @@
     <%= f.label :email, "Votre email" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 
-    <%= f.label :password, "Votre mot de passe" %><br />
+    <%= f.label :password, "Votre mot de passe" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
 
     <% if devise_mapping.rememberable? %>

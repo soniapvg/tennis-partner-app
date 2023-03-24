@@ -13,7 +13,8 @@ class ChatroomsController < ApplicationController
       redirect_to @chatroom
     else
       flash[:error] = "Error creating chatroom"
-      redirect_to root_path
+      # redirect_to root_path
+      redirect_to other_user
     end
   end
 
@@ -27,7 +28,6 @@ class ChatroomsController < ApplicationController
     @posts = (@chatroom.messages + @chatroom.invitations).sort_by(&:post_date)
     @send_message = params[:send_message] == "true"
   end
-
 
   private
 
