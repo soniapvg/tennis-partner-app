@@ -12,14 +12,13 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%# ratchet.js %>
   </head>
 
   <body>
     <header class="bar bar-nav">
       <%= yield :back_button %>
       <%= yield :title %>
-      <%= render 'prototypes/layouts/bartab' %>
+      <%= yield(:member_tab) if content_for?(:member_tab) %>
     </header>
     
     <main class="content">

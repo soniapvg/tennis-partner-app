@@ -3,5 +3,8 @@
 <% end %>
 
 <div class="bar bar-standard bar-footer-secondary">
-  <%= link_to "Rechercher", prototypes_results_path, class: "btn btn-block" %>
+  <%= link_to prototypes_results_path, class: "btn btn-primary btn-block" do %>
+    <span class="icon icon-search"></span>
+    Rechercher
+  <% end %>
 </div>
