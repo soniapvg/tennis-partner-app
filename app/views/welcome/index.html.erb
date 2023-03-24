@@ -1,6 +1,13 @@
-<h1>Welcome to Tennis_club_app</h1>
-<p>Cette app est réservé aux membres du club de St Julien. Please sign up or log in before anything</p>
-<p>
-  <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %>
-  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-secondary" %>
-</p>
+<% content_for :title do %>
+  <h1 class="title">Tennis Club de Saint-Julien</h1>
+<% end %>
+
+<div class="content-padded">
+  <h1>
+    Trouver<br>
+    votre partenaire<br>
+    de tennis
+  </h1>
+  <p>Veuillez vous connecter pour accéder aux fonctionnalités de l'app.</p>
+  <p>L'inscription est réservée aux membres du club de tennis de Saint-Julien en Genevois.</p>
+</div>

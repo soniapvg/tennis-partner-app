@@ -1,0 +1,19 @@
+<% content_for :back_button do %>
+  <%= link_to '', prototypes_settings_path, class: "icon icon-left-nav pull-left" %>
+<% end %>
+    
+<% content_for :title do %>
+  <h1 class="title">Ma photo de profil</h1>
+<% end %>
+
+<form class="content-padded text-centered">
+  <img class="media-object avatar" src="http://placehold.it/100x100">
+  <input type="file" id="avatar" name="avatar">
+</form>
+
+<div class="bar bar-standard bar-footer-secondary">
+  <%= link_to prototypes_settings_path, class: "btn btn-primary btn-block" do %>
+    <span class="icon icon-check"></span>
+    Enregistrer
+  <% end %>
+</div>

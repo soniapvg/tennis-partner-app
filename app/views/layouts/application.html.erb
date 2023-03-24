@@ -12,17 +12,23 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%# ratchet.js %>
   </head>
 
   <body>
     <header class="bar bar-nav">
-      <%= render 'layouts/navbar' %>
+      <%= yield :back_button %>
+      <%= yield :title %>
+      <%= yield :navbar %>
     </header>
     
     <main class="content">
-    <p style="color: green"><%= notice %></p>
-    <p style="color: red"><%= alert %></p>
+      <div style="background-color: green; color: white; padding: 10px;">
+  <%= notice %>
+</div>
+
+<div style="background-color: red; color: white; padding: 10px;">
+  <%= alert %>
+</div>
       <%= yield %>
     </main>
   </body>

@@ -1,15 +1,27 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  layout 'user'
+  
 
   # GET /users or /users.json
   def index
     @users = User.all
   end
 
+
+
   # GET /users/1 or /users/1.json
   def show
+    if current_user != @user
+      if current_user.has_chatroom_with?(@user)
+        @have_chatroom = true
+        @chatroom = current_user.common_chatroom_id_with(@user)
+      else
+        @have_chatroom = false
+        @chatroom = Chatroom.new
+      end
+    end
   end
-
 
   # GET /users/1/edit
   def edit
@@ -38,7 +50,6 @@ class UsersController < ApplicationController
     puts 'hello'
     puts @partners
   end
-
 
   # PATCH/PUT /users/1 or /users/1.json
   def update

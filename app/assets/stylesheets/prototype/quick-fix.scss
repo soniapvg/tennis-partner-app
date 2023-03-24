@@ -1,0 +1,78 @@
+.content-padded {
+  margin: 20px;
+}
+
+.content > .table-view:first-child {
+  margin-top: 0;
+  border-top: none;
+}
+
+.bar-footer {
+  height: 54px;
+}
+
+.bar-footer-secondary {
+    border-top: none;
+    margin-bottom: 20px;
+}
+
+select {
+  height: 35px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 21px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+.content {
+  padding-bottom: 54px;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  border: none;
+
+  & legend {
+    padding-bottom: 5px;
+  }
+
+  & div {
+    padding-top: 5px;
+  }
+}
+
+.avatar {
+  border-radius: 50px;
+}
+
+.message {
+  padding-top: 10px;
+  height: 200px;
+  border-top: 1px solid #ddd;
+}
+
+textarea {
+  resize: none;
+}
+
+.margin-bottom-s {
+  margin-bottom: 10px;
+}
+
+.margin-bottom-m {
+  margin-bottom: 20px;
+}
+
+.margin-bottom-xl {
+  margin-bottom: 250px;
+}
