@@ -1,4 +1,3 @@
 class WelcomeController < ApplicationController
-  def index
-  end
+  layout 'visitor'
 end

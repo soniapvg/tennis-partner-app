@@ -1,0 +1,6 @@
+<nav class="bar bar-tab">
+  <%= link_to "Inscription", new_user_registration_path,
+      class: "tab-item #{'active' if current_page? new_user_registration_path }"%>
+  <%= link_to "Connexion", new_user_session_path,
+      class: "tab-item #{'active' if current_page? new_user_session_path }"%>
+</nav>

@@ -1,4 +1,6 @@
 class InvitationsController < ApplicationController
+  layout 'user'
+  
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @invitation = @chatroom.invitations.new(invitation_params)

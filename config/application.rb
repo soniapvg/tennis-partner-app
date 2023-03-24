@@ -11,6 +11,14 @@ module TennisClub
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.to_prepare do
+      Devise::SessionsController.layout "visitor"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "user" : "visitor" }
+      Devise::ConfirmationsController.layout "visitor"
+      Devise::UnlocksController.layout "visitor"
+      Devise::PasswordsController.layout "visitor"
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
