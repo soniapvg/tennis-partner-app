@@ -65,8 +65,8 @@ class User < ApplicationRecord
       @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
     elsif partner_params[:gender] == "Homme"
       @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
-    else
-      @partners = @partners
+    elsif partner_params[:gender] == "Peu importe"
+      @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) || (partner.gender == "femme" ) }
     end
     
     if partner_params[:week_day]== "1" || partner_params[:week_evening]== "1" || partner_params[:wend_day]== "1" || partner_params[:wend_evening]== "1"
@@ -79,13 +79,11 @@ class User < ApplicationRecord
       @partners = @partners.select do |partner|
         disponibilities.any? { |disponibility| partner[disponibility] }
       end
-    
-      if partner_params[:outside]
-        players = players.where(outside: false)  
-      end
-      puts @partners
 
-      puts user.experience_before_type_cast
+    end
+
+    if partner_params[:inside] == "1"
+      @partners = @partners.select{|partner| (partner.outside === false)}
     end
 
     return @partners

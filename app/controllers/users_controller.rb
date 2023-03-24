@@ -34,9 +34,6 @@ class UsersController < ApplicationController
     @user = current_user
     @partners = User.search(partner_params,@user)
 
-    puts @partners
-
-    #render :affichage, locals: { partners: => @partners }
     redirect_to users_affichage_path(:partners => @partners)
   end
 
@@ -49,8 +46,6 @@ class UsersController < ApplicationController
         @partners << User.find(iresult)
       end
     end
-    puts 'hello'
-    puts @partners
   end
 
   # PATCH/PUT /users/1 or /users/1.json
@@ -88,6 +83,6 @@ class UsersController < ApplicationController
     end
 
     def partner_params
-      params.permit(:gender, :week_day, :week_evening, :wend_day, :wend_evening, :outside, :authenticity_token, :commit, :method)
+      params.permit(:gender, :week_day, :week_evening, :wend_day, :wend_evening, :inside, :authenticity_token, :commit, :method)
     end
 end
