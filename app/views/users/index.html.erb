@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+
 <!-- Récupéré de projetchaton pour tester devise à supprimer -->
 <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
@@ -19,6 +19,7 @@
       <% end %>
       
 <!-- Récupéré de projetchaton pour tester devise à supprimer -->
+<%= link_to "Mes Chatrooms", chatrooms_path %></h3>
 <h1>Users</h1>
 
 <div id="users">
@@ -26,6 +27,11 @@
     <%= render user %>
     <p>
       <%= link_to "Show this user", user %>
+      <%= link_to invitation_path(id: user.id), data: {turbo_method: :post}, class: "btn btn-sm btn-outline-primary" do %>
+        <%= render "/shared/buttons/invitation" %>
+      <% end %>
+
+
     </p>
   <% end %>
 </div>
