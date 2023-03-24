@@ -69,7 +69,7 @@ class User < ApplicationRecord
         disponibilities.any? { |disponibility| partner[disponibility] }
       end
     
-      if outside 
+      if partner_params[:outside]
         players = players.where(outside: false)  
       end
       puts @partners

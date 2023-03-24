@@ -12,7 +12,11 @@
 
     <p><strong>Niveau:</strong> <%= partner.experience %> </p>
     <p><%= partner.gender unless partner.gender == 'autre' %>  <%= partner.age %> ans.</p>
-    
+    <% if partner.outside %> </p>
+      <p><strong>Je ne joue que en exterieur </strong></p>
+    <% else %>
+      <p><strong>Je joue en exterieur et interieur </strong></p>
+    <% end %>
     <p><strong>Disponibilité:</strong> 
       <table>
         <thead>
