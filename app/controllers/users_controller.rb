@@ -7,33 +7,35 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def invitation
-    @receiver = User.find(params[:id])
-    @sender = current_user
-    if UserMailer.invitation(@receiver,@sender).deliver_now!
-      flash[:notice] = "L'invitation a bien été envoyée."
-    else
-      flash[:alert] = "Une erreur est survenue lors de l'envoi de l'invitation."
-    end
-    redirect_to users_path
-  end
+
 
   # GET /users/1 or /users/1.json
   def show
-    if current_user != @user
-      if current_user.has_chatroom_with?(@user)
-        @have_chatroom = true
-        @chatroom = current_user.common_chatroom_id_with(@user)
-      else
-        @have_chatroom = false
-        @chatroom = Chatroom.new
-      end
-    end
   end
 
+  # GET /users/new
+  def new
+    @user = User.new
+  end
 
+  
   # GET /users/1/edit
   def edit
+  end
+
+  # POST /users or /users.json
+  def create
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /users/1 or /users/1.json

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root "users#index"
   get '/welcome', to: 'welcome#index', as: 'welcome'
-  post 'invitation', to: 'users#invitation', as: 'invitation'
 
+  
   devise_for :users
   resources :users, except: [:new, :create]
 

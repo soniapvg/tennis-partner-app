@@ -27,9 +27,7 @@
     <%= render user %>
     <p>
       <%= link_to "Show this user", user %>
-      <%= link_to invitation_path(id: user.id), data: {turbo_method: :post}, class: "btn btn-sm btn-outline-primary" do %>
-        <%= render "/shared/buttons/invitation" %>
-      <% end %>
+      
 
 
     </p>
