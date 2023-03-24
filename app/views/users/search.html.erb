@@ -2,7 +2,7 @@
   <% content_for :title do %>
     <h1 class="title">Rechercher des joueurs</h1>
   <% end %>
-
+  
   <div class="content">
     <div class="card">
       <div class="card-header">
@@ -39,22 +39,11 @@
         <h3 class="card-title">Préférence de terrain</h3>
       </div>
       <div class="card-content">
-        <%= check_box_tag(:outside) %>
-        <%= label_tag(:outside, "Je ne joue qu'en inside") %><br>
+        <%= check_box_tag(:inside) %>
+        <%= label_tag(:inside, "Je veux jouer en indoor") %><br>
       </div>
     </div>
 
-    <div class="card">
-      <div class="list-group-header">
-        <h3 class="card-title">Abonnement</h3>
-      </div>
-      <div class="list-group">
-        <label class="list-group-item">
-          Votre abonnement actuel:
-          <%= select_tag(:subscription, options_for_select([['Outdoor', 'Outdoor'], ['Outdoor & Indoor', 'Outdoor & Indoor']])) %>
-        </label>
-      </div>
-    </div>
   </div>
 
   <div class="bar bar-standard bar-footer-secondary">
