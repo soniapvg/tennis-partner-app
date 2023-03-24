@@ -2,16 +2,75 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #333;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px;
+      }
+      .header h1 {
+        font-size: 32px;
+        margin: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .welcome {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      .welcome p {
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+      .button:hover {
+        background-color: #0069d9;
+      }
+      .footer {
+        background-color: #f7f7f7;
+        padding: 20px;
+        text-align: center;
+        color: #999;
+        font-size: 14px;
+      }
+    </style>
   </head>
-
+  
   <body>
-    <h1>Salut <%= @user.first_name %> <%= @user.last_name %>et bienvenue chez nous !</h1>
-    <p>
-      Tu t'es inscrit sur tennis-partner.com en utilisant l'e-mail suivant : <%= @user.email %>.
-    </p>
-    <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
-    </p>
-    <p> À très vite sur tennis-partner.com !
+    <div class="header">
+      <div class="container">
+        <h1>Bienvenue sur tennis-partner.com</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="welcome">
+        <h2>Salut <%= @user.first_name %> <%= @user.last_name %> et bienvenue chez nous !</h2>
+        <p>Tu t'es inscrit sur tennis-partner.com en utilisant l'e-mail suivant : <%= @user.email %>.</p>
+        <p>Pour accéder à ton espace client, connecte-toi via : <a href="<%= @url %>" class="button">Mon espace client</a>. À très vite sur tennis-partner.com !</p>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Cet email a été envoyé depuis tennis-partner.com</p>
+    </div>
   </body>
 </html>
