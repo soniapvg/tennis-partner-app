@@ -19,8 +19,26 @@ class UsersController < ApplicationController
   end
 
   def selection
-    @partners = User.search(partner_params)
+    @user = current_user
+    @partners = User.search(partner_params,@user)
+
+    puts @partners
+
+    #render :affichage, locals: { partners: => @partners }
+    redirect_to users_affichage_path(:partners => @partners)
   end
+
+  def affichage
+    results = params[:partners]
+    @partners = []
+    results.each do |result|
+      iresult = result.to_i
+      @partners << User.find(iresult)
+    end
+    puts 'hello'
+    puts @partners
+  end
+
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
