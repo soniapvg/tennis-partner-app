@@ -1,0 +1,11 @@
+<nav class="bar bar-tab">
+  <%= link_to prototypes_search_path, class: "tab-item #{'active' if current_page? prototypes_search_path }" do %>
+    <span class="icon icon-search"></span>
+  <% end %>
+  <%= link_to prototypes_invitations_path, class: "tab-item #{'active' if current_page? prototypes_invitations_path }" do %>
+    <span class="icon icon-download"></span>
+  <% end %>
+  <%= link_to prototypes_settings_path, class: "tab-item #{'active' if current_page?(prototypes_settings_path) || current_page?(prototypes_settings_account_path) || current_page?(prototypes_settings_informations_path) || current_page?(prototypes_settings_photo_path) || current_page?(prototypes_settings_player_preferences_path) }" do %>
+    <span class="icon icon-person"></span>
+  <% end %>
+</nav>

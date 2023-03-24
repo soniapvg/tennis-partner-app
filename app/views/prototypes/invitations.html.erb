@@ -1,0 +1,39 @@
+<% content_for :title do %>
+  <h1 class="title">Toutes mes invitations</h1>
+<% end %>
+
+<ul class="table-view">
+  <li class="table-view-cell media">
+    <%= link_to prototypes_player_path, class: "navigate-right" do %>
+      <div class="media-body">
+        de Ghislain G.
+        <p>Salut ! Ça te dirait de jouer mercredi soir prochain avec moi ?</p>
+      </div>
+    <% end %>
+    <div class="media-body">
+      <a href="mailto:#" class="badge badge-primary">ghislaingeorges@yopmail</a>
+    </div>
+  </li>
+  <li class="table-view-cell media">
+    <%= link_to prototypes_player_path, class: "navigate-right" do %>
+      <div class="media-body">
+        de Joséphine T.
+        <p>Bonjour, j'aimerais jouer ce week-end. Tu serais dispo à un moment ?</p>
+      </div>
+    <% end %>
+    <div class="media-body">
+      <a href="mailto:#" class="badge badge-primary">ghislaingeorges@yopmail</a>
+    </div>
+  </li>
+  <li class="table-view-cell media">
+    <%= link_to prototypes_player_path, class: "navigate-right" do %>
+      <div class="media-body">
+        à Zitouni B.
+        <p>Je te contacte pour voir si on peut matcher sur un créneau un soir cette semaine ?</p>
+      </div>
+    <% end %>
+    <div class="media-body">
+      <a href="mailto:#" class="badge badge-primary">ghislaingeorges@yopmail</a>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #333;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background-color: #a37063;
+        color: #fff;
+        padding: 20px;
+      }
+      .header h1 {
+        font-size: 32px;
+        margin: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .welcome {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      .welcome p {
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+      .button {
+        display: inline-block;
+        padding: 8px 15px;
+        background-color: #bce881;
+        color: #3e4c29;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+      .button:hover {
+        background-color: #91c849;
+      }
+      .footer {
+        background-color: #f7f7f7;
+        padding: 20px;
+        text-align: center;
+        color: #999;
+        font-size: 14px;
+      }
+      p {
+        font-size: 18px; line-height: 1.5; margin: 20px 0;
+      }
+      h1 {
+        font-size: 32px; font-weight: 600; margin: 30px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="container">
+        <h1>Bienvenue sur tennis-partner</h1>
+      </div>
+    </div>
+      <table cellpadding="0" cellspacing="0" height="100%" width="100%">
+        <tr>
+          <td valign="top" style="padding: 40px 0;">
+            <div class="container">
+              <div class="welcome">
+                <h2>Salut <%= @user.first_name %> <%= @user.last_name %> et bienvenue chez nous !</h2>
+                <p>Tu t'es inscrit sur tennis-partner.com en utilisant l'e-mail suivant : <%= @user.email %>.</p>
+                <p>Connecte toi vite à ton espace personnel : <a href=<%= @url %> class="button">Mon espace</a>.</p>
+                <p>À très vite sur tennis-partner.com !</p>
+                <img src="https://media.istockphoto.com/id/489113014/fr/photo/jeune-homme-jouant-au-tennis.jpg?s=1024x1024&w=is&k=20&c=cE6n0aBuovJnTQNr3QKlAKYoFFjDtnX5cc2pevJBhtI=" alt="Tennisman" style="display: block; margin: 0 auto; max-width: 100%;">
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="footer">
+      <p>Cet email a été envoyé depuis tennis-partner.com</p>
+    </div>
+  </body>
+</html>

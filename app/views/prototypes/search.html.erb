@@ -1,0 +1,73 @@
+<% content_for :title do %>
+  <h1 class="title">Rechercher des joueurs</h1>
+<% end %>
+
+
+	<div class="content">
+
+		
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Genre</h3>
+			</div>
+			<div class="card-content">
+				<label class="checkbox-inline">
+					<input type="checkbox" name="genre" value="homme">
+					<i class="icon-checkbox"></i> Homme
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" name="genre" value="femme">
+					<i class="icon-checkbox"></i> Femme
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" name="genre" value="aucune_preference">
+					<i class="icon-checkbox"></i> Pas de préférence
+				</label>
+			</div>
+		</div>
+
+		
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Disponibilité</h3>
+			</div>
+			<div class="card-content">
+				<label class="checkbox-inline">
+					<input type="checkbox" name="disponibilite" value="semaine_journee">
+					<i class="icon-checkbox"></i> Semaine/journée
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" name="disponibilite" value="semaine_soir">
+					<i class="icon-checkbox"></i> Semaine/soir
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" name="disponibilite" value="weekend_journee">
+					<i class="icon-checkbox"></i> Week-end/journée
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" name="disponibilite" value="weekend_soir">
+					<i class="icon-checkbox"></i> Week-end/soir
+				</label>
+			</div>
+
+		<div class="list-group">
+		<div class="list-group-header">
+			<h3 class="card-title">Abonnement</h3>
+		</div>
+		<label class="list-group-item">
+			Votre abonnement actuel:
+			<select name="subscription">
+			<option value="option1">Outdoor </option>
+			<option value="option2">Outdoor & Indoor</option>
+			</select>
+		</label>
+		</div> 
+
+	</div>
+
+<div class="bar bar-standard bar-footer-secondary">
+  <%= link_to prototypes_results_path, class: "btn btn-primary btn-block" do %>
+    <span class="icon icon-search"></span>
+    Rechercher
+  <% end %>
+</div>

@@ -7,13 +7,15 @@ ruby "3.0.0"
 gem 'table_print'
 gem 'faker'
 gem 'rspec'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe', "~> 5.53"
+gem "aws-sdk-s3"
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  
 end
 #fin de nos gems. 
 
@@ -57,7 +59,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

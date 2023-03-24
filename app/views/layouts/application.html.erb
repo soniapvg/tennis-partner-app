@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TennisClub</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <title>Tennis Partner App</title>
+    <link rel="icon" href="https://fav.farm/🎾" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +15,24 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="bar bar-nav">
+      <%= yield :back_button %>
+      <%= yield :title %>
+      <%= yield :navbar %>
+    </header>
+    
+    <main class="content">
+    <% if notice %>
+      <div style="background-color: green; color: white; padding: 10px;">
+      <%= notice %>
+      </div>
+      <% end %>
+    <% if alert %>
+      <div style="background-color: red; color: white; padding: 10px;">
+        <%= alert %>
+      </div>
+    <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>

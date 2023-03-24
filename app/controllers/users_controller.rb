@@ -1,35 +1,49 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  layout 'user'
+  
 
   # GET /users or /users.json
   def index
     @users = User.all
   end
 
+
+
   # GET /users/1 or /users/1.json
   def show
-  end
-
-  # GET /users/new
-  def new
-    @user = User.new
+    if current_user != @user
+      if current_user.has_chatroom_with?(@user)
+        @have_chatroom = true
+        @chatroom = current_user.common_chatroom_id_with(@user)
+      else
+        @have_chatroom = false
+        @chatroom = Chatroom.new
+      end
+    end
   end
 
   # GET /users/1/edit
   def edit
   end
 
-  # POST /users or /users.json
-  def create
-    @user = User.new(user_params)
+  def search
+  end
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+  def selection
+    @user = current_user
+    @partners = User.search(partner_params,@user)
+
+    redirect_to users_affichage_path(:partners => @partners)
+  end
+
+  def affichage
+    results = params[:partners]
+    @partners = []
+    if results
+    results.each do |result|
+        iresult = result.to_i
+        @partners << User.find(iresult)
       end
     end
   end
@@ -65,6 +79,10 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {})
+      params.require(:user).permit(:date_of_birth, :gender, :experience, :description, :week_day, :week_night, :weekend_day, :weekend_night)
+    end
+
+    def partner_params
+      params.permit(:gender, :week_day, :week_evening, :wend_day, :wend_evening, :inside, :authenticity_token, :commit, :method)
     end
 end
