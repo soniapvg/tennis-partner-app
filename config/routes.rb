@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post 'users_selection', to:'users#selection', as:'users_selection'
   get 'users_affichage', to:'users#affichage', as:'users_affichage'
 
+
+
   # UI prototypes / to be deleted once applied in views
   get 'prototypes/signin', to: 'prototypes#signin'
   get 'prototypes/signup', to: 'prototypes#signup'
