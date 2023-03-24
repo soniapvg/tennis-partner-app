@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root "users#index"
   get '/welcome', to: 'welcome#index', as: 'welcome'
 
-  
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "user/registrations"} 
+
   resources :users, except: [:new, :create]
 
   resources :users, only: [:show] do
