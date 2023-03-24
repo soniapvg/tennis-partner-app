@@ -28,10 +28,6 @@ small {
   color: $primary-color;
 }
 
-input[type="submit"] {
-  width: auto;
-}
-
 // Ratchet classes overriding
 
 .content {
@@ -85,6 +81,10 @@ input[type="submit"] {
 
   & textarea {
     margin-bottom: initial;
+  }
+
+  & input[type="submit"] {
+    width: auto;
   }
 }
 
