@@ -10,17 +10,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <header class="bar bar-nav">
-      <%= render 'layouts/navbar' %>
+      <%= yield :back_button %>
+      <%= yield :title %>
+      <%= yield :navbar %>
     </header>
     
     <main class="content">
-    <p style="color: green"><%= notice %></p>
-    <p style="color: red"><%= alert %></p>
       <%= yield %>
     </main>
   </body>

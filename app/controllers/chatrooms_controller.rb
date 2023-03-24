@@ -1,5 +1,7 @@
 class ChatroomsController < ApplicationController
   before_action :owner? , only: %i[ show edit update destroy ]
+  layout 'user'
+
   def index
     @chatrooms = current_user.chatrooms
   end
