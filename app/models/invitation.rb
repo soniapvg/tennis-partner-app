@@ -10,13 +10,9 @@ class Invitation < ApplicationRecord
 
   def invitation
     @receiver = User.find(self.receiver_id)
-    @sender = current_user
+    @sender = User.find(self.sender_id)
     @content = self.content
-    if UserMailer.invitation(@receiver,@sender,@content).deliver_now!
-      flash[:notice] = "L'invitation a bien été envoyée."
-    else
-      flash[:alert] = "Une erreur est survenue lors de l'envoi de l'invitation."
-    end
+    UserMailer.invitation(@receiver,@sender,@content).deliver_now!
   end
 
 end

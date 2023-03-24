@@ -21,7 +21,7 @@ class UserMailer < ApplicationMailer
         @url  = 'www.tennis-partner.com' 
   
         # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-        mail(to: @receiver.email, subject: "#{@sender.first_name} t'a envoyé une nouvelle proposition de partie de tennis !") 
+        mail(to: @receiver.email, subject: "#{@sender.first_name} t'a envoyé une invitation pour une partie de tennis !") 
 
       end
 
