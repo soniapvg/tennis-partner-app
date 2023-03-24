@@ -22,13 +22,16 @@
     </header>
     
     <main class="content">
+    <% if notice %>
       <div style="background-color: green; color: white; padding: 10px;">
-  <%= notice %>
-</div>
-
-<div style="background-color: red; color: white; padding: 10px;">
-  <%= alert %>
-</div>
+      <%= notice %>
+      </div>
+      <% end %>
+    <% if alert %>
+      <div style="background-color: red; color: white; padding: 10px;">
+        <%= alert %>
+      </div>
+    <% end %>
       <%= yield %>
     </main>
   </body>

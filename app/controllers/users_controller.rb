@@ -43,9 +43,11 @@ class UsersController < ApplicationController
   def affichage
     results = params[:partners]
     @partners = []
+    if results
     results.each do |result|
-      iresult = result.to_i
-      @partners << User.find(iresult)
+        iresult = result.to_i
+        @partners << User.find(iresult)
+      end
     end
     puts 'hello'
     puts @partners
