@@ -68,7 +68,10 @@ class User < ApplicationRecord
       @partners = @partners.select do |partner|
         disponibilities.any? { |disponibility| partner[disponibility] }
       end
-
+    
+      if outside 
+        players = players.where(outside: false)  
+      end
       puts @partners
 
       puts user.experience_before_type_cast
