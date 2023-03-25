@@ -5,7 +5,16 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    # @users = User.all
+
+    results = params[:partners]
+    @partners = []
+    if results
+    results.each do |result|
+        iresult = result.to_i
+        @partners << User.find(iresult)
+      end
+    end
   end
 
   def invitation
@@ -35,6 +44,27 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def search
+  end
+
+  def selection
+    @user = current_user
+    @partners = User.search(partner_params,@user)
+
+    redirect_to users_path(:partners => @partners)
+  end
+
+  def affichage
+    results = params[:partners]
+    @partners = []
+    if results
+    results.each do |result|
+        iresult = result.to_i
+        @partners << User.find(iresult)
+      end
+    end
   end
 
   # PATCH/PUT /users/1 or /users/1.json

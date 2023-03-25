@@ -1,7 +1,3 @@
-<% content_for :back_button do %>
-  <%= link_to '', users_path, class: "icon icon-left-nav pull-left" %>
-<% end %>
-
 <%= render "user" %>
 
 <%= render @have_chatroom ? "chatrooms/forms/open" : "chatrooms/forms/create" %>

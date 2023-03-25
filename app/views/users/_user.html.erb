@@ -5,8 +5,6 @@
 <div class="content-padded text-centered">
   <% if @user.avatar.attached? %>
     <%= image_tag @user.avatar, alt: 'Photo de profil', class: "media-object avatar" %>
-  <% else %>
-    <img class="media-object avatar" src="http://placehold.it/100x100">
   <% end %>
   <p><%= @user.description %></p>
 </div>
