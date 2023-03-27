@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#index"
+  root "users#search"
   get '/welcome', to: 'welcome#index', as: 'welcome'
 
   devise_for :users, :controllers => {:registrations => "user/registrations"} 
@@ -16,22 +16,19 @@ Rails.application.routes.draw do
   resources :invitations, only: [:index]
 
   get 'users_search', to: 'users#search', as: 'users_search'
-  post 'users_selection', to:'users#selection', as:'users_selection'
-  get 'users_affichage', to:'users#affichage', as:'users_affichage'
-
-
+  get 'users_selection', to:'users#selection', as:'users_selection'
 
   # UI prototypes / to be deleted once applied in views
-  get 'prototypes/signin', to: 'prototypes#signin'
-  get 'prototypes/signup', to: 'prototypes#signup'
-  get 'prototypes/settings', to: 'prototypes#settings_index'
-  get 'prototypes/settings/photo', to: 'prototypes#settings_photo'
-  get 'prototypes/settings/informations', to: 'prototypes#settings_informations'
-  get 'prototypes/settings/player_preferences', to: 'prototypes#settings_player_preferences'
-  get 'prototypes/settings/account', to: 'prototypes#settings_account'
-  get 'prototypes/search', to: 'prototypes#search'
-  get 'prototypes/results', to: 'prototypes#results'
-  get 'prototypes/player', to: 'prototypes#player'
-  get 'prototypes/chatroom', to: 'prototypes#chatroom'
-  get 'prototypes/invitations', to: 'prototypes#invitations'
+  # get 'prototypes/signin', to: 'prototypes#signin'
+  # get 'prototypes/signup', to: 'prototypes#signup'
+  # get 'prototypes/settings', to: 'prototypes#settings_index'
+  # get 'prototypes/settings/photo', to: 'prototypes#settings_photo'
+  # get 'prototypes/settings/informations', to: 'prototypes#settings_informations'
+  # get 'prototypes/settings/player_preferences', to: 'prototypes#settings_player_preferences'
+  # get 'prototypes/settings/account', to: 'prototypes#settings_account'
+  # get 'prototypes/search', to: 'prototypes#search'
+  # get 'prototypes/results', to: 'prototypes#results'
+  # get 'prototypes/player', to: 'prototypes#player'
+  # get 'prototypes/chatroom', to: 'prototypes#chatroom'
+  # get 'prototypes/invitations', to: 'prototypes#invitations'
 end

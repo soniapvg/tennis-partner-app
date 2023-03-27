@@ -22,11 +22,11 @@
 
     <%= f.label :password, "Choisissez un mot de passe" %>
     <% if @minimum_password_length %>
-    <br><em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+      <br><em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
     
-    <%= f.label :password_confirmation, "Confirmer le mot de passe" %><br />
+    <%= f.label :password_confirmation, "Confirmer le mot de passe" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
 
     <%= f.label :code_club, "Renseignez le code club" %>

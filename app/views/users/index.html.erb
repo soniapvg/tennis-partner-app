@@ -1,25 +1,25 @@
-<% content_for :title do %>
-  <h1 class="title">Les joueurs du club</h1>
+<% content_for :back_button do %>
+  <%= link_to '', users_search_path, class: "icon icon-left-nav pull-left" %>
 <% end %>
 
-<ul class="table-view">
-  <% @users.each do |user| %>
-    <li class="table-view-cell media">
-      <%= link_to user, class: "navigate-right" do %>
-        <img class="media-object pull-left" src="http://placehold.it/42x42">
-        <div class="media-body">
-          <%= user.first_name %> <%= user.last_name %>
-          <p><%= user.experience %></p>
-        </div>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-      
-<%# link_to "Mes Chatrooms", chatrooms_path %>
+<% content_for :title do %>
+  <h1 class="title">Résultat de la recherche</h1>
+<% end %>
 
-<%# link_to invitation_path(id: user.id), data: {turbo_method: :post}, class: "btn btn-sm btn-outline-primary" do %>
-  <%# render "/shared/buttons/invitation" %>
-<%# end %>
-
-<%#  button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"btn btn-secondary my-2 my-sm-0"  %>
+<% if @partners.empty? %>
+  <p> Aucun joueur ne correspond à vos critères pour le moment :( </p>
+<% else %>
+  <ul class="table-view">
+    <% @partners.each do |partner| %>
+      <li class="table-view-cell media">
+        <%= link_to user_path(partner.id), class: "navigate-right" do %>
+          <!-- img class="media-object pull-left" src="http://placehold.it/42x42" -->
+          <div class="media-body">
+            <%= partner.first_name %> <%= partner.last_name %>
+            <p><%= partner.experience %></p>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

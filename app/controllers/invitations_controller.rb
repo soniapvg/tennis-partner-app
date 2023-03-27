@@ -15,8 +15,9 @@ class InvitationsController < ApplicationController
   end
 
   def index
-    @invitations = current_user.invitations
+    @invitations = current_user.invitations.order(created_at: :desc)
   end
+
   private
 
   def invitation_params

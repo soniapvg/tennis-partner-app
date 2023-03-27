@@ -61,11 +61,12 @@ class User < ApplicationRecord
   def self.search(partner_params, user)
     @partners = User.where.not(id: user.id)
 
-    if partner_params[:gender] == "Femme"
+    case partner_params[:gender]
+    when "Femme"
       @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
-    elsif partner_params[:gender] == "Homme"
+    when "Homme"
       @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
-    elsif partner_params[:gender] == "Peu importe"
+    else
       @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) || (partner.gender == "femme" ) }
     end
     
@@ -94,7 +95,7 @@ class User < ApplicationRecord
   end
 
   def common_chatroom_id_with(other_user)
-    chatroom = Chatroom.where(user1: self, user2: other_user).or(Chatroom.where(user1: other_user, user2: self)).first
+    Chatroom.where(user1: self, user2: other_user).or(Chatroom.where(user1: other_user, user2: self)).first
   end
 
   def invitations

@@ -5,27 +5,26 @@
 <ul class="table-view">
   <% @invitations.each do |invit| %>
     <% if invit.sender == current_user %>
-      <li class="table-view-cell media">
-        <%= link_to user_path(invit.receiver.id), class: "navigate-right" do %>
-          <div class="media-body">
-            Envoyée à <%= "#{invit.receiver.first_name} #{invit.receiver.last_name}" %>
-            <p><%= invit.content %></p>
-            <small><%= invit.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
-          </div>
-        <% end %>
+      <li class="table-view-cell">
+        <p>
+          <small>Envoyée le <%= invit.created_at.strftime('%m/%d/%Y %I:%M %p') %> à :</small><br>
+          <%= link_to user_path(invit.receiver.id), class: "btn margin-bottom-s" do %>
+            <span class="icon icon-person"></span>
+            <%= invit.receiver.first_name %> <%= invit.receiver.last_name %><br>
+          <% end %>
+          <%= link_to 'Ouvrir le chat', chatroom_path(current_user.common_chatroom_id_with(invit.receiver)), class: "btn btn-outlined" %>
+        </p>
       </li>
     <% else %>
-      <li class="table-view-cell media">
-        <%= link_to user_path(invit.sender.id), class: "navigate-right" do %>
-          <div class="media-body">
-            Reçue de <%= "#{invit.sender.first_name} #{invit.sender.last_name}" %>
-            <p><%= invit.content %></p>
-            <small><%= invit.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
-          </div>
-        <% end %>
-        <div class="media-body">
-          <a href="mailto:<%= invit.sender.email %>" class="badge badge-primary"><%= invit.sender.email %></a>
-        </div>
+      <li class="table-view-cell">
+        <p>
+          <small>Reçue le <%= invit.created_at.strftime('%m/%d/%Y %I:%M %p') %> de :</small><br>
+          <%= link_to user_path(invit.sender.id), class: "btn margin-bottom-s" do %>
+            <span class="icon icon-person"></span>
+            <%= invit.sender.first_name %> <%= invit.sender.last_name %><br>
+          <% end %>
+          <%= link_to 'Ouvrir le chat', chatroom_path(current_user.common_chatroom_id_with(invit.sender)), class: "btn btn-outlined" %>
+        </p>
       </li>
     <% end %>
   <% end %>

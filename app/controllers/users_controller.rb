@@ -5,7 +5,16 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    # @users = User.all
+
+    results = params[:partners]
+    @partners = []
+    if results
+    results.each do |result|
+        iresult = result.to_i
+        @partners << User.find(iresult)
+      end
+    end
   end
 
 
@@ -34,7 +43,7 @@ class UsersController < ApplicationController
     @user = current_user
     @partners = User.search(partner_params,@user)
 
-    redirect_to users_affichage_path(:partners => @partners)
+    redirect_to users_path(:partners => @partners)
   end
 
   def affichage

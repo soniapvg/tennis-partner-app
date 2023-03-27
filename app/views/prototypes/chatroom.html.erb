@@ -5,3 +5,29 @@
 <% content_for :title do %>
   <h1 class="title">Invitation</h1>
 <% end %>
+
+<div class="content-padded">
+  <div class="card card-right">
+    <h2>Invitation</h2>
+    <p>Bonjour, j'aimerais jouer ce week-end. Tu serais dispo à un moment ?</p>
+    <small>22/03/2023 14:15</small>
+  </div>
+</div>
+
+<div class="content-padded">
+  <div class="card card-left">
+    <p>Merci ! Mercredi ?</p>
+    <small>22/03/2023 14:20</small>
+  </div>
+</div>
+
+<div class="bar bar-standard bar-footer-secondary message">
+  <form>
+    <label>Message d'invitation</label>
+    <textarea rows="5"></textarea>
+  </form>
+  <%= link_to prototypes_invitations_path, class: "btn btn-primary btn-block" do %>
+    <span class="icon icon-share"></span>
+    Envoyer une invitation pour jouer
+  <% end %>
+</div>
