@@ -1,13 +1,18 @@
-<h1>Mes Chatrooms</h1>
-<h3><%= link_to "Mes Invitations", invitations_path %></h3>
-<% @chatrooms.each do |chatroom| %>
-  <div style="border: 1px solid black; margin: 10px; padding: 10px;">
-    <h3><%= chatroom.other_user(current_user).first_name %> <%= chatroom.other_user(current_user).last_name %> <%= link_to "Go to Chatroom", chatroom_path(chatroom) %></h3>
-    <% last_message = chatroom.messages.order(created_at: :desc).first %>
-    <% if last_message.present? %>
-      <p><%= last_message.content %> - <%= last_message.created_at.strftime('%m/%d/%Y %I:%M %p') %></p>
-    <% end %>
-  </div>
-  <br>
+<% content_for :title do %>
+  <h1 class="title">Mes conversations</h1>
 <% end %>
-<%= link_to "Retour à la liste des joueurs", root_path %></h3>
+
+<ul class="table-view">
+  <% @chatrooms.each do |chatroom| %>
+    <li class="table-view-cell">
+      <p>
+        <%= link_to user_path(chatroom.other_user(current_user)), class: "btn" do %>
+          <span class="icon icon-person"></span>
+          <%= chatroom.other_user(current_user).first_name %> <%= chatroom.other_user(current_user).last_name %><br>
+        <% end %>
+        <%= link_to 'Ouvrir la conversation', chatroom_path(current_user.common_chatroom_id_with(chatroom.other_user(current_user))), class: "btn btn-outlined" %>
+        <br><small>Dernier échange le :<%= chatroom.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+      </p>
+    </li>
+  <% end %>
+</ul>

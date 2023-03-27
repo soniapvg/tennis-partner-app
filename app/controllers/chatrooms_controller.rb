@@ -3,7 +3,7 @@ class ChatroomsController < ApplicationController
   layout 'user'
 
   def index
-    @chatrooms = current_user.chatrooms
+    @chatrooms = current_user.chatrooms.order(created_at: :desc)
   end
 
   def create

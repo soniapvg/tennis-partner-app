@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
 
   def common_chatroom_id_with(other_user)
-    chatroom = Chatroom.where(user1: self, user2: other_user).or(Chatroom.where(user1: other_user, user2: self)).first
+    Chatroom.where(user1: self, user2: other_user).or(Chatroom.where(user1: other_user, user2: self)).first
   end
 
   def invitations
