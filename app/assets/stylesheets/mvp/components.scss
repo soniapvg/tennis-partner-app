@@ -4,10 +4,13 @@
   border-radius: 50px;
 }
 
+.messages {
+}
+
 .message {
   padding-top: 10px;
   margin-bottom: 0;
-  height: 170px;
+  height: 180px;
   border-top: 1px solid #ddd;
 
   & textarea {
@@ -16,6 +19,16 @@
 
   & input[type="submit"] {
     width: auto;
+  }
+
+  .bar {
+    border-bottom: none;
+  }
+
+  & .material-icons-round {
+    font-size: 16px;
+    position: relative;
+    top: 3px;
   }
 }
 
