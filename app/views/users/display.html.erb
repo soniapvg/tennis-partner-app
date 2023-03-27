@@ -8,8 +8,11 @@
 
 <% if @partners.empty? %>
   <div class="content-padded">
-    <p> Aucun joueur ne correspond à vos critères pour le moment :( </p>
-    <%= link_to 'Afficher tous les joueurs', users_path %>
+    <p> Aucun joueur de votre niveau ne correspond à vos critères pour le moment :( </p>
+    
+  </div>
+  <div class="bar bar-standard bar-footer-secondary">
+    <%= link_to 'Afficher tous les joueurs', users_path, class: "btn btn-primary btn-block" %>
   </div>
 
 <% else %>
