@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get 'users_search', to: 'users#search', as: 'users_search'
   get 'users_selection', to:'users#selection', as:'users_selection'
+  get 'users_display', to: 'users#display', as:'users_display'
 
   # UI prototypes / to be deleted once applied in views
   # get 'prototypes/signin', to: 'prototypes#signin'

@@ -87,6 +87,28 @@ class User < ApplicationRecord
       @partners = @partners.select{|partner| (partner.outside === false)}
     end
 
+    @partners = @partners.select do |partner|
+      if user.gender == "homme"
+        if partner.gender == "homme"
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 3) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 3)
+        elsif partner.gender == "femme" 
+          partner.experience_before_type_cast >= user.experience_before_type_cast && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
+        else
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
+        end
+      elsif user.gender == "femme"
+        if partner.gender == "femme"
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 3) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 3)
+        elsif partner.gender == "homme" 
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= user.experience_before_type_cast
+        else
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
+        end
+      else
+        partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
+      end
+    end
+
     return @partners
   end
 
@@ -101,5 +123,6 @@ class User < ApplicationRecord
   def invitations
     sent_invitations.or(received_invitations)
   end
+
 end
 
