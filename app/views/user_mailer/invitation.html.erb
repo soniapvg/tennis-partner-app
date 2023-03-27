@@ -2,16 +2,92 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #333;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background-color: #a37063;
+        color: #fff;
+        padding: 20px;
+      }
+      .header h1 {
+        font-size: 32px;
+        margin: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .invitation {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      .invitation p {
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+      .invitation img {
+        max-width: 100%;
+        height: auto;
+      }
+      .button {
+        display: inline-block;
+        padding: 8px 15px;
+        background-color: #bce881;
+        color: #3e4c29;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+      .button:hover {
+        background-color: #91c849;
+      }
+      .footer {
+        background-color: #f7f7f7;
+        padding: 20px;
+        text-align: center;
+        color: #999;
+        font-size: 14px;
+      }
+      p {
+        font-size: 18px; line-height: 1.5; margin: 20px 0;
+      }
+      h1 {
+        font-size: 32px; font-weight: 600; margin: 30px 0;
+      }
+      .content p {
+        font-style: italic;
+      }
+    </style>
   </head>
   <body>
-    <h1>Salut <%= @receiver.first_name %> !</h1>
-    <p>
-      Tu as reçu une nouvelle invitation de parties de tennis de la part de <%= @sender.first_name %> <%= @sender.last_name %> :</p>
-      <p>COMMENTAIRES
-    </p>
-    <p>
-    Tu peux lui répondre directement à l'adresse mail : <%= @sender.email %>.
-    </p>
-    <p>Pour accéder à ton espace client, connecte-toi via : <%= @url %>. À très vite sur tennis-partner.fr !
+    <div class="header">
+      <div class="container">
+        <h1>Invitation pour une partie de tennis</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="invitation">
+      
+        <h2>Bonjour <%= @receiver.first_name %> !</h2>
+        <p>Tu as reçu une nouvelle invitation pour une partie de tennis de la part de <%= @sender.first_name %> <%= @sender.last_name %> :</p>
+        <p id="content">"<%= @content %>"</p>
+        <p>Tu peux lui répondre directement à l'adresse mail : <%= @sender.email %>.</p>
+        <p>Ou connecte toi vite à ton espace personnel pour chercher un nouveau partenaire : <a href=<%= @url %> class="button">Mon espace</a>.</p>
+        <p>À très vite sur tennis-partner.com !</p>
+      </div>
+      <img src="https://media.istockphoto.com/id/489113014/fr/photo/jeune-homme-jouant-au-tennis.jpg?s=1024x1024&w=is&k=20&c=cE6n0aBuovJnTQNr3QKlAKYoFFjDtnX5cc2pevJBhtI=" alt="Tennisman" style="display: block; margin: 0 auto; max-width: 100%;">
+    </div>
+    <div class="footer">
+      <p>Cet email a été envoyé depuis tennis-partner.fr</p>
+    </div>
   </body>
 </html>

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
 
-  # after_create :welcome_send
+  after_create :welcome_send
 
   
   has_many :chatrooms_as_user1, class_name: 'Chatroom', foreign_key: 'user1_id', dependent: :destroy
@@ -61,12 +61,20 @@ class User < ApplicationRecord
   def self.search(partner_params, user)
     @partners = User.where.not(id: user.id)
 
+<<<<<<< HEAD
     case partner_params[:gender]
     when "Femme"
       @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
     when "Homme"
       @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
     else
+=======
+    if partner_params[:gender] == "Femme"
+      @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
+    elsif partner_params[:gender] == "Homme"
+      @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
+    elsif partner_params[:gender] == "Peu importe"
+>>>>>>> development
       @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) || (partner.gender == "femme" ) }
     end
     
@@ -102,3 +110,4 @@ class User < ApplicationRecord
     sent_invitations.or(received_invitations)
   end
 end
+

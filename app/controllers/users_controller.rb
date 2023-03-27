@@ -17,16 +17,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def invitation
-    @receiver = User.find(params[:id])
-    @sender = current_user
-    if UserMailer.invitation(@receiver,@sender).deliver_now!
-      flash[:notice] = "L'invitation a bien été envoyée."
-    else
-      flash[:alert] = "Une erreur est survenue lors de l'envoi de l'invitation."
-    end
-    redirect_to users_path
-  end
+
 
   # GET /users/1 or /users/1.json
   def show
@@ -41,7 +32,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   # GET /users/1/edit
   def edit
   end
@@ -53,7 +43,11 @@ class UsersController < ApplicationController
     @user = current_user
     @partners = User.search(partner_params,@user)
 
+<<<<<<< HEAD
     redirect_to users_path(:partners => @partners)
+=======
+    redirect_to users_affichage_path(:partners => @partners)
+>>>>>>> development
   end
 
   def affichage

@@ -12,8 +12,8 @@ class User::RegistrationsController < Devise::RegistrationsController
   # POST /resource
    def create
     if params[:user][:code_club] != "tcstjulien74"
-      flash[:error] = "Votre code club/numéro de licence n'est pas valide"
-      render :new
+      flash[:alert] = "Votre code club/numéro de licence n'est pas valide"
+      redirect_to new_user_registration_path
       return
     end
   
