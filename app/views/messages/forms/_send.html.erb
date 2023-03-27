@@ -1,0 +1,11 @@
+<div class="bar bar-standard bar-footer-secondary message">
+  <%= form_with model: [@chatroom, @chatroom.messages.build], local: true do |form| %>
+    <%= form.text_area :content, rows: 5 %>
+    <div class="bar bar-standard">
+      <%= form.button type: :submit, class: "btn btn-primary btn-block" do %>
+        <span class="material-icons-round">send</span>
+        Envoyer le message
+      <% end %>
+    </div>
+  <% end %>
+</div>
