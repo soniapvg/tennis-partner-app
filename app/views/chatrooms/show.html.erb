@@ -6,7 +6,7 @@
   <h1 class="title"><%= @other_user.first_name %> <%= @other_user.last_name %></h1>
 <% end %>
 
-<div class="content-padded margin-bottom-xl">
+<div class="messages content-padded margin-bottom-xl">
   <% @posts.each do |post| %>
     <% if post.sender == current_user %>
       <div class="card card-right">
@@ -28,4 +28,5 @@
   <% end %>
 </div>
 
-<%= render @send_message ? "chatrooms/forms/send_message" : "chatrooms/forms/send_invit" %>
+<%# render @send_message ? "chatrooms/forms/send_message" : "chatrooms/forms/send_invit" %>
+<%= render "messages/forms/send" %>
