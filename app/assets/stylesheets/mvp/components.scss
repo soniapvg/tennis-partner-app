@@ -1,0 +1,50 @@
+// Custom components
+
+.avatar {
+  border-radius: 50px;
+}
+
+.message {
+  padding-top: 10px;
+  margin-bottom: 0;
+  height: 170px;
+  border-top: 1px solid #ddd;
+
+  & textarea {
+    margin-bottom: initial;
+  }
+
+  & input[type="submit"] {
+    width: auto;
+  }
+}
+
+fieldset {
+  & legend {
+    padding-bottom: 5px;
+  }
+
+  & div {
+    padding-top: 5px;
+  }
+}
+
+.card-right {
+  margin-left: 70px;
+  text-align: right;
+}
+
+.card-left {
+  margin-right: 70px;
+  text-align: left;
+}
+
+.card {
+  & h2 {
+    font-size: 16px;
+  }
+
+  & p {
+    margin: 0;
+  }
+}

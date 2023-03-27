@@ -28,4 +28,5 @@
   <% end %>
 </div>
 
-<%= render @send_message ? "chatrooms/forms/send_message" : "chatrooms/forms/send_invit" %>
+<%# render @send_message ? "chatrooms/forms/send_message" : "chatrooms/forms/send_invit" %>
+<%= render "messages/forms/send" %>

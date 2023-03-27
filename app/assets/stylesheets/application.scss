@@ -1,35 +1,5 @@
-// Prototypes / Variables
-@import "prototype/variables.scss";
-
-// Ratchet / Variables
-@import "ratchet/variables.scss";
-
-// Ratchet / Mixins
-@import "ratchet/mixins.scss";
-
-// Ratchet / Normalize & Base CSS
-@import "ratchet/normalize.scss";
-@import "ratchet/base.scss";
-@import "ratchet/type.scss";
-
-// Ratchet / Components
-@import "ratchet/buttons.scss";
-@import "ratchet/bars.scss";
-@import "ratchet/badges.scss";
-@import "ratchet/cards.scss";
-@import "ratchet/table-views.scss";
-@import "ratchet/forms.scss";
-@import "ratchet/segmented-controls.scss";
-@import "ratchet/popovers.scss";
-
-// Ratchet / Javascript components
-@import "ratchet/modals.scss";
-@import "ratchet/sliders.scss";
-@import "ratchet/toggles.scss";
-@import "ratchet/push.scss";
-
-// Ratchet / Ratchicons
-@import "ratchet/ratchicons.scss";
-
-// Prototypes
-@import "prototype/quick-fix.scss";
+@import "mvp/variables.scss";
+@import "mvp/elements.scss";
+@import "mvp/ratchet.scss";
+@import "mvp/components.scss";
+@import "mvp/utilities.scss";
