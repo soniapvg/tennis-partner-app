@@ -100,4 +100,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:date_of_birth, :gender, :experience, :description, :week_day, :week_night, :weekend_day, :weekend_night)
     end
+
+    def partner_params
+      params.permit(:gender, :week_day, :week_evening, :wend_day, :wend_evening, :inside, :authenticity_token, :commit, :method)
+    end
 end
