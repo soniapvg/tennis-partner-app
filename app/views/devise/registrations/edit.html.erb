@@ -1,12 +1,16 @@
+<% content_for :back_button do %>
+  <%= link_to '', parameters_path, class: "icon icon-left-nav pull-left" %>
+<% end %>
+
 <% content_for :title do %>
   <h1 class="title">Gérer mon compte</h1>
 <% end %>
 
+<div class ="content-padded">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <p></p>
-  <%= link_to "Retour aux paramètres", :back %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -18,10 +22,10 @@
 
   <div class="field">
     <%= f.label :Nouveau_mot_de_passe %><br />
+    <em><%= @minimum_password_length %> caractères minimum</em>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> caractères minimum</em>
     <% end %>
   </div>
 
@@ -31,17 +35,24 @@
   </div>
 
   <div class="field">
-    <%= f.label :Mot_de_passe_actuel %> <i>(le mot de passe actuel est nécessaire pour enregistrer les modifications)</i><br />
+    <%= f.label :Mot_de_passe_actuel %> <i>(nécessaire pour enregistrer les modifications)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Enregistrer les modifications" %>
-  </div>
+  <%= f.button class: "btn btn-primary btn-block text-white" do %>
+  <span class="icon icon-check"></span> Enregistrer les modifications
 <% end %>
 
-<h3>Pas satisfait ?</h3>
-
-<div><%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
 
+<% end %>
+
+<br>
+
+  <div>
+    <%= button_to registration_path(resource_name), method: :delete, class: "btn btn-negative btn-block btn-outlined", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
+      <span class="icon icon-trash"></span> Supprimer mon compte
+    <% end %>
+  </div>
+
+</div>
