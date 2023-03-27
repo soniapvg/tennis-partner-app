@@ -61,20 +61,12 @@ class User < ApplicationRecord
   def self.search(partner_params, user)
     @partners = User.where.not(id: user.id)
 
-<<<<<<< HEAD
     case partner_params[:gender]
     when "Femme"
       @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
     when "Homme"
       @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
     else
-=======
-    if partner_params[:gender] == "Femme"
-      @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
-    elsif partner_params[:gender] == "Homme"
-      @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
-    elsif partner_params[:gender] == "Peu importe"
->>>>>>> development
       @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) || (partner.gender == "femme" ) }
     end
     

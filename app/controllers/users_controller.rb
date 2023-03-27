@@ -43,11 +43,7 @@ class UsersController < ApplicationController
     @user = current_user
     @partners = User.search(partner_params,@user)
 
-<<<<<<< HEAD
     redirect_to users_path(:partners => @partners)
-=======
-    redirect_to users_affichage_path(:partners => @partners)
->>>>>>> development
   end
 
   def affichage
