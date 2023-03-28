@@ -4,7 +4,11 @@
 
 <div class="content-padded text-centered">
   <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar, alt: 'Photo de profil', class: "media-object avatar" %>
+    <%= image_tag @user.avatar, alt: 'Photo de profil', class: "avatar-m" %>
+  <% else %>
+    <div class="avatar-placeholder-m">
+      <span class="material-icons-round">person</span>
+    </div>
   <% end %>
   <p><%= @user.description %></p>
 </div>

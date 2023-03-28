@@ -51,7 +51,8 @@
 
 .bar-footer-secondary {
     border-top: none;
-    margin-bottom: 20px;
+    height: 60px;
+    z-index: 5;
 }
 
 .card {
@@ -59,7 +60,7 @@
 }
 
 .bar .btn-block {
-  top: 6px;
+  top: 0;
   padding: 10px;
 }
 
