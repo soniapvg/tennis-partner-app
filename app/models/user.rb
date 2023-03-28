@@ -61,11 +61,12 @@ class User < ApplicationRecord
   def self.search(partner_params, user)
     @partners = User.where.not(id: user.id)
 
-    if partner_params[:gender] == "Femme"
+    case partner_params[:gender]
+    when "Femme"
       @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
-    elsif partner_params[:gender] == "Homme"
+    when "Homme"
       @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
-    elsif partner_params[:gender] == "Peu importe"
+    else
       @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) || (partner.gender == "femme" ) }
     end
     
@@ -86,6 +87,28 @@ class User < ApplicationRecord
       @partners = @partners.select{|partner| (partner.outside === false)}
     end
 
+    @partners = @partners.select do |partner|
+      if user.gender == "homme"
+        if partner.gender == "homme"
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 3) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 3)
+        elsif partner.gender == "femme" 
+          partner.experience_before_type_cast >= user.experience_before_type_cast && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
+        else
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
+        end
+      elsif user.gender == "femme"
+        if partner.gender == "femme"
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 3) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 3)
+        elsif partner.gender == "homme" 
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= user.experience_before_type_cast
+        else
+          partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
+        end
+      else
+        partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
+      end
+    end
+
     return @partners
   end
 
@@ -94,11 +117,12 @@ class User < ApplicationRecord
   end
 
   def common_chatroom_id_with(other_user)
-    chatroom = Chatroom.where(user1: self, user2: other_user).or(Chatroom.where(user1: other_user, user2: self)).first
+    Chatroom.where(user1: self, user2: other_user).or(Chatroom.where(user1: other_user, user2: self)).first
   end
 
   def invitations
     sent_invitations.or(received_invitations)
   end
+
 end
 

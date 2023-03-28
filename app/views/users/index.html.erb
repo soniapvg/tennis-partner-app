@@ -1,25 +1,27 @@
+<% content_for :back_button do %>
+  <%= link_to '', users_search_path, class: "icon icon-left-nav pull-left" %>
+<% end %>
+
 <% content_for :title do %>
-  <h1 class="title">Les joueurs du club</h1>
+  <h1 class="title">Tous les joueurs du club</h1>
 <% end %>
 
 <ul class="table-view">
-  <% @users.each do |user| %>
+  <% @partners.each do |partner| %>
     <li class="table-view-cell media">
-      <%= link_to user, class: "navigate-right" do %>
-        <img class="media-object pull-left" src="http://placehold.it/42x42">
+      <%= link_to user_path(partner.id), class: "navigate-right" do %>
+        <% if partner.avatar.attached? %>
+          <%= image_tag partner.avatar, alt: 'Photo de profil', class: "media-object pull-left avatar-s" %>
+        <% else %>
+          <div class="media-object pull-left avatar-placeholder-s">
+            <span class="material-icons-round">person</span>
+          </div>
+        <% end %>
         <div class="media-body">
-          <%= user.first_name %> <%= user.last_name %>
-          <p><%= user.experience %></p>
+          <%= partner.first_name %> <%= partner.last_name %>
+          <p><%= partner.experience %></p>
         </div>
       <% end %>
     </li>
   <% end %>
 </ul>
-      
-<%# link_to "Mes Chatrooms", chatrooms_path %>
-
-<%# link_to invitation_path(id: user.id), data: {turbo_method: :post}, class: "btn btn-sm btn-outline-primary" do %>
-  <%# render "/shared/buttons/invitation" %>
-<%# end %>
-
-<%#  button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"btn btn-secondary my-2 my-sm-0"  %>

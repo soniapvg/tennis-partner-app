@@ -1,0 +1,117 @@
+// Custom components
+
+.desktop-warning {
+  display: none;
+}
+
+.content-padded-with-footer {
+  margin: 20px;
+  padding-bottom: 60px;
+}
+
+.avatar-m {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  margin: 10px;
+}
+
+.avatar-s {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  margin: 5px;
+}
+
+.avatar-placeholder-m {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  background-color: $primary-color;
+  border-radius: 50px;
+  margin: 10px;
+  color: white;
+  display: inline-block;
+
+  & .material-icons-round {
+    font-size: 50px;
+    line-height: 100px;
+  }
+}
+
+.avatar-placeholder-s {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  background-color: $primary-color;
+  border-radius: 15px;
+  margin: 5px;
+  color: white;
+
+  & .material-icons-round {
+    line-height: 30px;
+  }
+}
+
+.message {
+  padding-top: 10px;
+  margin-bottom: 0;
+  height: 180px;
+  border-top: 1px solid #ddd;
+
+  & textarea {
+    margin-bottom: initial;
+  }
+
+  & input[type="submit"] {
+    width: auto;
+  }
+
+  .bar {
+    border-bottom: none;
+  }
+
+  & .material-icons-round {
+    font-size: 16px;
+    position: relative;
+    top: 3px;
+  }
+}
+
+fieldset {
+  & legend {
+    padding-bottom: 5px;
+  }
+
+  & div {
+    padding-top: 5px;
+  }
+}
+
+.card-right {
+  margin-left: 70px;
+  text-align: right;
+}
+
+.card-left {
+  margin-right: 70px;
+  text-align: left;
+}
+
+.card {
+  & h2 {
+    font-size: 16px;
+  }
+
+  & p {
+    margin: 0;
+  }
+}
+
+form .card-content {
+  line-height: 30px;
+}

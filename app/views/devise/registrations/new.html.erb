@@ -2,10 +2,10 @@
   <h1 class="title">Inscription</h1>
 <% end %>
 
-<div class="content-padded">
+<div class="content-padded-with-footer">
   <p>Veuillez vous inscrire pour accéder aux fonctionnalités. L'inscription est accessible exclusivement aux membres du club.</p>
 
-  <%= form_for resource, as: resource_name, url: registration_path(resource_name), :html => { :id => "new_registration" } do |f| %>
+  <%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <%= f.label :first_name, "Prénom" %>
@@ -22,17 +22,22 @@
 
     <%= f.label :password, "Choisissez un mot de passe" %>
     <% if @minimum_password_length %>
-    <br><em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+      <br><em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
     
-    <%= f.label :password_confirmation, "Confirmer le mot de passe" %><br />
+    <%= f.label :password_confirmation, "Confirmer le mot de passe" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
 
     <%= f.label :code_club, "Renseignez le code club" %>
     <%= f.text_field :code_club %>
 
-    <%= f.submit "Créer mon compte", class: "btn btn-primary btn-block" %>
+  <% end %>
+</div>
 
+<div class="bar bar-standard bar-footer-secondary">
+  <%= button_tag type: :submit, :form => "new_user", class: "btn btn-primary btn-block" do %>
+    <span class="icon icon-check"></span>
+    Créer mon compte
   <% end %>
 </div>

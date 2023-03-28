@@ -1,0 +1,28 @@
+<% content_for :navbar do %>
+  <%= render 'layouts/navbar_user' %>
+<% end %>
+
+<% content_for :title do %>
+  <h1 class="title">Mes paramètres</h1>
+<% end %>
+
+<ul class="table-view">
+  <li class="table-view-cell media">
+    <%= link_to edit_user_path(current_user), class: "navigate-right" do %>
+      <span class="media-object pull-left material-icons-round">manage_accounts</span>
+      <div class="media-body"> Mes paramètres de joueur </div>
+    <% end %>
+  </li>
+  <li class="table-view-cell media">
+    <%= link_to edit_user_registration_path, class: "navigate-right" do %>
+      <span class="media-object pull-left material-icons-round">settings</span>
+      <div class="media-body"> Gérer mon compte </div>
+    <% end %>
+  </li>
+</ul>
+
+<div class="bar bar-standard bar-footer-secondary">
+  <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-primary btn-block" do %>
+    Se déconnecter
+  <% end %>
+</div>

@@ -2,14 +2,14 @@
   <h1 class="title">Connexion</h1>
 <% end %>
 
-<div class="content-padded">
+<div class="content-padded-with-footer">
   <p>Veuillez vous connecter pour accéder aux fonctionnalités de l'app.</p>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= f.label :email, "Votre email" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 
-    <%= f.label :password, "Votre mot de passe" %><br />
+    <%= f.label :password, "Votre mot de passe" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
 
     <% if devise_mapping.rememberable? %>

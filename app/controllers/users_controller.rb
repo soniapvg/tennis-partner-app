@@ -5,7 +5,9 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    # @users = User.all
+    @partners = User.where.not(id: current_user.id) 
+
   end
 
 
@@ -25,6 +27,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   def search
@@ -34,10 +37,11 @@ class UsersController < ApplicationController
     @user = current_user
     @partners = User.search(partner_params,@user)
 
-    redirect_to users_affichage_path(:partners => @partners)
+    redirect_to users_display_path(:partners => @partners)
   end
 
-  def affichage
+  def display
+ 
     results = params[:partners]
     @partners = []
     if results
@@ -46,13 +50,14 @@ class UsersController < ApplicationController
         @partners << User.find(iresult)
       end
     end
+
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+        format.html { redirect_to edit_user_path(@user), notice: "Modifications enregistrées." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -79,7 +84,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:date_of_birth, :gender, :experience, :description, :week_day, :week_night, :weekend_day, :weekend_night)
+      params.require(:user).permit(:first_name, :last_name, :code_club, :date_of_birth, :gender, :experience, :description, :week_day, :week_night, :weekend_day, :weekend_night, :outside)
     end
 
     def partner_params

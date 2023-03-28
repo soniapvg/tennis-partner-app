@@ -1,12 +1,12 @@
-<%= form_tag(users_selection_path, method: :get) do %>
-  <% content_for :title do %>
-    <h1 class="title">Rechercher des joueurs</h1>
-  <% end %>
-  
-  <div class="content">
-    <div class="card">
+<% content_for :title do %>
+  <h1 class="title">Rechercher des joueurs</h1>
+<% end %>
+
+<div class="content-padded-with-footer">
+  <%= form_tag users_selection_path, method: :get, :id => "search" do %>
+    <div class="card margin-bottom-m">
       <div class="card-header">
-        <h3 class="card-title">Genre</h3>
+        <h2 class="card-title">Genre</h3>
       </div>
       <div class="card-content">
         <%= radio_button_tag(:gender, "Femme") %>
@@ -18,9 +18,9 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card margin-bottom-m">
       <div class="card-header">
-        <h3 class="card-title">Disponibilité</h3>
+        <h2 class="card-title">Disponibilité</h3>
       </div>
       <div class="card-content">
         <%= check_box_tag(:week_day) %>
@@ -34,19 +34,18 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card margin-bottom-m">
       <div class="card-header">
-        <h3 class="card-title">Préférence de terrain</h3>
+        <h2 class="card-title">Préférence de terrain</h3>
       </div>
       <div class="card-content">
         <%= check_box_tag(:inside) %>
         <%= label_tag(:inside, "Je veux jouer en indoor") %><br>
       </div>
     </div>
+  <% end %>
+</div>
 
-  </div>
-
-  <div class="bar bar-standard bar-footer-secondary">
-    <%= submit_tag("Rechercher", class: "btn btn-primary btn-block") %>
-  </div>
-<% end %>
+<div class="bar bar-standard bar-footer-secondary">
+  <%= submit_tag "Rechercher", class: "btn btn-primary btn-block", :form => "search" %>
+</div>
