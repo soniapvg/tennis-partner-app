@@ -4,8 +4,57 @@
   display: none;
 }
 
-.avatar {
+.content-padded-with-footer {
+  margin: 20px;
+  padding-bottom: 60px;
+}
+
+.avatar-m {
+  width: 100px;
+  height: 100px;
   border-radius: 50px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  margin: 10px;
+}
+
+.avatar-s {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  margin: 5px;
+}
+
+.avatar-placeholder-m {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  background-color: $primary-color;
+  border-radius: 50px;
+  margin: 10px;
+  color: white;
+  display: inline-block;
+
+  & .material-icons-round {
+    font-size: 50px;
+    line-height: 100px;
+  }
+}
+
+.avatar-placeholder-s {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  background-color: $primary-color;
+  border-radius: 15px;
+  margin: 5px;
+  color: white;
+
+  & .material-icons-round {
+    line-height: 30px;
+  }
 }
 
 .message {

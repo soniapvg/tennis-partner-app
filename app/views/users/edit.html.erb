@@ -6,22 +6,32 @@
   <h1 class="title">Mes paramètres de joueur</h1>
 <% end %>
 
-<div class="content-padded">
-  <h3>Changer d'avatar ?</h3>
-  <%= form_tag user_avatars_path(@user), multipart: true do %>
-    <%= file_field_tag :avatar %>
-    <%= submit_tag "mettre à jour" %>
-  <% end %>
-  <br>
+<div class="content-padded-with-footer">
 
-  <%= form_with(model: @user, local: true) do |form| %>
+  <div class="card text-centered">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, alt: 'Photo de profil', class: "avatar-m" %>
+    <% else %>
+      <div class="avatar-placeholder-m">
+        <span class="material-icons-round">person</span>
+      </div>
+    <% end %>
+
+    <h2 class="margin-bottom-s">Changer d'avatar ?</h2>
+    <%= form_tag user_avatars_path(@user), multipart: true do %>
+      <%= file_field_tag :avatar, class: "btn margin-bottom-s" %>
+      <%= submit_tag "mettre à jour", class: "btn margin-bottom-s" %>
+    <% end %>
+  </div>
+
+  <%= form_with model: @user, local: true, :id => "edit_user" do |form| %>
     <div class="form-group">
       <%= form.label :prénom %>
       <%= form.text_field :first_name, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= form.label :nom %>
-<%= form.text_field :last_name, class: "form-control" %>
+      <%= form.text_field :last_name, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= form.label :date_de_naissance %>
@@ -39,28 +49,24 @@
       <%= form.label :description %>
       <%= form.text_area :description, class: "form-control" %>
     </div>
-    <div class="form-group">
-      <%= form.label :code_club %>
-      <%= form.text_field :code_club, class: "form-control" %>
-    </div>
 
     <fieldset>
       <legend>Disponibilités</legend>
       <div>
         <%= form.check_box :week_day %>
-        <label>Semaine / journée</label>
+        <label>La semaine, en journée</label>
       </div>
       <div>
         <%= form.check_box :week_night %>
-        <label>Semaine / soir</label>
+        <label>La semaine, en soirée</label>
       </div>
       <div>
         <%= form.check_box :weekend_day %>
-        <label>Week-end / journée</label>
+        <label>Le week-end, en journée</label>
       </div>
       <div>
         <%= form.check_box :weekend_night %>
-        <label>Week-end / soir</label>
+        <label>Le week-end, en soirée</label>
       </div>
     </fieldset>
 
@@ -68,16 +74,12 @@
       <%= form.label :"Je_joue_seulement_à_l'extérieur : " %>
       <%= form.check_box :outside %>
     </div>
+  <% end %>
+</div>
 
-      <br>
-        <br>
-
-
-      <div class="actions">
-        <%= button_tag type: "submit", class: "btn btn-primary btn-block" do %>
-          <span class="icon icon-check"></span> Enregistrer les modifications
-        <% end %>
-      </div>
-
+<div class="bar bar-standard bar-footer-secondary">
+  <%= button_tag type: :submit, :form => "edit_user", class: "btn btn-primary btn-block" do %>
+    <span class="icon icon-check"></span>
+    Enregistrer les modifications
   <% end %>
 </div>

@@ -6,17 +6,22 @@
   <h1 class="title">Tous les joueurs du club</h1>
 <% end %>
 
-  <ul class="table-view">
-    <% @partners.each do |partner| %>
-      <li class="table-view-cell media">
-        <%= link_to user_path(partner.id), class: "navigate-right" do %>
-          <!-- img class="media-object pull-left" src="http://placehold.it/42x42" -->
-          <div class="media-body">
-            <%= partner.first_name %> <%= partner.last_name %>
-            <p><%= partner.experience %></p>
+<ul class="table-view">
+  <% @partners.each do |partner| %>
+    <li class="table-view-cell media">
+      <%= link_to user_path(partner.id), class: "navigate-right" do %>
+        <% if partner.avatar.attached? %>
+          <%= image_tag partner.avatar, alt: 'Photo de profil', class: "media-object pull-left avatar-s" %>
+        <% else %>
+          <div class="media-object pull-left avatar-placeholder-s">
+            <span class="material-icons-round">person</span>
           </div>
         <% end %>
-      </li>
-    <% end %>
-  </ul>
-
+        <div class="media-body">
+          <%= partner.first_name %> <%= partner.last_name %>
+          <p><%= partner.experience %></p>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
