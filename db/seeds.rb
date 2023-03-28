@@ -14,7 +14,7 @@ Chatroom.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('chatrooms')
 User.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
-
+ActionMailer::Base.perform_deliveries = false
 
 1.times do 
   admin = User.create!(

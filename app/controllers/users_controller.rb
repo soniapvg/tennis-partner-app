@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   def search
@@ -56,7 +57,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+        format.html { redirect_to edit_user_path(@user), notice: "Modifications enregistrées." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -83,7 +84,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:date_of_birth, :gender, :experience, :description, :week_day, :week_night, :weekend_day, :weekend_night)
+      params.require(:user).permit(:first_name, :last_name, :code_club, :date_of_birth, :gender, :experience, :description, :week_day, :week_night, :weekend_day, :weekend_night, :outside)
     end
 
     def partner_params

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "users#search"
   get '/welcome', to: 'welcome#index', as: 'welcome'
+  get '/parameters', to: 'parameters#index', as: 'parameters'
 
   devise_for :users, :controllers => {:registrations => "user/registrations"} 
 
