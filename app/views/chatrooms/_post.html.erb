@@ -1,0 +1,13 @@
+<% if post.sender == currentuser %>
+  <div style="border: 1px solid black; background-color: #EEE; margin-left: 50%; margin-right: 5%; padding: 5px; width: 40%;">
+<% else %>
+  <div style="border: 1px solid black; background-color: #DDD; margin-left: 5%; padding: 5px; width: 40%;">
+<% end %>
+    <% if post.is_a?(Invitation)%>
+      Ceci est une invitation :
+      <br>
+    <% end %>
+    <%= post.content %>
+    <br>
+    <small>Rédigé à <%= post.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+  </div>

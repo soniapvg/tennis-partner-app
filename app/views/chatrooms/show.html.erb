@@ -1,12 +1,13 @@
+ <%= turbo_stream_from(@chatroom) %> 
 <h3><%= link_to "Mes Chatrooms", chatrooms_path %></h3>
 <h3><%= link_to "Son profil", @other_user %></h3>
 
 <h1>Chatting with <%= @other_user.first_name %> <%= @other_user.last_name %></h1>
 <% @posts.each do |post| %>
     <% if post.sender == current_user %>
-      <div style="border: 1px solid black; background-color: #EEE; margin-left: 50%; margin-right: 5%; padding: 5px; width: 40%;">
+      <div style="border: 1px solid black; background-color: #EEE; margin-left: 50%; margin-right: 5%; padding: 5px; width: 40%;" id ="chatroom_<%= @chatroom.id %>">
     <% else %>
-      <div style="border: 1px solid black; background-color: #DDD; margin-left: 5%; padding: 5px; width: 40%;">
+      <div style="border: 1px solid black; background-color: #DDD; margin-left: 5%; padding: 5px; width: 40%;" id ="chatroom_<%= @chatroom.id %>">
     <% end %>
     <% if post.is_a?(Invitation)%>
       Ceci est une invitation :

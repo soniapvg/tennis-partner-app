@@ -7,6 +7,7 @@ class InvitationsController < ApplicationController
     @invitation.sender = current_user
     @invitation.receiver = @chatroom.other_user(current_user)
     if @invitation.save
+      
       redirect_to @chatroom
     else
       flash[:error] = "Error sending invitation"

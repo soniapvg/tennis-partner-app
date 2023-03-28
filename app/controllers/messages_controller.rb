@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     @message.sender = current_user
     @message.receiver = @chatroom.other_user(current_user)
     if @message.save
+      
       redirect_to @chatroom
     else
       flash[:error] = "Error sending message"
