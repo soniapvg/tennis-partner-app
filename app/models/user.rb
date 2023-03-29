@@ -12,8 +12,7 @@ class User < ApplicationRecord
   has_many :chatrooms_as_user2, class_name: 'Chatroom', foreign_key: 'user2_id', dependent: :destroy
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
   has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id', dependent: :destroy
-  has_many :sent_invitations, class_name: 'Invitation', foreign_key: 'sender_id', dependent: :destroy
-  has_many :received_invitations, class_name: 'Invitation', foreign_key: 'receiver_id', dependent: :destroy
+
   
   enum experience: { 
     'Débutant': 1, 
@@ -120,8 +119,8 @@ class User < ApplicationRecord
     Chatroom.where(user1: self, user2: other_user).or(Chatroom.where(user1: other_user, user2: self)).first
   end
 
-  def invitations
-    sent_invitations.or(received_invitations)
+  def messages
+    sent_messages.or(received_messages)
   end
 
 end

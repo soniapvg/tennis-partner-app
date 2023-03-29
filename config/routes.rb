@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   end
   resources :chatrooms, only: [:index, :create, :show] do
     resources :messages, only: [:create]
-    resources :invitations, only: [:create]
   end
-  resources :invitations, only: [:index]
+  
 
   get 'users_search', to: 'users#search', as: 'users_search'
   get 'users_selection', to:'users#selection', as:'users_selection'

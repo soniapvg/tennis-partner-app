@@ -52,18 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_142910) do
     t.index ["user2_id"], name: "index_chatrooms_on_user2_id"
   end
 
-  create_table "invitations", force: :cascade do |t|
-    t.text "content"
-    t.bigint "chatroom_id"
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chatroom_id"], name: "index_invitations_on_chatroom_id"
-    t.index ["receiver_id"], name: "index_invitations_on_receiver_id"
-    t.index ["sender_id"], name: "index_invitations_on_sender_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.bigint "chatroom_id"
