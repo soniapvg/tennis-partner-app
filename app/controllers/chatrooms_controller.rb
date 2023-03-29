@@ -3,7 +3,14 @@ class ChatroomsController < ApplicationController
   layout 'user'
 
   def index
-    @chatrooms = current_user.chatrooms.order(created_at: :desc)
+    # Get all the chatrooms for the current user
+    @chatrooms = current_user.chatrooms.includes(:messages)
+  
+    # Filter out chatrooms with no messages
+    @chatrooms = @chatrooms.select { |chatroom| chatroom.messages.present? }
+  
+    # Sort the chatrooms by their latest message's created_at time
+    @chatrooms = @chatrooms.sort_by { |chatroom| chatroom.messages.last.created_at }.reverse!
   end
 
   def create
@@ -22,11 +29,11 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     @other_user = @chatroom.other_user(current_user)
     @message = Message.new
-    @invitation = Invitation.new
-    @posts = @chatroom.messages
-    @posts += @chatroom.invitations
-    @posts = (@chatroom.messages + @chatroom.invitations).sort_by(&:post_date)
-    @send_message = params[:send_message] == "true"
+    
+    @messages = @chatroom.messages
+    
+    @messages = @messages.sort_by(&:post_date)
+    
   end
 
   private

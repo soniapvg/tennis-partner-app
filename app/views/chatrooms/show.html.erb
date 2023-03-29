@@ -7,26 +7,19 @@
 <% end %>
 
 <div class="messages content-padded margin-bottom-xl">
-  <% @posts.each do |post| %>
-    <% if post.sender == current_user %>
+  <% @messages.each do |message| %>
+    <% if message.sender == current_user %>
       <div class="card card-right">
-        <% if post.is_a?(Invitation) %>
-          <h2>Invitation</h2>
-        <% end %>
-        <p><%= post.content %></p>
-        <small><%= post.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+        <p><%= message.content %></p>
+        <small><%= message.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
       </div>
     <% else %>
       <div class="card card-left">
-        <% if post.is_a?(Invitation) %>
-          <h2>Invitation</h2>
-        <% end %>
-        <p><%= post.content %></p>
-        <small><%= post.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+        <p><%= message.content %></p>
+        <small><%= message.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
       </div>
     <% end %>
   <% end %>
 </div>
 
-<%# render @send_message ? "chatrooms/forms/send_message" : "chatrooms/forms/send_invit" %>
 <%= render "messages/forms/send" %>

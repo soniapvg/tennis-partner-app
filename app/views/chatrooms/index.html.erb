@@ -11,7 +11,7 @@
           <%= chatroom.other_user(current_user).first_name %> <%= chatroom.other_user(current_user).last_name %><br>
         <% end %>
         <%= link_to 'Ouvrir la conversation', chatroom_path(current_user.common_chatroom_id_with(chatroom.other_user(current_user))), class: "btn btn-outlined" %>
-        <br><small>Dernier échange le :<%= chatroom.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+        <br><small>Dernier échange le :<%= chatroom.messages.last.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
       </p>
     </li>
   <% end %>

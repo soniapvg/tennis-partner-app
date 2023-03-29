@@ -13,7 +13,7 @@ class UserMailer < ApplicationMailer
 
       end
 
-      def invitation(receiver, sender, content)
+      def notification_email(receiver, sender, content)
         @receiver = receiver
         @sender = sender
         @content = content    
@@ -21,7 +21,7 @@ class UserMailer < ApplicationMailer
         @url  = 'www.tennis-partner.com' 
   
         # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-        mail(to: @receiver.email, subject: "#{@sender.first_name} t'a envoyé une invitation pour une partie de tennis !") 
+        mail(to: @receiver.email, subject: "#{@sender.first_name} t'a envoyé un message pour une partie de tennis !") 
 
       end
 

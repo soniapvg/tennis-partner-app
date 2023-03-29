@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  
+  layout 'user' # Pas sur de si il faut le mettre ici, puisqu'il n'a jamais de view, personnel et s'affiche au travers des chatrooms
 
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])

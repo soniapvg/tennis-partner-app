@@ -8,8 +8,7 @@
 require 'faker'
 Message.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('messages')
-Invitation.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('invitations')
+
 Chatroom.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('chatrooms')
 User.destroy_all
@@ -60,27 +59,15 @@ while pairs.length < 10
 end
 puts "paires générés"
 
-#Create a chatroom with an invitation and messages for each pair 
+#Create a chatroom  messages for each pair 
 pairs.each{ |pair|  
   chatroom = Chatroom.create!(
     user1: User.where(id:pair[0]).first,
     user2: User.where(id:pair[1]).first
   )
 
-  # Create an invitation for each chatroom
-  Invitation.create!(
-    chatroom: chatroom,
-    content: Faker::Lorem.paragraph,
-    sender: chatroom.users.first,
-    receiver: chatroom.users.second
-  )
-  Invitation.create!(
-    chatroom: chatroom,
-    content: Faker::Lorem.paragraph,
-    sender: chatroom.users.second,
-    receiver: chatroom.users.first
-  )
-  # Create 5 messages for each chatroom
+  
+  # Create 4 messages for each chatroom
   2.times do
     Message.create!(
       content: Faker::Lorem.paragraph,
