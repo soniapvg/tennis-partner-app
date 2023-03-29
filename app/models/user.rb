@@ -40,7 +40,7 @@ class User < ApplicationRecord
     '-15': 23,
     '-30': 24
   }
-  enum gender: { femme: 1, homme: 2, autre: 3 }
+  enum gender: { Femme: 1, Homme: 2, Autre: 3 }
 
   def age
     if date_of_birth.present?
@@ -52,7 +52,6 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now
   end
 
-  
   def chatrooms
     chatrooms_as_user1.or(chatrooms_as_user2)
   end
@@ -62,11 +61,11 @@ class User < ApplicationRecord
 
     case partner_params[:gender]
     when "Femme"
-      @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
+      @partners = @partners.select{|partner| (partner.gender == "Femme")|| (partner.gender == "Autre" ) }
     when "Homme"
-      @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
+      @partners = @partners.select{|partner| (partner.gender == "Homme")|| (partner.gender == "Autre" ) }
     else
-      @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) || (partner.gender == "femme" ) }
+      @partners = @partners.select{|partner| (partner.gender == "Homme")|| (partner.gender == "Autre" ) || (partner.gender == "Femme" ) }
     end
     
     if partner_params[:week_day]== "1" || partner_params[:week_evening]== "1" || partner_params[:wend_day]== "1" || partner_params[:wend_evening]== "1"
@@ -87,18 +86,18 @@ class User < ApplicationRecord
     end
 
     @partners = @partners.select do |partner|
-      if user.gender == "homme"
-        if partner.gender == "homme"
+      if user.gender == "Homme"
+        if partner.gender == "Homme"
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 3) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 3)
-        elsif partner.gender == "femme" 
+        elsif partner.gender == "Femme" 
           partner.experience_before_type_cast >= user.experience_before_type_cast && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
         else
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
         end
-      elsif user.gender == "femme"
-        if partner.gender == "femme"
+      elsif user.gender == "Femme"
+        if partner.gender == "Femme"
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 3) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 3)
-        elsif partner.gender == "homme" 
+        elsif partner.gender == "Homme" 
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= user.experience_before_type_cast
         else
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)

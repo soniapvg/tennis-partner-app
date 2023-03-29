@@ -1,5 +1,12 @@
 <div class="bar bar-standard bar-footer-secondary">
-  <%= link_to chatroom_path(@chatroom), class: "btn btn-primary btn-block" do %>
-    Organiser une partie
-  <% end %>
+
+
+    <%= link_to chatroom_path(@chatroom), class: "btn btn-primary btn-block" do %>
+     <% if @chatroom.messages.present? %>
+      Ouvrir la discussion
+     <% else %>
+      Organiser une partie
+     <% end %>
+    <% end %>
+
 </div>
