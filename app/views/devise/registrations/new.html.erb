@@ -22,7 +22,7 @@
 
     <%= f.label :password, "Choisissez un mot de passe" %>
     <% if @minimum_password_length %>
-      <br><em>(<%= @minimum_password_length %> characters minimum)</em>
+      <br><em>(<%= @minimum_password_length %> caractères minimum)</em>
     <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
     

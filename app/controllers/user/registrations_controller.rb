@@ -50,6 +50,12 @@ class User::RegistrationsController < Devise::RegistrationsController
     edit_user_registration_path
   end
 
+    # The path used after sign up.
+  def after_sign_up_path_for(resource)
+    flash[:notice] = "Bienvenue au TC St Julien, #{current_user.first_name.capitalize} ! Tu peux modifier tes préférences de jeu par ici"
+    edit_user_path(current_user.id)
+  end
+
   # If you have extra params to permit, append them to the sanitizer.
   
 
@@ -58,10 +64,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute, :code_club])
   # end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

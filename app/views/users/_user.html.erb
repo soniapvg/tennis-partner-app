@@ -15,7 +15,9 @@
 
 <ul class="table-view margin-bottom-xl">
   <li class="table-view-cell"><%= @user.age %> ans</li>
-  <li class="table-view-cell"><%= @user.gender %></li>
+  <% if @user.gender != "Autre" %>
+   <li class="table-view-cell"><%= @user.gender %></li>
+  <% end %>
   <li class="table-view-cell"><%= @user.experience %></li>
   <li class="table-view-cell">Joue en intérieur et extérieur</li>
   <li class="table-view-cell">
