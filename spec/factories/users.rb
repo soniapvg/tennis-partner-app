@@ -5,6 +5,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     description { Faker::Hipster.paragraph }
     password { "123456" }
+    date_of_birth { Faker::Date.between(from: 70.years.ago, to: 16.years.ago) }
     gender {Faker::Number.between(from: 1, to: 3)}
     experience {Faker::Number.between(from: 1, to: 24)}
     week_day {Faker::Boolean.boolean}
