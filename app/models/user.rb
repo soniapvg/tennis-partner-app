@@ -131,14 +131,5 @@ class User < ApplicationRecord
     sent_messages.or(received_messages)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    %w(last_name first_name experience)
-  end
-
-  def self.ransackable_associations(auth_object = nil)
-    %w(first_name_or_last_name)
-  end
-
-
 end
 

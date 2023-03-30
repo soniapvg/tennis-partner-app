@@ -6,13 +6,6 @@
   <h1 class="title">Tous les joueurs du club</h1>
 <% end %>
 
-<%= search_form_for @q, remote: true do |f| %>
-  <%= f.label :first_name_or_last_name, 'Recherche par prénom ou nom' %>
-  <%= f.search_field :first_name_or_last_name_i_cont %>
-  
-  <%= f.submit "Rechercher" %>
-<% end %>
-
 <ul class="table-view">
   <% @partners.each do |partner| %>
     <li class="table-view-cell media">
