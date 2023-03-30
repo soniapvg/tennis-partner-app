@@ -18,25 +18,24 @@ RSpec.describe User, type: :model do
       expect(@user).to be_a(User)
     end
 
-    describe "#email" do
-      it { expect(@user).to validate_presence_of(:email) }
+    describe "#first_name" do
+      it { expect(@user).to validate_presence_of(:first_name) }
     end
 
+    describe "#last_name" do
+      it { expect(@user).to validate_presence_of(:last_name) }
+    end
+
+    describe "#username" do
+      it { expect(@user).to validate_length_of(:username).is_at_least(3) }
+    end
 
   end
 
   context "associations" do
 
-    describe "chatrooms" do
-      it { expect(@user).to have_many(:chatrooms_as_user1) }
-    end
-
-    describe "chatrooms" do
-      it { expect(@user).to have_many(:chatrooms_as_user2) }
-    end
-
-    describe "messages" do
-      it { expect(@user).to have_many(:sent_messages) }
+    describe "books" do
+      it { expect(@user).to have_many(:books) }
     end
 
     describe "messages" do
@@ -46,52 +45,16 @@ RSpec.describe User, type: :model do
 
   context "public instance methods" do
 
-    describe "#age" do
+    describe "#full_name" do
 
-      it "should return a int" do
-        expect(@user.age).to be_a(Integer)
+      it "should return a string" do
+        expect(@user.full_name).to be_a(String)
       end
 
-      it "should return the correct age" do
-        user =FactoryBot.create(:user, date_of_birth: Date.new(1994, 7, 12) )
-        expect(user.age).to eq(28)
-        user_2 = create(:user, date_of_birth: Date.new(1992, 7, 12))
-        expect(user_2.age).to eq(30)
-      end
-    end
-
-    describe "#chatrooms" do
-
-      it "should return an array or nil if empty" do
-        expect(@user.chatrooms).to eq([])
-      end
-
-      it "should return an array or nil if empty" do
-        chatroom_1 = FactoryBot.create(:chatroom, user_1: @user)
-        expect(@user.chatrooms).to be_an(Array)
-      end
-
-      it "should return the correct array of chatrooms" do
-        chatroom_1 = FactoryBot.create(:chatroom, user_1: @user)
-        chatroom_2 = FactoryBot.create(:chatroom, user_2: @user)
-        chatroom_3 = FactoryBot.create(:chatroom)
-        expect(@user.chatrooms.length).to match_array([chatroom_1, chatroom_2])
-      end
-    end
-
-    describe "#has_chatroom_with?" do
-
-      it "should return a boolean" do
-        expect(@user.has_chatroom_with?(@other_user)).to be_a(Boolean)
-      end
-
-      it "should return true if they do false if they dont" do
-        
-        expect(@user.has_chatroom_with?(@other_user)).to eq(false)
-      end
-      it "should return true if they do false if they dont" do
-        chatroom_1 = FactoryBot.create(:chatroom, user_1: @user, user_2: @other_user)
-        expect(@user.has_chatroom_with?(@other_user)).to eq(true)
+      it "should return the full name" do
+        expect(@user.full_name).to eq("John Doe")
+        user_2 = create(:user, first_name: "Jean-Michel", last_name: "Durant")
+        expect(user_2.full_name).to eq("Jean-Michel Durant")
       end
     end
 

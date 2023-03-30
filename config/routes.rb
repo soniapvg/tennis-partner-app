@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#search"
+  root "users#index"
   get '/welcome', to: 'welcome#index', as: 'welcome'
   get '/parameters', to: 'parameters#index', as: 'parameters'
 
