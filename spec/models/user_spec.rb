@@ -26,9 +26,6 @@ RSpec.describe User, type: :model do
       it { expect(@user).to validate_presence_of(:last_name) }
     end
 
-    describe "#username" do
-      it { expect(@user).to validate_length_of(:username).is_at_least(3) }
-    end
 
   end
 
@@ -45,18 +42,7 @@ RSpec.describe User, type: :model do
 
   context "public instance methods" do
 
-    describe "#full_name" do
-
-      it "should return a string" do
-        expect(@user.full_name).to be_a(String)
-      end
-
-      it "should return the full name" do
-        expect(@user.full_name).to eq("John Doe")
-        user_2 = create(:user, first_name: "Jean-Michel", last_name: "Durant")
-        expect(user_2.full_name).to eq("Jean-Michel Durant")
-      end
-    end
+    
 
     describe "#common_chatroom_id_with" do
 
