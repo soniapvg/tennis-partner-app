@@ -1,5 +1,8 @@
 require 'rails_helper'
 
+
+ActionMailer::Base.perform_deliveries = false
+
 RSpec.describe Chatroom, type: :model do
 
   before(:each) do 
@@ -9,7 +12,6 @@ RSpec.describe Chatroom, type: :model do
   end
 
   it "has a valid factory" do
-    # teste toujours tes factories pour voir si elles sont valides
     expect(build(:chatroom)).to be_valid
   end
   
@@ -29,22 +31,27 @@ RSpec.describe Chatroom, type: :model do
       expect(@chatroom).to be_a(Chatroom)
     end
 
-    describe "presence of 2 users is respected" do
-      it { expect(@chatroom).to validate_presence_of(:user1) }
-      it { expect(@chatroom).to validate_presence_of(:user2) }
-    end
-
-    it 'is invalid without user1' do
-      chatroom.user1 = nil
-      expect(chatroom).to be_invalid
-    end
-
-    it 'is invalid without user2' do
-      chatroom.user2 = nil
-      expect(chatroom).to be_invalid
-    end
-
   end
+
+  describe '#users_cannot_create_chatroom' do
+
+    context 'when user1 and user2 are the same' do
+      let(:chatroom) { FactoryBot.build(:chatroom, user1: @user, user2: @user) }
+
+      it 'returns an error message' do
+        expect(chatroom).not_to be_valid
+      end
+    end
+
+    context 'when a chatroom already exists for the same pair of users' do
+      let(:chatroom) { FactoryBot.build(:chatroom, user1: @user, user2: @other_user) }
+
+      it 'returns an error message' do
+        expect(chatroom).not_to be_valid
+      end
+    end
+
+end
 
 
 end

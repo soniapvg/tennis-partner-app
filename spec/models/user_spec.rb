@@ -1,5 +1,8 @@
 require 'rails_helper'
 
+
+ActionMailer::Base.perform_deliveries = false
+
 RSpec.describe User, type: :model do
 
   before(:each) do 
@@ -8,7 +11,6 @@ RSpec.describe User, type: :model do
   end
 
   it "has a valid factory" do
-    # teste toujours tes factories pour voir si elles sont valides
     expect(build(:user)).to be_valid
   end
 
