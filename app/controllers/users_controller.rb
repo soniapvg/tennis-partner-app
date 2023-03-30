@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def index
     # @users = User.all
     @partners = User.where.not(id: current_user.id) 
+    @q = @partners.ransack(params[:q])
+    @partners = @q.result(distinct: true)
 
   end
 
@@ -88,6 +90,8 @@ class UsersController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -102,4 +106,5 @@ class UsersController < ApplicationController
     def partner_params
       params.permit(:gender, :week_day, :week_evening, :wend_day, :wend_evening, :inside, :authenticity_token, :commit, :method)
     end
+
 end
