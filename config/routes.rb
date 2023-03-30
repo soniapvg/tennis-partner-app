@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get 'users_selection', to:'users#selection', as:'users_selection'
   get 'users_display', to: 'users#display', as:'users_display'
 
+  get '*unmatched_route', to: 'application#raise_not_found'
+
 end
