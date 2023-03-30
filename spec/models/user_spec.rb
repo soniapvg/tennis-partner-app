@@ -125,6 +125,45 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe '.search' do
+      
+      user1 =FactoryBot.create(:user, gender: 'Homme', experience: '15/1' )
+      user2 =FactoryBot.create(:user, gender: 'Femme', experience: '15/2' )
+      user3 =FactoryBot.create(:user, gender: 'Autre', experience: '15/3', week_night: false, weekend_night: false, week_day: false, weekend_day: false)
+      user4 =FactoryBot.create(:user, gender: 'Homme', experience: '15', week_night: false, weekend_night: false, week_day: true, weekend_day: true)
+      user5 =FactoryBot.create(:user, gender: 'Homme', experience: '-30' )
+      user6 = FactoryBot.create(:user, gender: 'Femme', experience: '5/6', week_night: false, weekend_night: false, week_day: false, weekend_day: true, outside: true)
+
+      context 'when searching for partners with no filters' do
+        it 'returns all users with appropriate level' do
+          expect(User.search({}, user1)).to include( user3, user4, user6)
+          expect(User.search({}, user1)).not_to include(user2, user5, user1)
+        end
+      end
+  
+      context 'when searching for partners with gender filter' do
+        it 'returns only partners with the selected gender or "Autre"' do
+          expect(User.search({ gender: 'Femme' }, user1)).to include( user3, user6)
+          expect(User.search({ gender: 'Femme' }, user1)).not_to include(user1, user2, user4, user5)
+        end
+      end
+
+      context 'when searching for partners with availability filter' do
+        it 'returns all partners with at least one the selected availabilities' do
+          expect(User.search({ week_day: '1', wend_day: '1'}, user1)).to include(user4, user6)
+          expect(User.search({ week_day: '1', wend_day: '1' }, user1)).not_to include(user2, user5, user1, user3)
+        end
+      end
+
+      context 'when searching for partners with inside/outside filter' do
+        it 'returns all partners with the "only outside" option set to false' do
+          expect(User.search({ inside: '1'}, user1)).to include(user3, user4)
+          expect(User.search({ inside: '1'}, user1)).not_to include(user2, user5, user1, user6)
+        end
+      end
+
+      
+    end
   end
 
 end

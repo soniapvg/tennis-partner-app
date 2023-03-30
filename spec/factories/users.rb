@@ -12,6 +12,6 @@ FactoryBot.define do
     week_night {Faker::Boolean.boolean}
     weekend_day {Faker::Boolean.boolean}
     weekend_night {Faker::Boolean.boolean}
-    outside {Faker::Boolean.boolean}
+    outside {false}
   end
 end

@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def selection
     @user = current_user
     @partners = User.search(partner_params,@user)
-
+    
     redirect_to users_display_path(:partners => @partners)
   end
 
