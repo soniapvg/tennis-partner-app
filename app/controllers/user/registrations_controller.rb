@@ -23,9 +23,9 @@ class User::RegistrationsController < Devise::RegistrationsController
    end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    render layout: 'layouts/user_actions'
+  end
 
   # PUT /resource
   # def update
@@ -54,7 +54,7 @@ class User::RegistrationsController < Devise::RegistrationsController
 
     # The path used after sign up.
   def after_sign_up_path_for(resource)
-    flash[:notice] = "Bienvenue au TC St Julien, #{current_user.first_name.capitalize} ! Tu peux modifier tes préférences de jeu par ici"
+    flash[:notice] = "Bienvenue au TC St Julien, #{current_user.first_name.capitalize} ! Tu peux modifier tes préférences de jeu par ici."
     edit_user_path(current_user.id)
   end
 

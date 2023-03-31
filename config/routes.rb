@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
-  get '*unmatched_route', to: 'application#raise_not_found'
+  get '*unmatched_route', to: 'application#raise_not_found', constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'
+  }
 end

@@ -9,48 +9,49 @@
 <% end %>
 
 <div class="container-xl">
-  <%= form_tag users_selection_path, method: :get, class: "stack", :id => "search" do %>
+  <%= form_with(url: users_selection_path, method: :get, class: "stack", :id => "search") do |f| %>
     <h2>Genre</h2>
     <div>
       <div class="form-check">
-        <%= radio_button_tag :gender, "Femme", false, class: "form-check-input", role: "switch" %>
-        <%= label_tag :gender_woman, "Femme", class: "form-check-label" %>
+        <%= f.radio_button :gender, "Femme", { :class => "form-check-input", :role => "switch" } %>
+        <%= f.label :gender_woman, "Femme", class: "form-check-label" %>
       </div>
       <div class="form-check">
-        <%= radio_button_tag :gender, "Homme", false, class: "form-check-input", role: "switch" %>
-        <%= label_tag :gender_man, "Homme", class: "form-check-label" %>
+        <%=  f.radio_button :gender, "Homme", { :class => "form-check-input", :role => "switch" } %>
+        <%= f.label :gender_man, "Homme", class: "form-check-label" %>
       </div>
       <div class="form-check">
-        <%= radio_button_tag :gender, "Peu importe", false, class: "form-check-input", role: "switch" %>
-        <%= label_tag :gender_whatever, "Peu importe", class: "form-check-label" %>
+        <%=  f.radio_button :gender, "Peu importe", { :class => "form-check-input", :role => "switch" } %>
+        <%= f.label :gender_whatever, "Peu importe", class: "form-check-label" %>
       </div>
     </div>
     <hr>
     <h2>Disponibilité</h2>
     <div>
       <div class="form-check form-switch">
-        <%= check_box_tag :week_day, "1", false, class: "form-check-input", role: "switch" %>
-        <%= label_tag :week_day, "La semaine, en journée", class: "form-check-label" %>
+      
+        <%= f.check_box :week_day, class: "form-check-input", role: "switch" %>
+        <%= f.label :week_day, "La semaine, en journée", class: "form-check-label" %>
       </div>
       <div class="form-check form-switch">
-        <%= check_box_tag :week_night, "1", false, class: "form-check-input", role: "switch" %>
-        <%= label_tag :week_night, "La semaine, en soirée", class: "form-check-label" %>
+        <%= f.check_box :week_night, class: "form-check-input", role: "switch" %>
+        <%= f.label :week_night, "La semaine, en soirée", class: "form-check-label" %>
       </div>
       <div class="form-check form-switch">
-        <%= check_box_tag :weekend_day, "1", false, class: "form-check-input", role: "switch" %>
-        <%= label_tag :weekend_day, "Le week-end, en journée", class: "form-check-label" %>
+        <%= f.check_box :weekend_day, class: "form-check-input", role: "switch" %>
+        <%= f.label :weekend_day, "Le week-end, en journée", class: "form-check-label" %>
       </div>
       <div class="form-check form-switch">
-        <%= check_box_tag :weekend_night, "1", false, class: "form-check-input", role: "switch" %>
-        <%= label_tag :weekend_night, "Le week-end, en soirée", class: "form-check-label" %>
+        <%= f.check_box :weekend_night, class: "form-check-input", role: "switch" %>
+        <%= f.label :weekend_night, "Le week-end, en soirée", class: "form-check-label" %>
       </div>
     </div>
     <hr>
     <h2>Préférence de terrain</h2>
     <div>
       <div class="form-check form-switch">
-        <%= check_box_tag :inside, "1", false, class: "form-check-input", role: "switch" %>
-        <%= label_tag :inside, "Je veux jouer en indoor", class: "form-check-label" %>
+        <%= f.check_box :inside, class: "form-check-input", role: "switch" %>
+        <%= f.label :inside, "Je veux jouer en indoor", class: "form-check-label" %>
       </div>
     </div>
   <% end %>

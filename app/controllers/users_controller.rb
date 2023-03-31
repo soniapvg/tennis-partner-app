@@ -34,13 +34,12 @@ class UsersController < ApplicationController
 
   def selection
     @user = current_user
-    @partners = User.search(partner_params,@user)
-    
+    @partners = User.search(partner_params, @user)
 
     if @partners.empty?
       flash[:filter] = "Aucun joueur de ton niveau n'est disponible sur ce créneau. Voici des joueurs disponibles à d'autres moments !"
       @partners = User.where.not(id: @user.id)
-      @partners = User.filter_level(@partners,@user)
+      @partners = User.filter_level(@partners, @user)
 
       if @partners.empty?
         flash[:filter] = "Il n'y a malheureusement aucun joueur de ton niveau inscrit sur notre site. Voici la liste complète des joueurs."
@@ -97,6 +96,6 @@ class UsersController < ApplicationController
     end
 
     def partner_params
-      params.permit(:gender, :week_day, :week_evening, :wend_day, :wend_evening, :inside, :authenticity_token, :commit, :method)
+      params.permit(:gender, :week_day, :week_night, :weekend_day, :weekend_night, :inside, :authenticity_token, :commit, :method, :button)
     end
 end

@@ -54,6 +54,14 @@
   background-color: var(--color-primary);
 }
 
+.btn-warning,
+.btn-warning:hover {
+  color: var(--color-neutral-lowest);
+  border: none;
+  border-radius: $border-radius;
+  background-color: var(--color-tertiary-higher);
+}
+
 .btn-outline-primary {
   color: var(--color-primary);
   border: var(--color-primary) solid $border-size-s;

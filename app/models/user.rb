@@ -68,12 +68,12 @@ class User < ApplicationRecord
       @partners = @partners.select{|partner| (partner.gender == "Homme")|| (partner.gender == "Autre" ) || (partner.gender == "Femme" ) }
     end
     
-    if partner_params[:week_day]== "1" || partner_params[:week_evening]== "1" || partner_params[:wend_day]== "1" || partner_params[:wend_evening]== "1"
+    if partner_params[:week_day]== "1" || partner_params[:week_night]== "1" || partner_params[:weekend_day]== "1" || partner_params[:weekend_night]== "1"
       disponibilities = []
       disponibilities << :week_day if partner_params[:week_day]== "1"
-      disponibilities << :week_night if partner_params[:week_evening]== "1"
-      disponibilities << :weekend_day if partner_params[:wend_day]== "1" 
-      disponibilities << :weekend_night if partner_params[:wend_evening]== "1"
+      disponibilities << :week_night if partner_params[:week_night]== "1"
+      disponibilities << :weekend_day if partner_params[:weekend_day]== "1" 
+      disponibilities << :weekend_night if partner_params[:weekend_night]== "1"
       
       @partners = @partners.select do |partner|
         disponibilities.any? { |disponibility| partner[disponibility] }
