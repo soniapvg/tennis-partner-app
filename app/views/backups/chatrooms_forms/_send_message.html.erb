@@ -1,9 +1,0 @@
-<div class="bar bar-standard bar-footer-secondary message">
-  <%= form_with model: [@chatroom, @chatroom.messages.build], local: true do |form| %>
-    <%= form.text_area :content, rows: 5 %>
-    <div class="bar bar-standard">
-      <%= link_to "Créer une invitation", chatroom_path(@chatroom, send_message: false), class: "btn pull-left" %>
-      <%= form.submit "Envoyer le message", class: "btn btn-primary pull-right" %>
-    </div>
-  <% end %>
-</div>

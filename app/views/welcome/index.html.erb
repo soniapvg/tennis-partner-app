@@ -1,13 +1,15 @@
 <% content_for :title do %>
-  <h1 class="title">Tennis Club de Saint-Julien</h1>
+  <div>
+    <%= image_tag 'logo-tcstjulien.png', alt: 'Logo du Tennis Club de Saint Julien en Genevois', class: "avatar" %>
+    <h1 class="title">Tennis Club de Saint-Julien</h1>
+  </div>
 <% end %>
 
-<div class="content-padded">
-  <h1>
-    Trouver<br>
-    votre partenaire<br>
-    de tennis
-  </h1>
-  <p>Veuillez vous connecter pour accéder aux fonctionnalités de l'app.</p>
-  <p>L'inscription est réservée aux membres du club de tennis de Saint-Julien en Genevois.</p>
-</div>
+<%= image_tag 'welcome-slide-1.png', alt: "Image d'accueil pour les visiteurs de l'app, montrant une photo d'un joueur de tennis en pleine action, sur un court extérieur, et par-dessus le message d'accueil annonce \"Trouvez votre partenaire de tennis\"" %>
+
+<% content_for :actions do %>
+  <%= link_to "Inscription", new_user_registration_path,
+      class: "btn btn-outline-primary" %>
+  <%= link_to "Connexion", new_user_session_path,
+      class: "btn btn-primary" %>
+<% end %>

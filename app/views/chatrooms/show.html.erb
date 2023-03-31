@@ -1,25 +1,54 @@
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'chatroom', "defer": "defer", "data-turbo-track": "reload" %>
+<% end %>
+    
 <% content_for :back_button do %>
-  <%= link_to '', chatrooms_path, class: "icon icon-left-nav pull-left" %>
+  <%= link_to chatrooms_path, class: "btn-back" do %>
+    <i class="bi bi-arrow-left"></i>
+  <% end %>
 <% end %>
 
 <% content_for :title do %>
-  <h1 class="title"><%= @other_user.first_name %> <%= @other_user.last_name %></h1>
-<% end %>
-
-<div class="messages content-padded margin-bottom-xl">
-  <% @messages.each do |message| %>
-    <% if message.sender == current_user %>
-      <div class="card card-right">
-        <p><%= message.content %></p>
-        <small><%= message.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
-      </div>
+  <%= link_to user_path(@other_user), class: "container" do %>
+    <% if @other_user.avatar.attached? %>
+      <%= image_tag @other_user.avatar, alt: 'Photo de profil', class: "avatar" %>
     <% else %>
-      <div class="card card-left">
-        <p><%= message.content %></p>
-        <small><%= message.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+      <div class="avatar-placeholder">
+        <i class="bi bi-person-circle"></i>
       </div>
     <% end %>
+    <h1 class="title"><%= @other_user.first_name %> <%= @other_user.last_name %></h1>
   <% end %>
-</div>
+<% end %>
 
-<%= render "messages/forms/send" %>
+<ul class="chatroom">
+  <% @messages.each do |message| %>
+    <% if message.sender == current_user %>
+      <li class="message-right">
+        <p><%= message.content %></p>
+        <small><%= message.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+      </li>
+    <% else %>
+      <li class="message-left">
+        <p><%= message.content %></p>
+        <small><%= message.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<% content_for :action_chatroom do %>
+  <div class="container form-chatroom">
+    <%= form_with model: [@chatroom, @chatroom.messages.build], local: true do |form| %>
+      <div class="message-container">
+        <%= form.text_area :content, class: "form-control", oninput: "this.parentNode.dataset.value = this.value", placeholder: "Envoyer un message", rows: "1" %>
+        <%# <textarea class="form-control" oninput="this.parentNode.dataset.value = this.value" rows="1" placeholder="Envoyer un message"></textarea> %>
+      </div>
+      <div class="bar bar-standard">
+        <%= form.button type: :submit do %>
+          <i class="bi bi-send-fill"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

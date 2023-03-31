@@ -1,28 +1,42 @@
-<% content_for :back_button do %>
-  <%= link_to '', users_search_path, class: "icon icon-left-nav pull-left" %>
-<% end %>
-
 <% content_for :title do %>
-  <h1 class="title">Résultat de la recherche</h1>
+  <h1 class="title">Membres trouvés</h1>
 <% end %>
 
-  <ul class="table-view">
-    <% @partners.each do |partner| %>
-      <li class="table-view-cell media">
-        <%= link_to user_path(partner.id), class: "navigate-right" do %>
-          <% if partner.avatar.attached? %>
-            <%= image_tag partner.avatar, alt: 'Photo de profil', class: "media-object pull-left avatar-s" %>
-          <% else %>
-            <div class="media-object pull-left avatar-placeholder-s">
-              <span class="material-icons-round">person</span>
-            </div>
-          <% end %>
-          <div class="media-body">
-            <%= partner.first_name %> <%= partner.last_name %>
-            <p><%= partner.experience %></p>
+<div class="container container-m">
+  <div class="alert alert-filter" role="alert">
+    <p><i class="bi bi-info-circle-fill"></i>Les membres affichés sont <strong>automatiquement filtrés selon votre niveau de jeu</strong>.</p>
+  </div>
+</div>
+
+<div class="stack-buttons">
+  <%= link_to users_search_path, class: "btn btn-outline-primary" do %>
+    <i class="bi bi-filter"></i>
+    Filtrer à nouveau
+  <% end %>
+  <%= link_to users_path, class: "btn btn-outline-primary" do %>
+    Afficher tous les membres
+  <% end %>
+</div>
+
+<ul class="users">
+  <% @partners.each do |partner| %>
+    <li>
+      <%= link_to user_path(partner.id), class: "container" do %>
+        <% if partner.avatar.attached? %>
+          <%= image_tag partner.avatar, alt: 'Photo de profil', class: "avatar" %>
+        <% else %>
+          <div class="avatar-placeholder">
+            <i class="bi bi-person-circle"></i>
           </div>
         <% end %>
-      </li>
-    <% end %>
-  </ul>
-
+        
+        <div class="infos">
+          <div class="header">
+            <h2><%= partner.first_name %> <%= partner.last_name %></h2>
+          </div>
+          <small><%= "#{partner.experience}" if partner.experience -%><%= ", " if partner.age && partner.experience -%><%= "#{partner.age} ans" if partner.age %></small>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

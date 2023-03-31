@@ -1,0 +1,7 @@
+@mixin media($default: true) {
+  @if $default {
+    @media screen and (max-width: $breakpoint-layout-default) { @content; }
+  } @else {
+    @media screen and (min-width: $breakpoint-layout-default) { @content; }
+  }
+}

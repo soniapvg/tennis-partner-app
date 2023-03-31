@@ -1,10 +1,15 @@
-<% if notice %>
-  <div style="background-color: green; color: white; padding: 10px;">
-    <%= notice %>
-  </div>
-<% end %>
-<% if alert %>
-  <div style="background-color: red; color: white; padding: 10px;">
-    <%= alert %>
+<% flash.each do |type, content| %>
+  <% type = 'success' if type == 'notice' %>
+  <div class="container container-m">
+    <div class="alert alert-<%= type %> container-m" role="alert">
+      <% case type 
+         when "info" %><i class="bi bi-info-circle-fill"></i>
+      <% when "filter" %><i class="bi bi-info-circle-fill"></i>
+      <% when "alert" %><i class="bi bi-exclamation-triangle-fill"></i>
+      <% when "warning" %><i class="bi bi-exclamation-triangle-fill"></i>
+      <% when "success" %><i class="bi bi-check-circle-fill"></i>
+      <% end %>
+      <%= content %>
+    </div>
   </div>
 <% end %>

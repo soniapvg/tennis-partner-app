@@ -1,18 +1,30 @@
 <% content_for :title do %>
-  <h1 class="title">Mes conversations</h1>
+  <h1 class="title">Messages</h1>
 <% end %>
 
-<ul class="table-view">
-  <% @chatrooms.each do |chatroom| %>
-    <li class="table-view-cell">
-      <p>
-        <%= link_to user_path(chatroom.other_user(current_user)), class: "btn" do %>
-          <span class="icon icon-person"></span>
-          <%= chatroom.other_user(current_user).first_name %> <%= chatroom.other_user(current_user).last_name %><br>
+<% if @chatrooms %>
+  <ul class="chatrooms">
+    <% @chatrooms.each do |chatroom| %>
+      <li>
+        <%= link_to chatroom_path(current_user.common_chatroom_id_with(chatroom.other_user(current_user))), class: "container" do %>
+          <div class="avatar-placeholder">
+            <i class="bi bi-person-circle"></i>
+          </div>
+          <div class="infos">
+            <div class="header">
+              <h2><%= chatroom.other_user(current_user).first_name %> <%= chatroom.other_user(current_user).last_name %></h2>
+              <small><%= chatroom.messages.last.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
+            </div>
+            <small><%= chatroom.messages.last.content %></small>
+          </div>
         <% end %>
-        <%= link_to 'Ouvrir la conversation', chatroom_path(current_user.common_chatroom_id_with(chatroom.other_user(current_user))), class: "btn btn-outlined" %>
-        <br><small>Dernier échange le :<%= chatroom.messages.last.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
-      </p>
-    </li>
-  <% end %>
-</ul>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="container container-m">
+    <div class="alert alert-filter" role="alert">
+      <p><i class="bi bi-info-circle-fill"></i>Vous n'avez pas de messages.</p>
+    </div>
+  </div>
+<% end %>

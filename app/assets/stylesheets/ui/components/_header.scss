@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: $border-style-default;
+  font-size: $font-size-xxl;
+  padding: $space-l;
+
+  & > * {
+    // align-self: center;
+  }
+}
+
+.default {
+  justify-content: space-between;
+}
+
+header.actions {
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  & .container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  & .avatar {
+    font-size: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 1.75rem;
+  }
+}

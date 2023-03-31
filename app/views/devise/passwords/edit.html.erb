@@ -1,3 +1,9 @@
+<% content_for :back_button do %>
+  <%= link_to welcome_path, class: "btn-back" do %>
+    <i class="bi bi-arrow-left"></i>
+  <% end %>
+<% end %>
+
 <h2>Change your password</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -23,3 +29,10 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<% content_for :actions do %>
+  <%= link_to "Inscription", new_user_registration_path,
+      class: "btn btn-outline-primary" %>
+  <%= link_to "Connexion", new_user_session_path,
+      class: "btn btn-primary" %>
+<% end %>

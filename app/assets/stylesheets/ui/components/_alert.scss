@@ -1,0 +1,74 @@
+@import "bootstrap/alert";
+
+.container .alert {
+  margin: 0;
+}
+
+.alert {
+  margin: $space-l;
+  font-size: $font-size-s;
+  border-radius: $border-radius;
+  border: $border-style-default;
+
+  & .bi {
+    padding-right: $space-xs;
+  }
+
+  & hr {
+    margin: 1rem 0;
+  }
+
+  & p {
+    padding: $space-xs 0;
+  }
+
+  & strong {
+    font-family: $font-family-display;
+  }
+
+  & hr {
+    border-bottom: solid 1px var(--color-primary);
+  }
+
+  & ul {
+    margin-left: $space-m;
+  }
+}
+
+.alert-filter {
+  color: var(--color-neutral-highest);
+  background-color: var(--color-primary-lower);
+  border-color: var(--color-notice-info);
+
+  & .bi {
+    color: var(--color-notice-info);
+  }
+}
+
+.alert-info {
+  color: var(----color-text-muted);
+  background-color: var(--color-background-main);
+
+  & .bi {
+    color: var(--color-notice-info);
+  }
+}
+
+.alert-success {
+  color: var(--color-text-muted);
+  background-color: var(--color-background-main);
+
+  & .bi {
+    color: var(--color-notice-success);
+  }
+}
+
+.alert-warning,
+.alert-alert {
+  color: var(--color-text-muted);
+  background-color: var(--color-background-main);
+
+  & .bi {
+    color: var(--color-notice-warning);
+  }
+}
