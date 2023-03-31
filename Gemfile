@@ -11,7 +11,6 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe', "~> 5.53"
 gem "aws-sdk-s3"
-gem 'ransack'
 
 group :development do
   gem 'better_errors'
@@ -70,6 +69,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'nyan-cat-formatter'
 end
 
 group :development do
