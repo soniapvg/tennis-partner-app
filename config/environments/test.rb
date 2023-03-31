@@ -58,17 +58,7 @@ Rails.application.configure do
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
-  config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      :user_name => ENV['SENDGRID_LOGIN'],
-      :password => ENV['SENDGRID_PWD'],
-      :domain => 'tennis-club-partner.herokuapp.com',
-      :address => 'smtp.sendgrid.net',
-      :port => 587,
-      :authentication => :plain,
-      :enable_starttls_auto => true
-    }
   
-    config.action_mailer.perform_deliveries = true
+    config.action_mailer.perform_deliveries = false
 
 end
