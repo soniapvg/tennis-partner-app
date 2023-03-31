@@ -169,7 +169,8 @@ RSpec.describe User, type: :model do
 
     describe '#welcome_send' do
       it "should send a welcome email" do
-        expect (@user.welcome_send).to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect {@user.welcome_send}.to change { ActionMailer::Base.deliveries.count }.by(1)
+        puts ActionMailer::Base.deliveries.count
       end
     end
   end

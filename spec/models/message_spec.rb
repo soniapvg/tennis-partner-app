@@ -8,7 +8,7 @@ RSpec.describe Message, type: :model do
     @user =FactoryBot.create(:user) 
     @other_user=FactoryBot.create(:user)
     @chatroom = FactoryBot.create(:chatroom, user1: @user, user2:@other_user)
-    @message = FactoryBot.create(:message, sender: @user, receiver: @other_user, chatroom: @chatroom)
+    @message = FactoryBot.create(:message, sender: @user, receiver: @other_user, chatroom: @chatroom, content:"test123")
 
   end
 
@@ -30,9 +30,9 @@ RSpec.describe Message, type: :model do
 
     describe "#notification_email" do
 
-      it "sends a notification email to the receiver" do
-        expect(@message.notification_email).to change { ActionMailer::Base.deliveries.count }.by(1)
-      end
+       it "sends a notification email to the receiver" do
+         expect{@message.notification_email}.to change { ActionMailer::Base.deliveries.count }.by(1)
+       end
 
     end
 
