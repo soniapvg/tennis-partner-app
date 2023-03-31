@@ -47,8 +47,9 @@ Selon son “*statut utilisateur*” (inscrit/non-inscrit), voici à titre indic
 
 - Parcours inscrit.e.s : _“**Je recherche un partenaire pour organiser une partie**"_
 	3. Je recherche un·e joueu·r·se via la fonctionnalité de recherche par critères
-	4. J'accède aux résultats de la recherche
-	5. Je consulte le profil d’un·e joueu·r·se
+	4. J'accède aux résultats de la recherche 
+	5. Si à ce moment là aucun joueu.r.se ne correspond parfaitement on me propose d'autres alternatives plus large ou à défault je peux afficher tous les joueurs
+	6. Je peux consulte le profil d’un·e joueu·r·se qui m'intéresse
 
 - Parcours incrit·e·s : _“**J'ai trouvé un·e partenaire qui m'intéresse, je veux entrer en contact en lui proposant une partie**”_
 	1. Je rentre en contact avec le/la partenaire en question via l'application, et lui propose une partie.
@@ -72,7 +73,7 @@ Selon son “*statut utilisateur*” (inscrit/non-inscrit), voici à titre indic
 
 ## Frontend
 
-- Framework CSS pour la gestion des layouts (probablement **Boostrap**)
+- Framework CSS pour la gestion des layouts  **Ratchet UI + Boostrap**
 - architecture **CUBE CSS**
 - custom UI en **SASS** + Vanilla **JavaScript**
 
