@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   def selection
     @user = current_user
     @partners = User.search(partner_params,@user)
+    
 
     if @partners.empty?
       flash[:notice] = "Aucun joueur de ton niveau n'est disponible sur ce créneau. Voici des joueurs disponibles à d'autres moments !"

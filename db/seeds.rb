@@ -6,13 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
+
 Message.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('messages')
-
 Chatroom.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('chatrooms')
 User.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
+
 ActionMailer::Base.perform_deliveries = false
 
 1.times do 

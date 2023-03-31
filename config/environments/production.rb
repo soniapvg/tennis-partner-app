@@ -98,11 +98,14 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :user_name => ENV['SENDGRID_LOGIN'],
     :password => ENV['SENDGRID_PWD'],
-    :domain => 'tennis-partner.com',
+    :domain => 'tennis-club-partner.herokuapp.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true
   }
+
+
+  config.action_mailer.default_url_options = { :host => 'https://tennis-club-partner.herokuapp.com/' }
 
 end
