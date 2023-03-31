@@ -70,7 +70,7 @@
   <body>
     <div class="header">
       <div class="container">
-        <h1>Bienvenue sur tennis-partner</h1>
+        <h1>Bienvenue sur tennis-club-partner</h1>
       </div>
     </div>
       <table cellpadding="0" cellspacing="0" height="100%" width="100%">
@@ -79,17 +79,19 @@
             <div class="container">
               <div class="welcome">
                 <h2>Salut <%= @user.first_name %> <%= @user.last_name %> et bienvenue chez nous !</h2>
-                <p>Tu t'es inscrit sur tennis-partner.com en utilisant l'e-mail suivant : <%= @user.email %>.</p>
+                <p>Tu t'es inscrit sur tennis-club-partner.com en utilisant l'e-mail suivant : <%= @user.email %>.</p>
                 <p>Connecte toi vite à ton espace personnel : <a href=<%= @url %> class="button">Mon espace</a>.</p>
+
                 <p>À très vite sur tennis-partner.com !</p>
                 <img src="https://cdn.pixabay.com/photo/2018/07/08/15/11/tennis-3524072_640.jpg">
+
               </div>
             </div>
           </td>
         </tr>
       </table>
     <div class="footer">
-      <p>Cet email a été envoyé depuis tennis-partner.com</p>
+      <p>Cet email a été envoyé depuis tennis-club-partner.com</p>
     </div>
   </body>
 </html>

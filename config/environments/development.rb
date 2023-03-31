@@ -84,7 +84,7 @@ Rails.application.configure do
     config.action_mailer.smtp_settings = {
       :user_name => ENV['SENDGRID_LOGIN'],
       :password => ENV['SENDGRID_PWD'],
-      :domain => 'tennis-partner.com',
+      :domain => 'tennis-club-partner.herokuapp.com',
       :address => 'smtp.sendgrid.net',
       :port => 587,
       :authentication => :plain,
@@ -92,5 +92,7 @@ Rails.application.configure do
     }
   
     config.action_mailer.perform_deliveries = true
+
+    config.action_mailer.default_url_options = { :host => 'http://localhost:3000' }
 
 end

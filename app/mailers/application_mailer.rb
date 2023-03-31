@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "tennis-partner@yopmail.com"
+  default from: "tennis-club-partner@yopmail.com"
   layout "mailer"
 
   ERRORS_TO_RESCUE = [
