@@ -22,6 +22,6 @@
     localStorage.setItem('theme', targetTheme);
   }
 
-  window.addEventListener('DOMContentLoaded', () => getUserTheme());
-  toggle.addEventListener('click', () => setTheme());
+  // window.addEventListener('DOMContentLoaded', () => getUserTheme());
+  // toggle.addEventListener('click', () => setTheme());
 }
