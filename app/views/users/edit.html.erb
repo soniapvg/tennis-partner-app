@@ -30,16 +30,16 @@
         <%= f.label :week_day, "La semaine, en journée", class: "form-check-label" %>
       </div>
       <div class="form-check form-switch">
-        <%= f.check_box :week_evening, class: "form-check-input", role: "switch" %>
-        <%= f.label :week_evening, "La semaine, en soirée", class: "form-check-label" %>
+        <%= f.check_box :week_night, class: "form-check-input", role: "switch" %>
+        <%= f.label :week_night, "La semaine, en soirée", class: "form-check-label" %>
       </div>
       <div class="form-check form-switch">
-        <%= f.check_box :wend_day, class: "form-check-input", role: "switch" %>
-        <%= f.label :wend_day, "Le week-end, en journée", class: "form-check-label" %>
+        <%= f.check_box :weekend_day, class: "form-check-input", role: "switch" %>
+        <%= f.label :weekend_day, "Le week-end, en journée", class: "form-check-label" %>
       </div>
       <div class="form-check form-switch">
-        <%= f.check_box :wend_evening, class: "form-check-input", role: "switch" %>
-        <%= f.label :wend_evening, "Le week-end, en soirée", class: "form-check-label" %>
+        <%= f.check_box :weekend_night, class: "form-check-input", role: "switch" %>
+        <%= f.label :weekend_night, "Le week-end, en soirée", class: "form-check-label" %>
       </div>
     </div>
     <hr>
@@ -47,7 +47,7 @@
       <h2>Préférence de terrain</h2>
       <div class="form-check form-switch">
         <%= f.check_box :outside, class: "form-check-input", role: "switch" %>
-        <%= f.label :outside, "Je joue seulement à l'extérieur.", class: "form-check-label" %>
+        <%= f.label :outside, "Je joue seulement outdoor.", class: "form-check-label" %>
       </div>
     </div>
     <hr>

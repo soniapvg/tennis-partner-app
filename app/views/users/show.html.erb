@@ -28,12 +28,12 @@
   </div>
 
   <div>
-    <% unless @user.description.nil? %>
+    <% unless @user.description == '' %>
       <h3>À propos</h3>
       <p><%= @user.description %></p>
       <hr>
     <% end %>
-    <% unless @user.description.nil? %>
+    <% if @user.week_day || @user.week_night || @user.weekend_day || @user.weekend_night %>
       <h3>Je suis disponible</h3>
       <ul>
         <% if @user.week_day %><li>La semaine, en journée</li><% end %>
@@ -43,15 +43,13 @@
       </ul>
       <hr>
     <% end %>
-    <% unless @user.outside.nil? %>
-      <h3>Préférence de terrain</h3>
-        <% if @user.outside %>
-          <p>Je joue outdoor uniquement.</p>
-        <% else %>
-          <p>Je joue indoor et outdoor.</p>
-        <% end %>
-      <hr>
-    <% end %>    
+    <h3>Préférence de terrain</h3>
+    <% if @user.outside %>
+      <p>Je joue outdoor uniquement.</p>
+    <% else %>
+      <p>Je joue indoor et outdoor.</p>
+    <% end %>
+    <hr>   
 </div>
 
 <% content_for :actions do %>
