@@ -37,6 +37,17 @@ class UsersController < ApplicationController
     @user = current_user
     @partners = User.search(partner_params,@user)
 
+    if @partners.empty?
+      flash[:notice] = "Aucun joueur de ton niveau n'est disponible sur ce créneau. Voici des joueurs disponibles à d'autres moments !"
+      @partners = User.where.not(id: @user.id)
+      @partners = User.filter_level(@partners,@user)
+
+      if @partners.empty?
+        flash[:notice] = "Il n'y a malheureusement aucun joueur de ton niveau inscrit sur notre site. Voici la liste complète des joueurs"
+        @partners = User.where.not(id: @user.id)
+      end
+    end
+
     redirect_to users_display_path(:partners => @partners)
   end
 
@@ -49,6 +60,7 @@ class UsersController < ApplicationController
         iresult = result.to_i
         @partners << User.find(iresult)
       end
+
     end
 
   end
