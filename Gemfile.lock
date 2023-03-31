@@ -94,6 +94,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    brakeman (5.4.1)
     builder (3.2.4)
     capybara (3.38.0)
       addressable
@@ -302,6 +303,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
+  brakeman
   capybara
   debug
   devise
@@ -332,4 +334,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.4.5
+   2.4.6
