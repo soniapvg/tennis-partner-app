@@ -1,0 +1,10 @@
+.avatar,
+.avatar-placeholder {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.avatar-placeholder {
+  color: var(--color-primary-lower);
+  background-color: var(--color-neutral-lowest);
+}

@@ -1,0 +1,39 @@
+body {
+  min-height: 100%;
+  display: flex;
+  z-index: 0;
+}
+
+header {
+  position: fixed;
+  top:0;
+  width: 100%;
+  height: $header-height;
+  z-index: 10;
+}
+
+main {
+  width: 100%;
+  margin-top: $header-height;
+  margin-bottom: $footer-height;
+  z-index: 1;
+
+  & > .container-m {
+    padding: $space-m;
+  }
+
+  & > .container-xl {
+    padding: $space-xl;
+  }
+}
+
+footer {
+  position:fixed;
+  bottom:0;
+  width: 100%;
+  z-index: 10;
+}
+
+form {
+  width: 100%;
+}

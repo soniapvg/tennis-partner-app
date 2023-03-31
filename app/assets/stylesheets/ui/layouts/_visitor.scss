@@ -1,0 +1,21 @@
+header.visitor {
+  gap: 1rem;
+
+  & > div {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+main.visitor {
+  img {
+    margin: auto;
+    padding: 0 $space-m;
+  }
+}
+
+footer.visitor {
+  flex-direction: row;
+  align-items: center;
+}

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  layout 'user'
+  layout 'user_default'
 
 
   # GET /users or /users.json
@@ -23,14 +23,17 @@ class UsersController < ApplicationController
         @chatroom = Chatroom.new
       end
     end
+    render layout: 'layouts/user_actions'
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    render layout: 'layouts/user_actions'
   end
 
   def search
+    render layout: 'layouts/user_actions'
   end
 
   def selection
@@ -39,12 +42,12 @@ class UsersController < ApplicationController
     
 
     if @partners.empty?
-      flash[:notice] = "Aucun joueur de ton niveau n'est disponible sur ce créneau. Voici des joueurs disponibles à d'autres moments !"
+      flash[:filter] = "Aucun joueur de ton niveau n'est disponible sur ce créneau. Voici des joueurs disponibles à d'autres moments !"
       @partners = User.where.not(id: @user.id)
       @partners = User.filter_level(@partners,@user)
 
       if @partners.empty?
-        flash[:notice] = "Il n'y a malheureusement aucun joueur de ton niveau inscrit sur notre site. Voici la liste complète des joueurs"
+        flash[:filter] = "Il n'y a malheureusement aucun joueur de ton niveau inscrit sur notre site. Voici la liste complète des joueurs."
         @partners = User.where.not(id: @user.id)
       end
     end
@@ -70,7 +73,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to edit_user_path(@user), notice: "Modifications enregistrées." }
+        format.html { redirect_to edit_user_path(@user), success: "Modifications enregistrées." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -84,7 +87,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, success: "Le compte a bien été supprimé." }
       format.json { head :no_content }
     end
   end

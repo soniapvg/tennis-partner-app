@@ -1,0 +1,176 @@
+.stack {
+  list-style: none;
+
+  & > *:first-child {
+    margin-block-start: 0;
+  }
+
+  & > div:first-of-type,
+  & > h2:first-of-type {
+    margin-block-start: 0;
+  }
+
+  & > * {
+    margin-block-start: $space-l;
+  }
+
+  & > * > * {
+    margin-block-start: $space-s;
+  }
+}
+
+.chatrooms,
+.users {
+  list-style: none;
+
+  & > * {
+    padding: $space-m;
+    border-bottom: solid $border-size-s;
+    border-color: var(--color-border);
+  }
+
+  & .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $space-m;
+  }
+
+  & .bi::before {
+    vertical-align: 0.125em;
+  }
+
+  & .avatar,
+  & .avatar-placeholder {
+    font-size: 0.5rem;
+    flex: initial;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 1.25rem;
+  }
+
+  & .avatar-placeholder {
+    font-size: 2.5rem;
+  }
+
+  & .infos {
+    flex: auto;
+  }
+  
+  & .header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  & h2 {
+    font-size: $font-size-m;
+  }
+
+  & small {
+    display: inline-flex;
+    color: var(--color-text-muted);
+  }
+}
+
+.chatroom {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: auto;
+  height: 400px;
+  list-style: none;
+  padding: $space-l;
+
+  & * + * {
+    margin-block-end: $space-l;
+  }
+
+  & > * {
+    border-radius: $border-radius;
+    border: $border-style-default;
+    background-color: var(--color-neutral-lowest);
+    box-shadow: $shadow-size-s var(--color-shadow-low);
+    padding: $space-m;
+  }
+
+  & .message-left {
+    margin-right: 5rem;
+  }
+
+  & .message-right {
+    margin-left: 5rem;
+    text-align: right;
+
+    & p {
+      text-align: left;
+    }
+  }
+
+  & small {
+    color: var(--color-primary-higher);
+  }
+}
+
+.profile {
+  & .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: $space-l;
+
+    & h2 {
+      font-size: $font-size-xxl;
+      padding-bottom: $space-xs;
+    }
+
+    & ul {
+      list-style: none;
+      font-size: $font-size-s;
+      line-height: $line-height-m;
+    }
+  }
+
+  & .avatar,
+  & .avatar-placeholder {
+    font-size: 0.5rem;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 3rem;
+  }
+
+  & .avatar-placeholder {
+    font-size: 6rem;
+  }
+
+  & .avatar-placeholder .bi::before {
+    vertical-align: 0.4rem;
+  }
+
+  & h3 {
+    padding-bottom: $space-s;
+  }
+
+  & hr {
+    margin: $space-m 0;
+  }
+
+  & > div > ul {
+    margin-left: $space-m;
+  }
+
+}
+
+.stack-buttons {
+  padding: $space-m;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-xs;
+
+  & > *,
+  & > * > * {
+    width: 100%;
+  }
+}

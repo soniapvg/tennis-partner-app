@@ -1,6 +1,0 @@
-<div class="bar bar-standard bar-footer-secondary">
-  <%= form_with(url: chatrooms_path, method: :post) do |f| %>
-    <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.submit "Organiser une partie", class: "btn btn-primary btn-block" %>
-  <% end %>
-</div>

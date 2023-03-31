@@ -1,0 +1,63 @@
+body {
+  font-family: $font-family-sans;
+  color: var(--color-text-body);
+  font-size: $font-size-m;
+  line-height: $line-height-l;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-display;
+  color: var(--color-text-header);
+  line-height: $line-height-s;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: $font-size-xxl;
+}
+
+h2 {
+  font-size: $font-size-xl;
+}
+
+h3 {
+  font-size: $font-size-l;
+}
+
+h4 {
+  font-size: $font-size-m;
+}
+
+a {
+  color: var(--color-text-header);
+  text-decoration: none;
+  transition: color 200ms;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color-text-muted);
+  }
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+small {
+  font-size: $font-size-xs;
+  line-height: $line-height-m;
+}
+
+.actions h1 {
+  font-family: $font-family-sans;
+  font-size: $font-size-l;
+}

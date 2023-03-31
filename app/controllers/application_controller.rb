@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :require_login
   before_action :configure_permitted_parameters, if: :devise_controller?
+  add_flash_types :info, :filter, :success, :warning
   
   def raise_not_found
-    flash[:alert] = "OLA ! Try again, cette URL n'existe pas"
+    flash[:warning] = "Cette URL n'existe pas."
     redirect_to root_path
   end
 

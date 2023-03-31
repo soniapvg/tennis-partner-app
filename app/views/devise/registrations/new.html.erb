@@ -1,43 +1,57 @@
+<% content_for :back_button do %>
+  <%= link_to welcome_path, class: "btn-back" do %>
+    <i class="bi bi-arrow-left"></i>
+  <% end %>
+<% end %>
+
 <% content_for :title do %>
   <h1 class="title">Inscription</h1>
 <% end %>
 
-<div class="content-padded-with-footer">
-  <p>Veuillez vous inscrire pour accéder aux fonctionnalités. L'inscription est accessible exclusivement aux membres du club.</p>
+<div class="container container-m">
+  <div class="alert alert-filter" role="alert">
+    <p><i class="bi bi-info-circle-fill"></i>Veuillez vous inscrire pour accéder aux fonctionnalités. L'inscription est accessible <strong>exclusivement aux membres du club</strong>.</p>
+  </div>
+</div>
 
-  <%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
+<div class="container-xl">
+  <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "stack" } do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-
-    <%= f.label :first_name, "Prénom" %>
-    <%= f.text_field :first_name %>
-    
-    <%= f.label :last_name, "Nom" %>
-    <%= f.text_field :last_name %>
-
-    <%= f.label :email, "Email" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-
-    <%= f.label :experience, "Niveau de jeu" %>
-    <%= f.select :experience, User.experiences.keys %>
-
-    <%= f.label :password, "Choisissez un mot de passe" %>
-    <% if @minimum_password_length %>
-      <br><em>(<%= @minimum_password_length %> caractères minimum)</em>
-    <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    
-    <%= f.label :password_confirmation, "Confirmer le mot de passe" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-
-    <%= f.label :code_club, "Renseignez le code club" %>
-    <%= f.text_field :code_club %>
-
+    <div>
+      <%= f.label :first_name, "Prénom", class: "form-label" %>
+      <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+    </div>
+    <div>
+      <%= f.label :last_name, "Nom", class: "form-label" %>
+      <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
+    </div>
+    <div>
+      <%= f.label :email, "Email", class: "form-label" %>
+      <%= f.text_field :email, autofocus: true, class: "form-control" %>
+    </div>
+    <div>
+      <%= f.label :experience, "Niveau de jeu", class: "form-label" %>
+      <%= f.select :experience, User.experiences.keys, {}, { :class => "form-select" } %>
+    </div>
+    <div>
+      <%= f.label :password, "Choisissez un mot de passe", class: "form-label" %>
+      <small>(<%= @minimum_password_length %> caractères minimum)</small>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation, "Confirmer le mot de passe", class: "form-label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div>
+      <%= f.label :code_club, "Renseignez le code club", class: "form-label" %>
+      <%= f.text_field :code_club, class: "form-control" %>
+    </div>
   <% end %>
 </div>
 
-<div class="bar bar-standard bar-footer-secondary">
-  <%= button_tag type: :submit, :form => "new_user", class: "btn btn-primary btn-block" do %>
+<% content_for :actions do %>
+  <%= button_tag type: :submit, :form => "new_user", class: "btn btn-primary" do %>
     <span class="icon icon-check"></span>
     Créer mon compte
   <% end %>
-</div>
+<% end %>

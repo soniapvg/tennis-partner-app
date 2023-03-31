@@ -1,0 +1,84 @@
+@import "bootstrap/forms";
+
+.form-control,
+.form-select {
+  background-color: var(--color-neutral-lowest);
+  border: $border-style-default;
+}
+
+// .form-floating {
+//   & .form-control {
+//     height: calc(3.5rem + calc($border-size-s * 2));
+//   }
+
+//   & label {
+//     border: $border-style-default
+//   }
+// }
+
+.form-chatroom {
+  & .form-control {
+    color: var(--color-text-muted);
+    background-color: var(--color-background-footer);
+  }
+
+  & .form-control:focus {
+    color: var(--color-text-body);
+    background-color: var(--color-background-footer);
+    border: $border-style-default;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  & button {
+    border: none;
+    background: none;
+  }
+  
+  & .bi {
+   position: absolute;
+   right: 1.5rem;
+   bottom: 1.5rem;
+  }
+
+  // span[contenteditable]:empty:focus::before,
+  // span[contenteditable]:empty::before {
+  //   content: 'Envoyer un message';
+  // }
+
+  .message-container {
+    width: 100%;
+    display: inline-grid;
+    height: 100%;
+
+    &::after,
+    textarea {
+      font-size: $font-size-m;
+      grid-area: 1 / 1;
+      resize: none;
+    }
+
+    &::after {
+      content: attr(data-value) ' ';
+      visibility: hidden;
+      white-space: pre-wrap;
+    }
+  }
+    
+}
+
+.form-check-input {
+    background-color: var(--color-neutral-low-15);
+    border: $border-size-s solid var(--color-neutral-medium-20);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.form-check-input:focus {
+  border-color: var(--color-primary);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem var(--color-primary-lower);
+}

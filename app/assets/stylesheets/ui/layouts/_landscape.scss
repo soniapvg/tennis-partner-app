@@ -1,0 +1,8 @@
+@include media($default: false) {
+  body,
+  header,
+  footer {
+    max-width: $breakpoint-layout-default;
+    margin:0 auto;
+  }
+}

@@ -1,0 +1,21 @@
+<% content_for :header do %>
+  <header class="default">
+    <%= yield :title %>
+    <%= render 'layouts/switch_theme' %>
+  </header>
+<% end %>
+
+<% content_for :main do %>
+  <main>
+    <%= render 'layouts/alerts' %>
+    <%= yield %>
+  </main>
+<% end %>
+
+<% content_for :footer do %>
+  <footer class="default">
+    <%= render 'layouts/navbar' %>
+  </footer>
+<% end %>
+
+<%= render template: "layouts/application" %>

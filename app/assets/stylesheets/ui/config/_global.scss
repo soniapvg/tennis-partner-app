@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+hr {
+  border: none;
+  border-bottom: $border-style-default;
+}
+
+:root {
+  background-color: var(--color-background-landscape);
+}
+
+body {
+  box-shadow: $shadow-size-l var(--color-shadow-hight);
+}
+
+body,
+main {
+  background-color: var(--color-background-main);
+}
+
+header {
+  background-color: var(--color-background-header);
+}
+
+textarea {
+  resize: vertical;
+}
