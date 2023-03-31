@@ -5,9 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    # @users = User.all
-    @partners = User.where.not(id: current_user.id) 
-
+    @partners = User.where.not(id: current_user.id)
   end
   
   # GET /users/1 or /users/1.json
@@ -54,17 +52,14 @@ class UsersController < ApplicationController
   end
 
   def display
- 
     results = params[:partners]
     @partners = []
     if results
-    results.each do |result|
+      results.each do |result|
         iresult = result.to_i
         @partners << User.find(iresult)
       end
-
     end
-
   end
 
   # PATCH/PUT /users/1 or /users/1.json
