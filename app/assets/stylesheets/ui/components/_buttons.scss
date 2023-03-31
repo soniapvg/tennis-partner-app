@@ -1,6 +1,7 @@
 @import "bootstrap/buttons";
 
 .btn-theme {
+  visibility: hidden;
   cursor: pointer;
 
   & .checkbox {
