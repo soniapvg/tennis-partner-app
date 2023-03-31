@@ -23,10 +23,7 @@ class UserMailer < ApplicationMailer
         @receiver = receiver
         @sender = sender
         @content = content 
-        puts @receiver.email
-        puts @sender.email
-        puts @content
-        puts "*"*60
+        
         #on définit une variable @url qu'on utilisera dans la view d’e-mail
           if Rails.env.production?
             @url = 'https://tennis-club-partner.herokuapp.com/'
