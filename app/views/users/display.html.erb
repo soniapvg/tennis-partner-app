@@ -6,14 +6,6 @@
   <h1 class="title">Résultat de la recherche</h1>
 <% end %>
 
-<% if @partners.empty? %>
-  <div class="content-padded">
-    <p> Aucun joueur de votre niveau ne correspond à vos critères pour le moment :( </p>
-  </div>
-  <div class="bar bar-standard bar-footer-secondary">
-    <%= link_to 'Afficher tous les joueurs', users_path, class: "btn btn-primary btn-block" %>
-  </div>
-<% else %>
   <ul class="table-view">
     <% @partners.each do |partner| %>
       <li class="table-view-cell media">
@@ -33,4 +25,4 @@
       </li>
     <% end %>
   </ul>
-<% end %>
+

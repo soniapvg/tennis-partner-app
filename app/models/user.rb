@@ -49,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def welcome_send
-    UserMailer.welcome_email(self).deliver_now
+    UserMailer.welcome_email(self).deliver_now!
   end
 
   def chatrooms
@@ -85,6 +85,14 @@ class User < ApplicationRecord
       @partners = @partners.select{|partner| (partner.outside === false)}
     end
 
+    @partners = User.filter_level(@partners,user)
+
+    return @partners
+  end
+
+
+  def self.filter_level(partner,user)
+    @partners = partner
     @partners = @partners.select do |partner|
       if user.gender == "Homme"
         if partner.gender == "Homme"
@@ -110,6 +118,7 @@ class User < ApplicationRecord
     return @partners
   end
 
+  
   def has_chatroom_with?(other_user)
     Chatroom.where(user1_id: [self.id, other_user.id], user2_id: [self.id, other_user.id]).exists?
   end
