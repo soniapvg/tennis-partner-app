@@ -100,7 +100,7 @@ class UsersController < ApplicationController
     end
 
     def partner_params
-      params.permit(:gender, :week_day, :week_night, :weekend_day, :weekend_night, :inside, :authenticity_token, :commit, :method, :button)
+      params.permit(:gender, :week_day, :week_night, :weekend_day, :weekend_night, :inside, :authenticity_token, :commit, :method)
     end
 
 end

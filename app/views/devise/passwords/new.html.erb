@@ -1,22 +1,30 @@
 <% content_for :back_button do %>
-  <%= link_to welcome_path, class: "btn-back" do %>
+  <%= link_to new_user_session_path, class: "btn-back" do %>
     <i class="bi bi-arrow-left"></i>
   <% end %>
 <% end %>
 
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
+<% content_for :title do %>
+  <h1 class="title">Mot de passe oublié ?</h1>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="container-xl">
+  <%= form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "stack" } do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div>
+      <%= f.label :email, "Votre email", class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+    <%= f.button type: :submit, class: "btn btn-primary" do %>
+      <i class="bi bi-envelope-fill"></i>
+      Recevoir l'email de réinitialisation
+    <% end %>
+  <% end %>
+</div>
+
+<% content_for :actions do %>
+  <%= link_to "Inscription", new_user_registration_path,
+    class: "btn btn-outline-primary" %>
+  <%= link_to "Connexion", new_user_session_path,
+      class: "btn btn-outline-primary" %>
+<% end %>
