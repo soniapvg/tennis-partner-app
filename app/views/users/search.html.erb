@@ -58,8 +58,8 @@
 </div>
 
 <% content_for :actions do %>
-  <%= button_tag type: :submit, :form => "search", class: "btn btn-primary" do %>
-    <i class="bi bi-check-lg"></i>
+  <%= button_tag type: :submit, :name => "commit", :form => "search", class: "btn btn-primary" do %>
+    <i class="bi bi-search"></i>
     Appliquer les filtres
   <% end %>
 <% end %>

@@ -6,11 +6,11 @@ ruby "3.0.0"
 #Liste de nos gems personnalisés !
 gem 'table_print'
 gem 'faker'
-
 gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe', "~> 5.53"
 gem "aws-sdk-s3"
+gem 'ransack'
 
 group :development do
   gem 'better_errors'

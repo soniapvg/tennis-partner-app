@@ -8,12 +8,6 @@
   <h1 class="title">Connexion</h1>
 <% end %>
 
-<div class="container container-m">
-  <div class="alert alert-filter" role="alert">
-    <p><i class="bi bi-info-circle-fill"></i>Veuillez vous connecter pour accéder aux fonctionnalités de l'app.</p>
-  </div>
-</div>
-
 <div class="container-xl">
   <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "stack" } do |f| %>
     <div>
