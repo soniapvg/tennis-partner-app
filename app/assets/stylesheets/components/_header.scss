@@ -5,10 +5,6 @@ header {
   border-bottom: $border-style-default;
   font-size: $font-size-xxl;
   padding: $space-l;
-
-  & > * {
-    // align-self: center;
-  }
 }
 
 .default {
@@ -16,14 +12,21 @@ header {
 }
 
 header.actions {
-  justify-content: space-between;
-  gap: 0.5rem;
+  & > a:first-child {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-  & .container {
+  & .title {
     display: flex;
     flex-direction: row;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
   & .avatar {

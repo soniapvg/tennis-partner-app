@@ -9,7 +9,7 @@
 <% end %>
 
 <% content_for :title do %>
-  <%= link_to user_path(@other_user), class: "container" do %>
+  <%= link_to user_path(@other_user), class: "title" do %>
     <% if @other_user.avatar.attached? %>
       <%= image_tag @other_user.avatar, alt: 'Photo de profil', class: "avatar" %>
     <% else %>
@@ -17,7 +17,7 @@
         <i class="bi bi-person-circle"></i>
       </div>
     <% end %>
-    <h1 class="title"><%= @other_user.first_name %> <%= @other_user.last_name %></h1>
+    <h1><%= @other_user.first_name %> <%= @other_user.last_name %></h1>
   <% end %>
 <% end %>
 

@@ -15,7 +15,6 @@ Web app mobile dédiée à la **recherche de partenaires de jeu** parmi les memb
 - Recherche des membres du club **par critères** (filtres personnalisables sur les disponibilités, la préférence de terrain, le genre + filtre de niveau de jeu appliqué automatiquement)
 - Recherche des membres **par nom**
 - Échanger avec un membre via **messagerie intégrée**
-- Mode écran clair/sombre
 
 ## ⚒ Stack technique
 
