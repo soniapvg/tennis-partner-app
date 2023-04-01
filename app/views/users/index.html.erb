@@ -15,23 +15,6 @@
 
 <ul class="users">
   <% @partners.each do |partner| %>
-    <li>
-      <%= link_to user_path(partner.id), class: "container" do %>
-        <% if partner.avatar.attached? %>
-          <%= image_tag partner.avatar, alt: 'Photo de profil', class: "avatar" %>
-        <% else %>
-          <div class="avatar-placeholder">
-            <i class="bi bi-person-circle"></i>
-          </div>
-        <% end %>
-        
-        <div class="infos">
-          <div class="header">
-            <h2><%= partner.first_name %> <%= partner.last_name %></h2>
-          </div>
-          <small><%= "#{partner.experience}" if partner.experience -%><%= ", " if partner.age && partner.experience -%><%= "#{partner.age} ans" if partner.age %></small>
-        </div>
-      <% end %>
-    </li>
+    <%= render "list_item", partner: partner %>
   <% end %>
 </ul>

@@ -7,9 +7,13 @@
     <% @chatrooms.each do |chatroom| %>
       <li>
         <%= link_to chatroom_path(current_user.common_chatroom_id_with(chatroom.other_user(current_user))), class: "container" do %>
-          <div class="avatar-placeholder">
-            <i class="bi bi-person-circle"></i>
-          </div>
+          <% if chatroom.other_user(current_user).avatar.attached? %>
+            <%= image_tag chatroom.other_user(current_user).avatar, alt: 'Photo de profil', class: "avatar" %>
+          <% else %>
+            <div class="avatar-placeholder">
+              <i class="bi bi-person-circle"></i>
+            </div>
+          <% end %>
           <div class="infos">
             <div class="header">
               <h2><%= chatroom.other_user(current_user).first_name %> <%= chatroom.other_user(current_user).last_name %></h2>

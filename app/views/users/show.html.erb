@@ -91,7 +91,10 @@
       
       <%= form_with(url: chatrooms_path, method: :post) do |f| %>
         <%= f.hidden_field :user_id, value: @user.id %>
-        <%= f.submit "Organiser une partie", class: "btn btn-primary" %>
+        <%= f.button type: :submit, class: "btn btn-primary" do %>
+          <i class="bi bi-chat-dots-fill"></i>
+          Organiser une partie
+        <% end %>
       <% end %>
       
     <% end %>

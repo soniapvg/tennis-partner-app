@@ -5,24 +5,24 @@
 @import "bootstrap/mixins";
 
 // Configuration
-@import "ui/config/mixins";
-@import "ui/config/variables";
-@import "ui/config/global";
-@import "ui/config/typography";
+@import "config/mixins";
+@import "config/variables";
+@import "config/global";
+@import "config/typography";
 
 // Components
-@import "ui/components/header";
-@import "ui/components/footer";
-@import "ui/components/stack";
-@import "ui/components/buttons";
-@import "ui/components/forms";
-@import "ui/components/alert";
-@import "ui/components/carousel";
-@import "ui/components/avatar";
+@import "components/header";
+@import "components/footer";
+@import "components/stack";
+@import "components/buttons";
+@import "components/forms";
+@import "components/alert";
+@import "components/carousel";
+@import "components/avatar";
 
 // Layouts
-@import "ui/layouts/global";
-@import "ui/layouts/default";
-@import "ui/layouts/actions";
-@import "ui/layouts/visitor";
-@import "ui/layouts/landscape";
+@import "layouts/global";
+@import "layouts/default";
+@import "layouts/actions";
+@import "layouts/visitor";
+@import "layouts/landscape";
