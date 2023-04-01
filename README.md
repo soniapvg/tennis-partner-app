@@ -28,10 +28,10 @@ Web app mobile dédiée à la **recherche de partenaires de jeu** parmi les memb
 
 ### Configuration requise
 
-- [Ruby 3.0.0](https://www.ruby-lang.org)
-- [Rails version 7.0.4 or up](https://rubyonrails.org)
+- [Ruby (version minimum 3.0.0)](https://www.ruby-lang.org)
+- [Rails (version minimum 7.0.4)](https://rubyonrails.org)
 - [Bundler gem](https://bundler.io)
-- [PostgreSQL version 9.3 or up](https://www.postgresql.org)
+- [PostgreSQL (version minimum 9.3)](https://www.postgresql.org)
 
 ### Installation via CLI
 - Cloner le repo `$ git clone https://github.com/soniapvg/tennis-partner-app.git`
@@ -53,7 +53,7 @@ Cette web app a été réalisée dans le cadre de la formation **Developpeur Web
 
 L'ensemble de nos documents de travail et gestion du projet sont sur le [Notion de l'équipe](https://soniapavageau.notion.site/Tennis-Partner-App-6574cdda25824fd190b889eb17453a27).
 
-Notre [environnement test](https://tennis-club-partner-staging.herokuapp.com), à toutes fins utiles.
+➜ lien vers notre [environnement test](https://tennis-club-partner-staging.herokuapp.com), à toutes fins utiles
 
 ### L'équipe de devs en herbe
 
