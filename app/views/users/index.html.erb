@@ -7,7 +7,15 @@
     <i class="bi bi-filter"></i>
     Filtrer les membres
   <% end %>
+  <%= search_form_for @q, remote: true, class: "input-search" do |f| %>
+    <%= f.search_field :first_name_or_last_name_i_cont, placeholder: "Recherche par nom", class: "form-control" %>
+    <%= f.button type: :submit, class: "btn btn-outline-primary" do %>
+      <i class="bi bi-search"></i>
+    <% end %>
+  <% end %>
   <%# button_to '', class: "btn search-input" do %>
+    <%# <input type="text" placeholder="Search..">
+    <button type="submit"><i class="fa fa-search"></i></button> %>
     <%# <i class="bi bi-search"></i>
     Rechercher un membre %>
   <%# end %>
