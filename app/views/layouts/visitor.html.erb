@@ -2,14 +2,14 @@
   <header class="actions visitor">
     <%= yield :back_button %>
     <%= yield :title %>
-    <%= render 'layouts/switch_theme' %>
+    <%# render 'layouts/switch_theme' %>
   </header>
 <% end %>
 
 <% content_for :main do %>
   <main class="visitor">
-    <%= render 'layouts/alerts' %>
     <%= yield %>
+    <%= render 'layouts/alerts' %>
   </main>
 <% end %>
 
