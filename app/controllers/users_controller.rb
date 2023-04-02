@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  layout 'user'
-  
+  layout 'user_default'
+
 
   # GET /users or /users.json
   def index
-    # @users = User.all
-    @partners = User.where.not(id: current_user.id) 
-
+    @partners = User.where.not(id: current_user.id)
+    @q = @partners.ransack(params[:q])
+    @partners = @q.result(distinct: true)
   end
-
-
-
+  
   # GET /users/1 or /users/1.json
   def show
     if current_user != @user
@@ -23,41 +21,53 @@ class UsersController < ApplicationController
         @chatroom = Chatroom.new
       end
     end
+    render layout: 'layouts/user_actions'
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    render layout: 'layouts/user_actions'
   end
 
   def search
+    render layout: 'layouts/user_actions'
   end
 
   def selection
     @user = current_user
-    @partners = User.search(partner_params,@user)
+    @partners = User.search(partner_params, @user)
+
+    if @partners.empty?
+      flash[:filter] = "Aucun joueur de ton niveau n'est disponible sur ce créneau. Voici des joueurs disponibles à d'autres moments !"
+      @partners = User.where.not(id: @user.id)
+      @partners = User.filter_level(@partners, @user)
+
+      if @partners.empty?
+        flash[:filter] = "Il n'y a malheureusement aucun joueur de ton niveau inscrit sur notre site. Voici la liste complète des joueurs."
+        @partners = User.where.not(id: @user.id)
+      end
+    end
 
     redirect_to users_display_path(:partners => @partners)
   end
 
   def display
- 
     results = params[:partners]
     @partners = []
     if results
-    results.each do |result|
+      results.each do |result|
         iresult = result.to_i
         @partners << User.find(iresult)
       end
     end
-
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to edit_user_path(@user), notice: "Modifications enregistrées." }
+        format.html { redirect_to user_path(@user), success: "Modifications enregistrées." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,10 +81,12 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, success: "Le compte a bien été supprimé." }
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -88,6 +100,7 @@ class UsersController < ApplicationController
     end
 
     def partner_params
-      params.permit(:gender, :week_day, :week_evening, :wend_day, :wend_evening, :inside, :authenticity_token, :commit, :method)
+      params.permit(:gender, :week_day, :week_night, :weekend_day, :weekend_night, :inside, :authenticity_token, :commit, :method)
     end
+
 end

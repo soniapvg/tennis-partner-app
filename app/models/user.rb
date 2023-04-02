@@ -12,8 +12,7 @@ class User < ApplicationRecord
   has_many :chatrooms_as_user2, class_name: 'Chatroom', foreign_key: 'user2_id', dependent: :destroy
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
   has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id', dependent: :destroy
-  has_many :sent_invitations, class_name: 'Invitation', foreign_key: 'sender_id', dependent: :destroy
-  has_many :received_invitations, class_name: 'Invitation', foreign_key: 'receiver_id', dependent: :destroy
+
   
   enum experience: { 
     'Débutant': 1, 
@@ -41,7 +40,7 @@ class User < ApplicationRecord
     '-15': 23,
     '-30': 24
   }
-  enum gender: { femme: 1, homme: 2, autre: 3 }
+  enum gender: { Femme: 1, Homme: 2, Autre: 3 }
 
   def age
     if date_of_birth.present?
@@ -50,10 +49,9 @@ class User < ApplicationRecord
   end
 
   def welcome_send
-    UserMailer.welcome_email(self).deliver_now
+    UserMailer.welcome_email(self).deliver_now!
   end
 
-  
   def chatrooms
     chatrooms_as_user1.or(chatrooms_as_user2)
   end
@@ -63,19 +61,19 @@ class User < ApplicationRecord
 
     case partner_params[:gender]
     when "Femme"
-      @partners = @partners.select{|partner| (partner.gender == "femme")|| (partner.gender == "autre" ) }
+      @partners = @partners.select{|partner| (partner.gender == "Femme")|| (partner.gender == "Autre" ) }
     when "Homme"
-      @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) }
+      @partners = @partners.select{|partner| (partner.gender == "Homme")|| (partner.gender == "Autre" ) }
     else
-      @partners = @partners.select{|partner| (partner.gender == "homme")|| (partner.gender == "autre" ) || (partner.gender == "femme" ) }
+      @partners = @partners.select{|partner| (partner.gender == "Homme")|| (partner.gender == "Autre" ) || (partner.gender == "Femme" ) }
     end
     
-    if partner_params[:week_day]== "1" || partner_params[:week_evening]== "1" || partner_params[:wend_day]== "1" || partner_params[:wend_evening]== "1"
+    if partner_params[:week_day]== "1" || partner_params[:week_night]== "1" || partner_params[:weekend_day]== "1" || partner_params[:weekend_night]== "1"
       disponibilities = []
       disponibilities << :week_day if partner_params[:week_day]== "1"
-      disponibilities << :week_night if partner_params[:week_evening]== "1"
-      disponibilities << :weekend_day if partner_params[:wend_day]== "1" 
-      disponibilities << :weekend_night if partner_params[:wend_evening]== "1"
+      disponibilities << :week_night if partner_params[:week_night]== "1"
+      disponibilities << :weekend_day if partner_params[:weekend_day]== "1" 
+      disponibilities << :weekend_night if partner_params[:weekend_night]== "1"
       
       @partners = @partners.select do |partner|
         disponibilities.any? { |disponibility| partner[disponibility] }
@@ -87,19 +85,27 @@ class User < ApplicationRecord
       @partners = @partners.select{|partner| (partner.outside === false)}
     end
 
+    @partners = User.filter_level(@partners,user)
+
+    return @partners
+  end
+
+
+  def self.filter_level(partner,user)
+    @partners = partner
     @partners = @partners.select do |partner|
-      if user.gender == "homme"
-        if partner.gender == "homme"
+      if user.gender == "Homme"
+        if partner.gender == "Homme"
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 3) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 3)
-        elsif partner.gender == "femme" 
+        elsif partner.gender == "Femme" 
           partner.experience_before_type_cast >= user.experience_before_type_cast && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
         else
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
         end
-      elsif user.gender == "femme"
-        if partner.gender == "femme"
+      elsif user.gender == "Femme"
+        if partner.gender == "Femme"
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 3) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 3)
-        elsif partner.gender == "homme" 
+        elsif partner.gender == "Homme" 
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= user.experience_before_type_cast
         else
           partner.experience_before_type_cast >= (user.experience_before_type_cast - 4) && partner.experience_before_type_cast <= (user.experience_before_type_cast + 4)
@@ -112,6 +118,7 @@ class User < ApplicationRecord
     return @partners
   end
 
+  
   def has_chatroom_with?(other_user)
     Chatroom.where(user1_id: [self.id, other_user.id], user2_id: [self.id, other_user.id]).exists?
   end
@@ -120,9 +127,18 @@ class User < ApplicationRecord
     Chatroom.where(user1: self, user2: other_user).or(Chatroom.where(user1: other_user, user2: self)).first
   end
 
-  def invitations
-    sent_invitations.or(received_invitations)
+  def messages
+    sent_messages.or(received_messages)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w(last_name first_name experience)
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w(first_name_or_last_name)
+  end
+
 
 end
 

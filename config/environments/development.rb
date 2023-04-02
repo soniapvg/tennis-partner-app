@@ -4,13 +4,6 @@ require 'dotenv-rails'
 Dotenv.load('.env')
 
 Rails.application.configure do
-
-
-  # Rajouter pour répondre aux conditions d'installations de Devise, à désactiver au parametrage du mailer : 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  #LISEZ MOI PLS 
-
-  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -84,7 +77,7 @@ Rails.application.configure do
     config.action_mailer.smtp_settings = {
       :user_name => ENV['SENDGRID_LOGIN'],
       :password => ENV['SENDGRID_PWD'],
-      :domain => 'tennis-partner.com',
+      :domain => 'tennis-club-partner.herokuapp.com',
       :address => 'smtp.sendgrid.net',
       :port => 587,
       :authentication => :plain,
@@ -92,5 +85,7 @@ Rails.application.configure do
     }
   
     config.action_mailer.perform_deliveries = true
+
+    config.action_mailer.default_url_options = { :host => 'http://localhost:3000' }
 
 end

@@ -1,0 +1,80 @@
+@import "bootstrap/buttons";
+
+.btn {
+  padding: $space-xs;
+  color: var(--color-neutral-highest);
+  border: none;
+  border-radius: $border-radius;
+  background-color: var(--color-neutral-medium);
+
+  & .bi {
+    padding: 0 $space-xxs;
+  }
+}
+
+.btn-primary {
+  color: var(--color-neutral-lowest);
+  border: none;
+  border-radius: $border-radius;
+  background-color: var(--color-primary);
+}
+
+.btn-outline-primary {
+  color: var(--color-primary);
+  border: var(--color-primary) solid $border-size-s;
+  border-radius: $border-radius;
+  background: none;
+}
+
+.btn-outline-primary:hover {
+  color: var(--color-neutral-lowest);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-warning,
+.btn-warning:hover {
+  color: var(--color-neutral-lowest);
+  border: none;
+  border-radius: $border-radius;
+  background-color: var(--color-tertiary-higher);
+}
+
+.btn-theme {
+  display: none;
+  cursor: pointer;
+
+  & .checkbox {
+    opacity: 0;
+    position: absolute;
+  }
+  
+  & .label {
+    width: 38px;
+    height: 20px;
+    background-color: #111;
+    display: flex;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    position: relative;
+    transform: scale(1.5);
+    font-size: 12px;
+  }
+  
+  & .ball {
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+  }
+  
+  & .checkbox:checked + .label .ball{
+    transform: translateX(24px);
+  }
+}

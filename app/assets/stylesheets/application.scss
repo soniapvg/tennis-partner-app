@@ -1,9 +1,29 @@
-@import "mvp/variables.scss";
-@import "mvp/ratchet.scss";
-@import "mvp/elements.scss";
-@import "mvp/components.scss";
-@import "mvp/utilities.scss";
+// Bootstrap
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/variables-dark";
+@import "bootstrap/mixins";
 
-@media screen and (min-width: 600px) {
-  @import "mvp/landscape.scss";
-}
+// Configuration
+@import "config/mixins";
+@import "config/variables";
+@import "config/global";
+@import "config/typography";
+
+// Components
+@import "components/header";
+@import "components/footer";
+@import "components/stack";
+@import "components/icons";
+@import "components/buttons";
+@import "components/forms";
+@import "components/alert";
+@import "components/carousel";
+@import "components/avatar";
+
+// Layouts
+@import "layouts/global";
+@import "layouts/default";
+@import "layouts/actions";
+@import "layouts/visitor";
+@import "layouts/landscape";

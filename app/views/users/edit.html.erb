@@ -1,85 +1,82 @@
 <% content_for :back_button do %>
-  <%= link_to '', parameters_path, class: "icon icon-left-nav pull-left" %>
+  <%= link_to user_path(current_user), class: "btn-back" do %>
+    <i class="bi bi-arrow-left"></i>
+  <% end %>
 <% end %>
 
 <% content_for :title do %>
-  <h1 class="title">Mes paramètres de joueur</h1>
+  <h1 class="title">Éditer mon profil</h1>
 <% end %>
 
-<div class="content-padded-with-footer">
+<div class="container-xl profile">
 
-  <div class="card text-centered">
-    <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar, alt: 'Photo de profil', class: "avatar-m" %>
-    <% else %>
-      <div class="avatar-placeholder-m">
-        <span class="material-icons-round">person</span>
+  <%= form_tag user_avatars_path(@user), multipart: true, class: "stack" do %>
+    <h2>Choisissez votre photo de profil</h2>
+    <%= file_field_tag :avatar, class: "form-control" %>
+    <%= submit_tag "Enregistrer", class: "btn btn-outline-primary" %>
+  <% end %>
+
+  <%= form_with model: @user, local: true, :id => "edit_user", html: { class: "stack" } do |f| %>
+    <hr>
+    <div>
+      <h2>Votre niveau de jeu</h2>
+      <%= f.select :experience, User.experiences.keys, {}, { :class => "form-select" } %>
+    </div>
+    <hr>
+    <div>
+      <h2>Vos disponibilités</h2>
+      <div class="form-check form-switch">
+        <%= f.check_box :week_day, class: "form-check-input", role: "switch" %>
+        <%= f.label :week_day, "La semaine, en journée", class: "form-check-label" %>
       </div>
-    <% end %>
-
-    <h2 class="margin-bottom-s">Changer d'avatar ?</h2>
-    <%= form_tag user_avatars_path(@user), multipart: true do %>
-      <%= file_field_tag :avatar, class: "btn margin-bottom-s" %>
-      <%= submit_tag "mettre à jour", class: "btn margin-bottom-s" %>
-    <% end %>
-  </div>
-
-  <%= form_with model: @user, local: true, :id => "edit_user" do |form| %>
-    <div class="form-group">
-      <%= form.label :prénom %>
-      <%= form.text_field :first_name, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= form.label :nom %>
-      <%= form.text_field :last_name, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= form.label :date_de_naissance %>
-      <%= form.date_field :date_of_birth, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= form.label :genre %>
-      <%= form.select :gender, User.genders.keys, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= form.label :Niveau_de_jeu %>
-      <%= form.select :experience, User.experiences.keys, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= form.label :description %>
-      <%= form.text_area :description, class: "form-control" %>
-    </div>
-
-    <fieldset>
-      <legend>Disponibilités</legend>
-      <div>
-        <%= form.check_box :week_day %>
-        <label>La semaine, en journée</label>
+      <div class="form-check form-switch">
+        <%= f.check_box :week_night, class: "form-check-input", role: "switch" %>
+        <%= f.label :week_night, "La semaine, en soirée", class: "form-check-label" %>
       </div>
+      <div class="form-check form-switch">
+        <%= f.check_box :weekend_day, class: "form-check-input", role: "switch" %>
+        <%= f.label :weekend_day, "Le week-end, en journée", class: "form-check-label" %>
+      </div>
+      <div class="form-check form-switch">
+        <%= f.check_box :weekend_night, class: "form-check-input", role: "switch" %>
+        <%= f.label :weekend_night, "Le week-end, en soirée", class: "form-check-label" %>
+      </div>
+    </div>
+    <hr>
+    <div>
+      <h2>Préférence de terrain</h2>
+      <div class="form-check form-switch">
+        <%= f.check_box :outside, class: "form-check-input", role: "switch" %>
+        <%= f.label :outside, "Je joue seulement outdoor.", class: "form-check-label" %>
+      </div>
+    </div>
+    <hr>
+    <div>
+      <h2>À propos de vous</h2>
+      <%= f.text_area :description, rows: 5, class: "form-control", placeholder: "Vous préférez le dur ou la terre battue ? Vous devez jongler avec la saison de ski ou avec les emplois du temps de vos enfants ? Partagez ces informations ici !" %>
       <div>
-        <%= form.check_box :week_night %>
-        <label>La semaine, en soirée</label>
+        <%= f.label :first_name, "Votre prénom", class: "form-label" %>
+        <%= f.text_field :first_name, class: "form-control" %>
       </div>
       <div>
-        <%= form.check_box :weekend_day %>
-        <label>Le week-end, en journée</label>
+        <%= f.label :last_name, "Votre nom", class: "form-label" %>
+        <%= f.text_field :last_name, class: "form-control" %>
       </div>
       <div>
-        <%= form.check_box :weekend_night %>
-        <label>Le week-end, en soirée</label>
+        <%= f.label :date_of_birth, "Votre date de naissance", class: "form-label" %>
+        <%= f.date_field :date_of_birth, class: "form-control" %>
       </div>
-    </fieldset>
-
-    <div class="form-group">
-      <%= form.label :"Je_joue_seulement_à_l'extérieur : " %>
-      <%= form.check_box :outside %>
+      <div>
+        <%= f.label :genre, "Votre genre", class: "form-label" %>
+        <%= f.select :gender, User.genders.keys, {}, { :class => "form-select" } %>
+      </div>
     </div>
   <% end %>
 </div>
 
-<div class="bar bar-standard bar-footer-secondary">
-  <%= button_tag type: :submit, :form => "edit_user", class: "btn btn-primary btn-block" do %>
+<% content_for :actions do %>
+  <%= button_tag type: :submit, :form => "edit_user", class: "btn btn-primary" do %>
     <span class="icon icon-check"></span>
     Enregistrer les modifications
   <% end %>
-</div>
+<% end %>

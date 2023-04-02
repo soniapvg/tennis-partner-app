@@ -1,5 +1,22 @@
-<% content_for :navbar do %>
-  <%= render 'layouts/navbar_visitor' %>
+<% content_for :header do %>
+  <header class="actions visitor">
+    <%= yield :back_button %>
+    <%= yield :title %>
+    <%# render 'layouts/switch_theme' %>
+  </header>
+<% end %>
+
+<% content_for :main do %>
+  <main class="visitor">
+    <%= yield %>
+    <%= render 'layouts/alerts' %>
+  </main>
+<% end %>
+
+<% content_for :footer do %>
+  <footer class="actions visitor">
+    <%= yield :actions %>
+  </footer>
 <% end %>
 
 <%= render template: "layouts/application" %>

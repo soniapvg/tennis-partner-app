@@ -1,0 +1,101 @@
+footer.default,
+footer.action-chatroom {
+  background-color: var(--color-background-footer);
+  font-size: $font-size-xs;
+  box-shadow: $shadow-size-l var(--color-shadow-low);
+}
+
+footer.default {
+  padding: 0 $space-m;
+  font-size: $font-size-xs;
+
+  & nav,
+  & .container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: $space-s;
+    align-items: stretch;
+  }
+
+  & nav a {
+    width: 4rem;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid $border-size-m var(--color-neutral-lowest);
+
+    &.active {
+      color: var(--color-primary);
+      border-color: var(--color-primary-lower);
+    }
+  }
+
+  & .bi {
+    font-size: $font-size-xxl;
+    line-height: $font-size-xxl;
+  }
+
+  & .avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+  }
+}
+
+footer.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // box-shadow: var(--color-primary-lowest) 0 -0.5rem 1rem 1rem;
+  background-color: var(--color-background-main);
+  
+  & .btn {
+    margin: $space-m;
+  }
+}
+
+footer.action-chatroom {
+  padding: $space-m;
+  border-top: $border-style-default;
+
+  & .container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  & .bi {
+    font-size: $font-size-xxl;
+    line-height: $font-size-xxl;
+  }
+}
+
+footer.actions {
+  padding: $space-m;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xxs;
+  align-items: stretch;
+  // box-shadow: var(--color-primary-lowest) 0 -0.5rem 1rem 1rem;
+  background-color: var(--color-background-main);
+  
+  & .btn {
+    font-size: 0.9rem;
+    margin: 0;
+    width: 100%;
+  }
+
+  & .container {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: row;
+    justify-content: center;
+
+    & > * {
+      width: 100%;
+    }
+  }
+}

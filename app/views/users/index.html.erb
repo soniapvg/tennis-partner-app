@@ -1,27 +1,22 @@
-<% content_for :back_button do %>
-  <%= link_to '', users_search_path, class: "icon icon-left-nav pull-left" %>
-<% end %>
-
 <% content_for :title do %>
-  <h1 class="title">Tous les joueurs du club</h1>
+  <h1 class="title">Membres du club</h1>
 <% end %>
 
-<ul class="table-view">
+<div class="stack-buttons">
+  <%= link_to users_search_path, class: "btn btn-outline-primary" do %>
+    <i class="bi bi-filter"></i>
+    Filtrer les membres
+  <% end %>
+  <%= search_form_for @q, remote: true, class: "input-search" do |f| %>
+    <%= f.search_field :first_name_or_last_name_i_cont, placeholder: "Recherche par nom", class: "form-control" %>
+    <%= f.button type: :submit, class: "btn btn-outline-primary" do %>
+      <i class="bi bi-search"></i>
+    <% end %>
+  <% end %>
+</div>
+
+<ul class="users">
   <% @partners.each do |partner| %>
-    <li class="table-view-cell media">
-      <%= link_to user_path(partner.id), class: "navigate-right" do %>
-        <% if partner.avatar.attached? %>
-          <%= image_tag partner.avatar, alt: 'Photo de profil', class: "media-object pull-left avatar-s" %>
-        <% else %>
-          <div class="media-object pull-left avatar-placeholder-s">
-            <span class="material-icons-round">person</span>
-          </div>
-        <% end %>
-        <div class="media-body">
-          <%= partner.first_name %> <%= partner.last_name %>
-          <p><%= partner.experience %></p>
-        </div>
-      <% end %>
-    </li>
+    <%= render "list_item", partner: partner %>
   <% end %>
 </ul>

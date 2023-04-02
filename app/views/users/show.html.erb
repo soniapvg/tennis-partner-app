@@ -1,3 +1,104 @@
-<%= render "user" %>
+<% content_for :back_button do %>
+  <%= link_to root_path, class: "btn-back" do %>
+    <i class="bi bi-arrow-left"></i>
+  <% end %>
+<% end %>
 
-<%= render @have_chatroom ? "chatrooms/forms/open" : "chatrooms/forms/create" %>
+<% content_for :title do %>
+  <h1 class="title"><%= "Mon " if @user == current_user %>Profil</h1>
+<% end %>
+
+<div class="container-xl profile">
+  <div class="header">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, alt: 'Photo de profil', class: "avatar" %>
+    <% else %>
+      <div class="avatar-placeholder">
+        <i class="bi bi-person-circle"></i>
+      </div>
+    <% end %>
+    <div>
+      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+      <ul>
+        <% if @user.description %><li><%= @user.experience %></li><% end %>
+        <% unless @user.gender == "Autre" %><li><%= @user.gender %></li><% end %>
+        <% if @user.age %><li><%= @user.age %> ans</li><% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <% unless @user.description == '' %>
+      <h3>À propos</h3>
+      <p><%= @user.description %></p>
+      <hr>
+    <% end %>
+    <% if @user.week_day || @user.week_night || @user.weekend_day || @user.weekend_night %>
+      <h3>Je suis disponible</h3>
+      <ul>
+        <% if @user.week_day %><li>La semaine, en journée</li><% end %>
+        <% if @user.week_night %><li>La semaine, en soirée</li><% end %>
+        <% if @user.weekend_day %><li>Le week-end, en journée</li><% end %>
+        <% if @user.weekend_night %><li>Le week-end, en soirée</li><% end %>
+      </ul>
+      <hr>
+    <% end %>
+    <h3>Préférence de terrain</h3>
+    <% if @user.outside %>
+      <p>Je joue outdoor uniquement.</p>
+    <% else %>
+      <p>Je joue indoor et outdoor.</p>
+    <% end %>
+    <hr>   
+</div>
+
+<% content_for :actions do %>
+
+  <% if @user == current_user %>
+
+    <%= link_to edit_user_path(current_user), class: "btn btn-primary" do %>
+      <i class="bi bi-pencil-square"></i>
+      Éditer mon profil
+    <% end %>
+    <div class="container">
+      <%= link_to edit_user_registration_path, class: "btn btn-outline-primary" do %>
+        <i class="bi bi-gear-fill"></i>
+        Gérer mon compte
+      <% end %>
+      <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" do %>
+        <i class="bi bi-box-arrow-right"></i>
+        Me déconnecter
+      <% end %>
+    </div>
+
+  <% else %>
+
+    <% if @have_chatroom %>
+
+      <% if @chatroom.messages.present? %>
+        <%= link_to chatroom_path(@chatroom), class: "btn btn-primary" do %>
+          <i class="bi bi-chat-dots-fill"></i>
+          Ouvrir la conversation
+        <% end %>
+      <% else %>
+        <%= link_to chatroom_path(@chatroom), class: "btn btn-primary" do %>
+          <i class="bi bi-chat-dots-fill"></i>
+          Organiser une partie
+        <% end %>
+      <% end %>
+      
+    <% else %>
+      
+      <%= form_with(url: chatrooms_path, method: :post) do |f| %>
+        <%= f.hidden_field :user_id, value: @user.id %>
+        <%= f.button type: :submit, class: "btn btn-primary" do %>
+          <i class="bi bi-chat-dots-fill"></i>
+          Organiser une partie
+        <% end %>
+      <% end %>
+      
+    <% end %>
+
+  <% end %>
+
+<% end %>

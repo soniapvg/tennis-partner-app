@@ -1,6 +1,4 @@
 class MessagesController < ApplicationController
-  
-
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = @chatroom.messages.new(message_params)
@@ -9,7 +7,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to @chatroom
     else
-      flash[:error] = "Error sending message"
+      flash[:warning] = "Une erreur est survenue à l'envoi du message."
       redirect_to @chatroom
     end
   end
