@@ -1,8 +1,5 @@
 require 'rails_helper'
 
-
-ActionMailer::Base.perform_deliveries = false
-
 RSpec.describe User, type: :model do
 
   before(:each) do 
@@ -152,8 +149,8 @@ RSpec.describe User, type: :model do
 
       context 'when searching for partners with availability filter' do
         it 'returns all partners with at least one the selected availabilities' do
-          expect(User.search({ week_day: '1', wend_day: '1'}, user1)).to include(user4, user6)
-          expect(User.search({ week_day: '1', wend_day: '1' }, user1)).not_to include(user2, user5, user1, user3)
+          expect(User.search({ week_day: '1', weekend_day: '1'}, user1)).to include(user4, user6)
+          expect(User.search({ week_day: '1', weekend_day: '1' }, user1)).not_to include(user2, user5, user1, user3)
         end
       end
 

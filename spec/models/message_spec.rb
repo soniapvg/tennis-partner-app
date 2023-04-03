@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Message, type: :model do
 
   before(:each) do 
-    ActionMailer::Base.perform_deliveries = false
+    
 
     @user =FactoryBot.create(:user) 
     @other_user=FactoryBot.create(:user)
