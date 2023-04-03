@@ -130,7 +130,7 @@ RSpec.describe User, type: :model do
       user2 =FactoryBot.create(:user, gender: 'Femme', experience: '15/2' )
       user3 =FactoryBot.create(:user, gender: 'Autre', experience: '15/3', week_night: false, weekend_night: false, week_day: false, weekend_day: false)
       user4 =FactoryBot.create(:user, gender: 'Homme', experience: '15', week_night: false, weekend_night: false, week_day: true, weekend_day: true)
-      user5 =FactoryBot.create(:user, gender: 'Homme', experience: '-3gi' )
+      user5 =FactoryBot.create(:user, gender: 'Homme', experience: '-30' )
       user6 = FactoryBot.create(:user, gender: 'Femme', experience: '5/6', week_night: false, weekend_night: false, week_day: false, weekend_day: true, outside: true)
 
       context 'when searching for partners with no filters' do
